@@ -7,20 +7,21 @@ RUN apt-get update && apt-get install -y \
     libonig-dev unzip \
     && rm -rf /var/lib/apt/lists/*
 
-# PHP extensions REQUIRED by ChurchCRM
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install \
+        bcmath \
+        gd \
+        gettext \
+        intl \
+        mbstring \
+        mysqli \
         pdo \
         pdo_mysql \
-        mysqli \
-        mbstring \
-        intl \
-        zip \
-        gd \
-        xml \
+        opcache \
         soap \
-        bcmath \
-        opcache
+        sodium \
+        xml \
+        zip
 
 # Apache
 RUN a2enmod rewrite
