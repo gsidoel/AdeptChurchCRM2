@@ -1,8 +1,13 @@
 FROM php:8.2-apache
 
-# Enable Apache rewrite module
-RUN a2enmod rewrite \
- && sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
+# Enable Apache mod_rewrite
+RUN a2enmod rewrite
+
+# Allow .htaccess overrides for ChurchCRM
+RUN printf '<Directory /var/www/>\nAllowOverride All\n</Directory>\n' \
+    > /etc/apache2/conf-available/churchcrm.conf \
+ && a2enconf churchcrm
+
 
 RUN apt-get update && apt-get install -y \
     git unzip \
