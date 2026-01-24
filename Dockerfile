@@ -1,42 +1,39 @@
 FROM php:8.2-apache
 
-# Enable Apache mod_rewrite
-RUN a2enmod rewrite
-
-# Allow .htaccess overrides for ChurchCRM
-RUN printf '<Directory /var/www/>\nAllowOverride All\n</Directory>\n' \
-    > /etc/apache2/conf-available/churchcrm.conf \
- && a2enconf churchcrm
-
-
+# System deps
 RUN apt-get update && apt-get install -y \
-    git unzip \
     libpng-dev libjpeg-dev libfreetype6-dev \
     libzip-dev libicu-dev libxml2-dev \
-    libcurl4-openssl-dev libonig-dev \
-    libsodium-dev \
+    libonig-dev unzip \
     && rm -rf /var/lib/apt/lists/*
 
+# PHP extensions REQUIRED by ChurchCRM
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
- && docker-php-ext-install -j$(nproc) \
-    bcmath curl gd gettext intl mbstring mysqli \
-    opcache soap sodium xml zip
+    && docker-php-ext-install \
+        pdo \
+        pdo_mysql \
+        mysqli \
+        mbstring \
+        intl \
+        zip \
+        gd \
+        xml \
+        soap \
+        bcmath \
+        opcache
 
-RUN a2enmod rewrite \
- && echo "ServerName localhost" >> /etc/apache2/apache2.conf \
- && sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+# Apache
+RUN a2enmod rewrite
 
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+# ChurchCRM files
+COPY . /var/www/html/
 
-WORKDIR /var/www/html
-COPY . .
+# Permissions
+RUN chown -R www-data:www-data /var/www/html \
+    && find /var/www/html -type d -exec chmod 755 {} \; \
+    && find /var/www/html -type f -exec chmod 644 {} \;
 
-RUN composer install --no-dev --optimize-autoloader --no-interaction
-
-RUN chown -R www-data:www-data /var/www/html
-
-# Ensure ChurchCRM image upload directories exist and are writable
-RUN mkdir -p Images/Family Images/Person \
- && chown -R www-data:www-data Images \
- && chmod -R 775 Images
-
+# PHP sane defaults
+RUN echo "memory_limit=512M" > /usr/local/etc/php/conf.d/memory.ini \
+ && echo "upload_max_filesize=32M" >> /usr/local/etc/php/conf.d/memory.ini \
+ && echo "post_max_size=32M" >> /usr/local/etc/php/conf.d/memory.ini
