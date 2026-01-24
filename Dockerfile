@@ -1,3 +1,17 @@
+# ============================================================
+# ChurchCRM Dockerfile — WORKING BASELINE
+#
+# ✔ PHP 8.2
+# ✔ All required PHP extensions installed
+# ✔ All system dependencies resolved
+#
+# DO NOT MODIFY unless:
+# - ChurchCRM version changes
+# - PHP version changes
+#
+# Last verified: 2026-01-24
+# ============================================================
+
 FROM php:8.2-apache
 
 # -----------------------------
