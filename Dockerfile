@@ -25,3 +25,9 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 RUN chown -R www-data:www-data /var/www/html
+
+# Ensure ChurchCRM image upload directories exist and are writable
+RUN mkdir -p Images/Family Images/Person \
+ && chown -R www-data:www-data Images \
+ && chmod -R 775 Images
+
