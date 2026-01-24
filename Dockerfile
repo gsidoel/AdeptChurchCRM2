@@ -1,5 +1,9 @@
 FROM php:8.2-apache
 
+# Enable Apache rewrite module
+RUN a2enmod rewrite \
+ && sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
+
 RUN apt-get update && apt-get install -y \
     git unzip \
     libpng-dev libjpeg-dev libfreetype6-dev \
@@ -25,8 +29,6 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 RUN chown -R www-data:www-data /var/www/html
-
-RUN a2enmod rewrite
 
 # Ensure ChurchCRM image upload directories exist and are writable
 RUN mkdir -p Images/Family Images/Person \
