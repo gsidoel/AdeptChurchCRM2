@@ -9,7 +9,7 @@
 # - ChurchCRM version changes
 # - PHP version changes
 #
-# Last verified: 2026-01-24
+# Last verified: 2026-02-01
 # ============================================================
 
 FROM php:8.2-apache
@@ -53,17 +53,47 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 # -----------------------------
 RUN a2enmod rewrite
 
+# NOTE:
+# ChurchCRM checks for Apache mod_rewrite.
+# This is correct for php:8.2-apache images.
+# Reverse proxy (Traefik) will still handle routing.
+
 # -----------------------------
 # App files
 # -----------------------------
 COPY . /var/www/html/
 
 # -----------------------------
-# Permissions
+# Permissions (baseline)
 # -----------------------------
 RUN chown -R www-data:www-data /var/www/html \
     && find /var/www/html -type d -exec chmod 755 {} \; \
     && find /var/www/html -type f -exec chmod 644 {} \;
+
+# -----------------------------
+# ChurchCRM runtime writeable directories
+# -----------------------------
+# ChurchCRM requires these directories to be writeable at runtime:
+# - Images
+# - Images/Family
+# - Images/Person
+# - Include/Config
+#
+# In Docker, these may not exist yet or may be owned by root.
+# We explicitly create and relax permissions for these paths.
+#
+# This fixes:
+# ❌ "Images directory is writable - Family"
+# ❌ "Images directory is writable - Person"
+#
+RUN mkdir -p \
+        /var/www/html/Images/Family \
+        /var/www/html/Images/Person \
+        /var/www/html/Include/Config \
+    && chown -R www-data:www-data /var/www/html/Images \
+    && chown -R www-data:www-data /var/www/html/Include/Config \
+    && chmod -R 775 /var/www/html/Images \
+    && chmod -R 775 /var/www/html/Include/Config
 
 # -----------------------------
 # PHP sane defaults
