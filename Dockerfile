@@ -30,6 +30,17 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # -----------------------------
+# Locales (required for translations)
+# -----------------------------
+RUN apt-get update && apt-get install -y \
+    locales \
+    && sed -i 's/# nl_NL.UTF-8 UTF-8/nl_NL.UTF-8 UTF-8/' /etc/locale.gen \
+    && sed -i 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
+    && locale-gen \
+    && rm -rf /var/lib/apt/lists/*
+
+
+# -----------------------------
 # PHP extensions (ChurchCRM)
 # -----------------------------
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
@@ -94,6 +105,13 @@ RUN mkdir -p \
     && chown -R www-data:www-data /var/www/html/Include/Config \
     && chmod -R 775 /var/www/html/Images \
     && chmod -R 775 /var/www/html/Include/Config
+
+# -----------------------------
+# Default locale
+# -----------------------------
+ENV LANG=nl_NL.UTF-8 \
+    LANGUAGE=nl_NL:en_US \
+    LC_ALL=nl_NL.UTF-8
 
 # -----------------------------
 # PHP sane defaults
