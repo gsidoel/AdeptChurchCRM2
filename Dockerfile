@@ -127,6 +127,9 @@ RUN echo "memory_limit=512M" > /usr/local/etc/php/conf.d/memory.ini \
  && echo "upload_max_filesize=32M" >> /usr/local/etc/php/conf.d/memory.ini \
  && echo "post_max_size=32M" >> /usr/local/etc/php/conf.d/memory.ini
 
+RUN echo "upload_tmp_dir=/var/www/html/tmp_attach" \
+    > /usr/local/etc/php/conf.d/upload_tmp_dir.ini
+
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
