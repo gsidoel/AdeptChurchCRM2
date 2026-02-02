@@ -32,9 +32,9 @@ RUN apt-get update && apt-get install -y \
 # -----------------------------
 # Image processing (ChurchCRM)
 # -----------------------------
-RUN apt-get update && apt-get install -y \
-    imagemagick \
-    && rm -rf /var/lib/apt/lists/*
+RUN DEBIAN_FRONTEND=noninteractive apt-get update \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y imagemagick \
+ && rm -rf /var/lib/apt/lists/*
 
 # -----------------------------
 # Locales (required for translations)
