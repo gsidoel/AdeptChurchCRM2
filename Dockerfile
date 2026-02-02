@@ -126,3 +126,9 @@ ENV LANG=nl_NL.UTF-8 \
 RUN echo "memory_limit=512M" > /usr/local/etc/php/conf.d/memory.ini \
  && echo "upload_max_filesize=32M" >> /usr/local/etc/php/conf.d/memory.ini \
  && echo "post_max_size=32M" >> /usr/local/etc/php/conf.d/memory.ini
+
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["apache2-foreground"]
