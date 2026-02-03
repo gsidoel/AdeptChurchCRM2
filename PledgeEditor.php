@@ -6,18 +6,19 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\MICRFunctions;
+use ChurchCRM\Utils\MICRUtils;
 use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 if (SystemConfig::getValue('bUseScannedChecks')) { // Instantiate the MICR class
-    $micrObj = new MICRFunctions();
+    $micrObj = new MICRUtils();
 }
 
 $iEnvelope = 0;
@@ -42,6 +43,7 @@ $checkHash = [];
 // Get the list of funds
 $sSQL = 'SELECT fun_ID,fun_Name,fun_Active FROM donationfund_fun';
 $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
+$sSQL .= ' ORDER BY fun_Order';
 
 $rsFunds = RunQuery($sSQL);
 mysqli_data_seek($rsFunds, 0);
@@ -121,7 +123,7 @@ if (
         $iFYID = $_SESSION['idefaultFY'];
     }
     if (!$iFYID) {
-        $iFYID = CurrentFY();
+        $iFYID = FiscalYearUtils::getCurrentFiscalYearId();
     }
     $_SESSION['idefaultFY'] = $iFYID;
 
@@ -195,7 +197,7 @@ if (
         if (array_key_exists('idefaultFY', $_SESSION)) {
             $iFYID = $_SESSION['idefaultFY'];
         } else {
-            $iFYID = CurrentFY();
+            $iFYID = FiscalYearUtils::getCurrentFiscalYearId();
         }
         if (array_key_exists('iDefaultSchedule', $_SESSION)) {
             $iSchedule = $_SESSION['iDefaultSchedule'];
@@ -463,13 +465,13 @@ if ($iCurrentDeposit) {
 }
 
 if ($PledgeOrPayment === 'Pledge') {
-    $sPageTitle = '<i class="fa-solid fa-file-signature text-warning mr-2"></i>' . gettext('New Pledge');
+    $sPageTitle = gettext('New Pledge');
     $cardHeaderClass = 'bg-warning';
     $cardHeaderTextClass = 'text-dark';
     $formTypeLabel = gettext('Pledge');
 } elseif ($iCurrentDeposit) {
     $dep_DateFormatted = ($dep_Date instanceof \DateTime) ? $dep_Date->format('Y-m-d') : $dep_Date;
-    $sPageTitle = '<i class="fa-solid fa-hand-holding-dollar text-primary mr-2"></i>' . gettext('New Payment') . ' - ' . $dep_Type . gettext(' Deposit #') . $iCurrentDeposit . " ($dep_DateFormatted)";
+    $sPageTitle = gettext('New Payment') . ' - ' . $dep_Type . gettext(' Deposit #') . $iCurrentDeposit . " ($dep_DateFormatted)";
     $cardHeaderClass = 'bg-primary';
     $cardHeaderTextClass = 'text-white';
     $formTypeLabel = gettext('Payment');
@@ -498,9 +500,9 @@ if ($PledgeOrPayment === 'Pledge') {
     }
 } else { // not a pledge and a current deposit hasn't been created yet
     if ($sGroupKey) {
-        $sPageTitle = '<i class="fa-solid fa-pen-to-square text-info mr-2"></i>' . gettext('Edit Payment');
+        $sPageTitle = gettext('Edit Payment');
     } else {
-        $sPageTitle = '<i class="fa-solid fa-hand-holding-dollar text-primary mr-2"></i>' . gettext('New Payment') . ' - ' . gettext('New Deposit Will Be Created');
+        $sPageTitle = gettext('New Payment') . ' - ' . gettext('New Deposit Will Be Created');
     }
     $cardHeaderClass = 'bg-primary';
     $cardHeaderTextClass = 'text-white';
@@ -615,10 +617,11 @@ require_once __DIR__ . '/Include/Header.php';
 
                     </div>
 
+                    <?php if ($PledgeOrPayment === 'Payment'): ?>
                     <div class="col-lg-6">
                         <label for="Method"><?= gettext('Payment by') ?></label>
                         <select class="form-control" name="Method" id="Method">
-                            <?php if ($PledgeOrPayment === 'Pledge' || $dep_Type === 'Bank' || !$iCurrentDeposit) {
+                            <?php if ($dep_Type === 'Bank' || !$iCurrentDeposit) {
                                 ?>
                                 <option value="CHECK" <?php if ($iMethod === 'CHECK') {
                                                             echo 'selected';
@@ -630,7 +633,7 @@ require_once __DIR__ . '/Include/Header.php';
                                 </option>
                                 <?php
                             } ?>
-                            <?php if ($PledgeOrPayment === 'Pledge' || $dep_Type === 'CreditCard' || !$iCurrentDeposit) {
+                            <?php if ($dep_Type === 'CreditCard' || !$iCurrentDeposit) {
                                 ?>
                                 <option value="CREDITCARD" <?php if ($iMethod === 'CREDITCARD') {
                                                                 echo 'selected';
@@ -638,7 +641,7 @@ require_once __DIR__ . '/Include/Header.php';
                                 </option>
                                 <?php
                             } ?>
-                            <?php if ($PledgeOrPayment === 'Pledge' || $dep_Type === 'BankDraft' || !$iCurrentDeposit) {
+                            <?php if ($dep_Type === 'BankDraft' || !$iCurrentDeposit) {
                                 ?>
                                 <option value="BANKDRAFT" <?php if ($iMethod === 'BANKDRAFT') {
                                                                 echo 'selected';
@@ -648,7 +651,7 @@ require_once __DIR__ . '/Include/Header.php';
                             } ?>
                         </select>
 
-                        <?php if ($PledgeOrPayment === 'Payment' && $dep_Type === 'Bank') {
+                        <?php if ($dep_Type === 'Bank') {
                             ?>
                             <div id="checkNumberGroup">
                                 <label for="CheckNo"><?= gettext('Check') ?> #</label>
@@ -661,6 +664,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <input class="form-control" type="number" step="any" name="TotalAmount" id="TotalAmount" disabled />
 
                     </div>
+                    <?php endif; ?>
 
                     <div class="col-lg-6">
                         <?php if (SystemConfig::getValue('bUseScannedChecks') && ($dep_Type === 'Bank' || $PledgeOrPayment === 'Pledge')) {
@@ -679,24 +683,6 @@ require_once __DIR__ . '/Include/Header.php';
                             <input type="submit" class="btn btn-secondary" value="<?= gettext('Set default check account number for family') ?>" name="SetDefaultCheck">
                             <?php
                         } ?>
-                    </div>
-
-                    <div class="col-lg-12">
-                        <?php if (!$dep_Closed) {
-                            ?>
-                            <br />
-                            <input type="submit" id="saveBtn" class="btn btn-secondary" value="<?= gettext('Save') ?>" name="PledgeSubmit">
-                            <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-                                echo '<input id="save-n-add" type="submit" class="btn btn-primary" value="' . gettext('Save and Add') . '" name="PledgeSubmitAndAdd">';
-                            } ?>
-                            <?php
-                        } ?>
-                        <?php if (!$dep_Closed) {
-                            $cancelText = 'Cancel';
-                        } else {
-                            $cancelText = 'Return';
-                        } ?>
-                        <input type="button" class="btn btn-danger" value="<?= gettext($cancelText) ?>" name="PledgeCancel" onclick="javascript:document.location='<?= $linkBack ? $linkBack : 'v2/dashboard' ?>';">
                     </div>
                 </div>
             </div>
@@ -752,6 +738,30 @@ require_once __DIR__ . '/Include/Header.php';
                             } ?>
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <?php if (!$dep_Closed) {
+                        ?>
+                        <input type="submit" id="saveBtn" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PledgeSubmit">
+                        <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
+                            echo '<input id="save-n-add" type="submit" class="btn btn-success" value="' . gettext('Save and Add') . '" name="PledgeSubmitAndAdd">';
+                        } ?>
+                        <?php
+                    } ?>
+                    <?php if (!$dep_Closed) {
+                        $cancelText = 'Cancel';
+                    } else {
+                        $cancelText = 'Return';
+                    } ?>
+                    <input type="button" class="btn btn-secondary" value="<?= gettext($cancelText) ?>" name="PledgeCancel" onclick="javascript:document.location='<?= $linkBack ? $linkBack : 'finance/' ?>';">
                 </div>
             </div>
         </div>

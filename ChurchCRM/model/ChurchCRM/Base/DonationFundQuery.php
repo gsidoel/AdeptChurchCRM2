@@ -24,11 +24,13 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildDonationFundQuery orderByActive($order = Criteria::ASC) Order by the fun_Active column
  * @method     ChildDonationFundQuery orderByName($order = Criteria::ASC) Order by the fun_Name column
  * @method     ChildDonationFundQuery orderByDescription($order = Criteria::ASC) Order by the fun_Description column
+ * @method     ChildDonationFundQuery orderByOrder($order = Criteria::ASC) Order by the fun_Order column
  *
  * @method     ChildDonationFundQuery groupById() Group by the fun_ID column
  * @method     ChildDonationFundQuery groupByActive() Group by the fun_Active column
  * @method     ChildDonationFundQuery groupByName() Group by the fun_Name column
  * @method     ChildDonationFundQuery groupByDescription() Group by the fun_Description column
+ * @method     ChildDonationFundQuery groupByOrder() Group by the fun_Order column
  *
  * @method     ChildDonationFundQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildDonationFundQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -56,7 +58,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildDonationFund|null findOneById(int $fun_ID) Return the first ChildDonationFund filtered by the fun_ID column
  * @method     ChildDonationFund|null findOneByActive(string $fun_Active) Return the first ChildDonationFund filtered by the fun_Active column
  * @method     ChildDonationFund|null findOneByName(string $fun_Name) Return the first ChildDonationFund filtered by the fun_Name column
- * @method     ChildDonationFund|null findOneByDescription(string $fun_Description) Return the first ChildDonationFund filtered by the fun_Description column *
+ * @method     ChildDonationFund|null findOneByDescription(string $fun_Description) Return the first ChildDonationFund filtered by the fun_Description column
+ * @method     ChildDonationFund|null findOneByOrder(int $fun_Order) Return the first ChildDonationFund filtered by the fun_Order column *
 
  * @method     ChildDonationFund requirePk($key, ConnectionInterface $con = null) Return the ChildDonationFund by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildDonationFund requireOne(ConnectionInterface $con = null) Return the first ChildDonationFund matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -65,12 +68,14 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildDonationFund requireOneByActive(string $fun_Active) Return the first ChildDonationFund filtered by the fun_Active column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildDonationFund requireOneByName(string $fun_Name) Return the first ChildDonationFund filtered by the fun_Name column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildDonationFund requireOneByDescription(string $fun_Description) Return the first ChildDonationFund filtered by the fun_Description column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildDonationFund requireOneByOrder(int $fun_Order) Return the first ChildDonationFund filtered by the fun_Order column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildDonationFund[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildDonationFund objects based on current ModelCriteria
  * @method     ChildDonationFund[]|ObjectCollection findById(int $fun_ID) Return ChildDonationFund objects filtered by the fun_ID column
  * @method     ChildDonationFund[]|ObjectCollection findByActive(string $fun_Active) Return ChildDonationFund objects filtered by the fun_Active column
  * @method     ChildDonationFund[]|ObjectCollection findByName(string $fun_Name) Return ChildDonationFund objects filtered by the fun_Name column
  * @method     ChildDonationFund[]|ObjectCollection findByDescription(string $fun_Description) Return ChildDonationFund objects filtered by the fun_Description column
+ * @method     ChildDonationFund[]|ObjectCollection findByOrder(int $fun_Order) Return ChildDonationFund objects filtered by the fun_Order column
  * @method     ChildDonationFund[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -169,7 +174,7 @@ abstract class DonationFundQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT fun_ID, fun_Active, fun_Name, fun_Description FROM donationfund_fun WHERE fun_ID = :p0';
+        $sql = 'SELECT fun_ID, fun_Active, fun_Name, fun_Description, fun_Order FROM donationfund_fun WHERE fun_ID = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_INT);
@@ -373,6 +378,47 @@ abstract class DonationFundQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(DonationFundTableMap::COL_FUN_DESCRIPTION, $description, $comparison);
+    }
+
+    /**
+     * Filter the query on the fun_Order column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByOrder(1234); // WHERE fun_Order = 1234
+     * $query->filterByOrder(array(12, 34)); // WHERE fun_Order IN (12, 34)
+     * $query->filterByOrder(array('min' => 12)); // WHERE fun_Order > 12
+     * </code>
+     *
+     * @param     mixed $order The value to use as filter.
+     *              Use scalar values for equality.
+     *              Use array values for in_array() equivalent.
+     *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildDonationFundQuery The current query, for fluid interface
+     */
+    public function filterByOrder($order = null, $comparison = null)
+    {
+        if (is_array($order)) {
+            $useMinMax = false;
+            if (isset($order['min'])) {
+                $this->addUsingAlias(DonationFundTableMap::COL_FUN_ORDER, $order['min'], Criteria::GREATER_EQUAL);
+                $useMinMax = true;
+            }
+            if (isset($order['max'])) {
+                $this->addUsingAlias(DonationFundTableMap::COL_FUN_ORDER, $order['max'], Criteria::LESS_EQUAL);
+                $useMinMax = true;
+            }
+            if ($useMinMax) {
+                return $this;
+            }
+            if (null === $comparison) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(DonationFundTableMap::COL_FUN_ORDER, $order, $comparison);
     }
 
     /**

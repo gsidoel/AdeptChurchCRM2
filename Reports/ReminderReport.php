@@ -7,8 +7,8 @@ require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 
 // Security
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
@@ -16,18 +16,13 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 // Get the Fiscal Year ID out of the query string
 $iFYID = (int) InputUtils::legacyFilterInput($_POST['FYID'], 'int');
 if (!$iFYID) {
-    $iFYID = CurrentFY();
+    $iFYID = FiscalYearUtils::getCurrentFiscalYearId();
 }
 // Remember the chosen Fiscal Year ID
 $_SESSION['idefaultFY'] = $iFYID;
 $output = InputUtils::legacyFilterInput($_POST['output']);
 $pledge_filter = InputUtils::legacyFilterInput($_POST['pledge_filter']);
 $only_owe = InputUtils::legacyFilterInput($_POST['only_owe']);
-
-// If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
-    RedirectUtils::securityRedirect('Admin');
-}
 
 if (!empty($_POST['classList'])) {
     $classList = $_POST['classList'];

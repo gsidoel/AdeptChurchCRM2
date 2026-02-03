@@ -153,17 +153,17 @@ $sCity = $per_City ?? '';
 $sState = $per_State ?? '';
 $sZip = $per_Zip ?? '';
 $sCountry = $per_Country ?? '';
+
 $formattedMailingAddress = $person->getAddress();
 
-$sPhoneCountry = $per_Country ?? '';
-$sHomePhone = ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy);
-$sHomePhoneUnformatted = ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy);
+$sHomePhone = $per_HomePhone ?? '';
+$sHomePhoneUnformatted = $per_HomePhone ?? '';
 
-$sWorkPhone = ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy);
-$sWorkPhoneUnformatted = ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy);
+$sWorkPhone = $per_WorkPhone ?? '';
+$sWorkPhoneUnformatted = $per_WorkPhone ?? '';
 
-$sCellPhone = ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy);
-$sCellPhoneUnformatted = ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy);
+$sCellPhone = $per_CellPhone ?? '';
+$sCellPhoneUnformatted = $per_CellPhone ?? '';
 
 $sEmail = $per_Email ?? '';
 $sUnformattedEmail = $per_Email ?? '';
@@ -422,7 +422,7 @@ $bOkToEdit = (
                             $displayIcon = "fa-solid fa-user";
                             $displayLink = SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $currentData;
                         } elseif ($type_ID == 11) {
-                            $custom_Special = $sPhoneCountry;
+                            $custom_Special = null;
                             $displayIcon = "fa-solid fa-phone";
                             // Sanitize phone number for tel: URI - allow only digits, +, -, (, ), and 'e' for extension
                             // Remove all other characters including spaces to prevent injection
@@ -780,9 +780,9 @@ $bOkToEdit = (
                                                         extract($aProps);
                                                         $currentData = trim($aPersonProps[$prop_Field]);
                                                         if (strlen($currentData) > 0) {
-                                                            $sRowClass = AlternateRowStyle($sRowClass);
+
                                                             if ($type_ID == 11) {
-                                                                $prop_Special = $sPhoneCountry;
+                                                                $prop_Special = null;
                                                             }
                                                             echo '<strong>' . $prop_Name . '</strong>: ' . displayCustomField($type_ID, $currentData, $prop_Special) . '<br/>';
                                                         }
@@ -857,12 +857,12 @@ $bOkToEdit = (
                                         $r2p_Value = '';
                                         extract($aRow); ?>
                                         <tr>
-                                            <td><span class="badge badge-info"><?= $prt_Name ?></span></td>
-                                            <td><strong><?= $pro_Name ?></strong></td>
+                                            <td><span class="badge badge-info"><?= InputUtils::escapeHTML($prt_Name) ?></span></td>
+                                            <td><strong><?= InputUtils::escapeHTML($pro_Name) ?></strong></td>
                                             <td><?= InputUtils::escapeHTML($r2p_Value) ?></td>
                                             <?php if ($bOkToEdit) { ?>
                                                 <td class="text-right">
-                                                    <button class="btn btn-sm btn-danger remove-property-btn" data-property_id="<?= $pro_ID ?>" title="<?= gettext('Remove Property') ?>">
+                                                    <button class="btn btn-sm btn-danger remove-property-btn" data-property_id="<?= (int)$pro_ID ?>" title="<?= gettext('Remove Property') ?>">
                                                         <i class="fa-solid fa-trash"></i>
                                                     </button>
                                                 </td>
@@ -904,12 +904,14 @@ $bOkToEdit = (
                                                                             $pro_Value = $assignedProperty->getPropertyValue();
                                                                         }
                                                                     }
-                                                                    $attributes .= "data-pro_Prompt=\"{$pro_Prompt}\" data-pro_Value=\"{$pro_Value}\" ";
+                                                                    // GHSA-8r36-fvxj-26qv: Escape HTML attributes to prevent XSS
+                                                                    $attributes .= "data-pro_Prompt=\"" . InputUtils::escapeAttribute($pro_Prompt) . "\" data-pro_Value=\"" . InputUtils::escapeAttribute($pro_Value) . "\" ";
                                                                 }
 
-                                                                $optionText = $pro_Name;
+                                                                // GHSA-8r36-fvxj-26qv: Escape property name for defense in depth
+                                                                $optionText = InputUtils::escapeHTML($pro_Name);
                                                                 if (in_array($pro_ID, $assignedPropertiesArray)) {
-                                                                    $optionText = $pro_Name . ' (' . gettext('assigned') . ')';
+                                                                    $optionText = InputUtils::escapeHTML($pro_Name) . ' (' . gettext('assigned') . ')';
                                                                 }
                                                                 echo "<option {$attributes}>{$optionText}</option>";
                                                             } ?>

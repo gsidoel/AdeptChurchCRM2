@@ -725,10 +725,6 @@ msgid "Donation Fund Editor"
 msgstr "Annetusfondi toimetaja"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "Kas soovite kindlasti selle fondi kustutada?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Kehtetud väljad või valikud. Muudatusi ei salvestatud! Parandage ja proovige uuesti!"
 
@@ -771,10 +767,6 @@ msgstr "Kordusmuster"
 #: 
 msgid "Attendance Counts"
 msgstr "Osalejate arvu loendus"
-
-#: 
-msgid "Add counter"
-msgstr "Lisage loendur"
 
 #: 
 msgid "Return to Event Types"
@@ -1615,11 +1607,6 @@ msgid "No properties have been added yet"
 msgstr "Ühtegi atribuuti pole veel lisatud"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "Hoiatus: välja muudatused lähevad kaotsi, kui te ei kasuta nuppu Salvesta muudatused enne üles, alla, kustutamist ega uue lisamist!"
-
-#: 
 msgid "Show in"
 msgstr "Näita"
 
@@ -2353,10 +2340,6 @@ msgid "Please confirm deletion of this Property Type"
 msgstr "Kinnitage selle omaduse tüübi kustutamine"
 
 #: 
-msgid "Property Type Editor"
-msgstr "Omaduse tüübi redigeerija"
-
-#: 
 msgid "Property Type List"
 msgstr "Omaduse tüüpide loetelu"
 
@@ -2738,14 +2721,6 @@ msgstr "Kuidas sa kuulsid kogudusest?"
 #: 
 msgid "eMail Dashboard"
 msgstr "e-posti töölaud"
-
-#: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Määra ümbriku numbrid kõigile peredele, kus on vähemalt üks liige."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Määra ümbrikute numbrid kõigile peredele."
 
 #: 
 msgid "Version"
@@ -3724,10 +3699,6 @@ msgid "Set true to enable use of donation envelopes"
 msgstr "Annetusümbrike kasutamise lubamiseks määrake see tõene"
 
 #: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Sisestage HTML-kood, mis kuvatakse iga lehe ülaservas päisena. Sulgege kindlasti oma sildid! Märkus. Uue päise kuvamiseks peate oma brauserit värskendama juba teist korda."
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Sissemakse teatise kontrollide arv"
 
@@ -3987,12 +3958,6 @@ msgstr "Otsing"
 msgid "Field"
 msgstr "Väli"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Registreeritud õpilased"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4086,11 +4051,6 @@ msgstr "Pühapäevakooli klass, mille kohta soovite teavet saada."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Registreeritud õpilaste rühm"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Liikmelisuse aastapäev, mille kohta soovite teavet saada."
 
@@ -4123,11 +4083,6 @@ msgstr "Sel aastal lubatud"
 #: 
 msgid "but not this year"
 msgstr "kuid mitte sel aastal"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Majandusaasta"
 
 #. Context: queryparameters_qrp
 #: 
@@ -4191,11 +4146,6 @@ msgstr "Puuduvad lubadused"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Pere lubadus eelarveaasta järgi"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "Kohandatud otsing"
 
@@ -4208,11 +4158,6 @@ msgstr "Näitab isikukirjed, millele on määratud antud omadust."
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Inimesed, kellel on konkreetsel kuul sünnipäev"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Leidke registreeritud õpilased"
 
 #. Context: query_qry
 #: 
@@ -4238,11 +4183,6 @@ msgstr "Võrrelge kahe eelarveaasta lubadusi"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Leidke inimesi, kes lubasid ühe aasta, kuid mitte teise aasta"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Rühmita kokkuvõte perekonnanime järgi iga fondi kohta valitud eelarveaastal"
 
 #. Context: query_qry
 #: 
@@ -9344,10 +9284,6 @@ msgid "Editing Event"
 msgstr "Sündmuse muutmine"
 
 #: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "Sisestage koma eraldatud loendamise kategooriad. \"Kokku\" sisaldub automaatselt."
-
-#: 
 msgid "Enter event title..."
 msgstr "Sisestage sündmuse pealkiri..."
 
@@ -11410,4 +11346,198 @@ msgstr "Hispaania - El Salvador"
 #: 
 msgid "Spanish - Mexico"
 msgstr "Hispaania - Mehhiko"
+
+#: 
+msgid "Add Property Type"
+msgstr "Lisa Omaduse Tüüp"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Lisa Oma Esimene Omaduse Tüüp"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Automaatselt arvutatud ülaltoodud arvudest"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Selle välja kustutamisega kaotate pöördumatult kõik sellele väljale määratud grupi liikmete andmed!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Selle fondi kustutamisega võite mõjutada ajaloolisi annetuste kirjeid!"
+
+#: 
+msgid "Category Name"
+msgstr "Kategooria Nimi"
+
+#: 
+msgid "Checked In"
+msgstr "Sisse registreeritud"
+
+#: 
+msgid "Checked Out"
+msgstr "Välja registreeritud"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Praegune Eelarveaasta"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Kustuta (kustutab kõik seotud kirjed)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Muuda Omaduse Tüüpi"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Sisestage komadega eraldatud loenduskategooriad (nt Liikmed, Külastajad, Lapsed)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Sisestage jutluse märkmed või sündmuse tekst..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Olemasolevad Annetuste Fondid"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Olemasolevad Grupi Omadused"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Rolli värskendamine ebaõnnestus. Palun proovige uuesti."
+
+#: 
+msgid "Family Pledges"
+msgstr "Perekonna Lubadused"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Välja muudatused lähevad kaotsi, kui te ei klõpsa 'Salvesta Muudatused' enne kustutamise või 'Lisa Uus' nupu kasutamist!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Filtreeri Klassi järgi"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Fond edukalt kustutatud"
+
+#: 
+msgid "In Use"
+msgstr "Kasutusel"
+
+#: 
+msgid "Manage"
+msgstr "Halda"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Valitud eelarveaasta kohta lubadusi ei leitud"
+
+#: 
+msgid "No property types found"
+msgstr "Omaduse tüüpe ei leitud"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Seda omaduse tüüpi kasutavate kirjete arv"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Selle omaduse tüübi valikuline üksikasjalik kirjeldus"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Palun parandage allpool olevad vead."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Lubaduse Summa"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Lubaduste Töölaud"
+
+#: 
+msgid "Remaining"
+msgstr "Järelejäänud"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Eemalda see osavõtu arv?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Valige kirje tüüp, millele see omadus kehtib"
+
+#: 
+msgid "That fund name already exists."
+msgstr "See fondi nimi on juba olemas."
+
+#: 
+msgid "Total Pledges"
+msgstr "Kokku Lubadusi"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Jälgige ja hallake lubaduste kohustusi perekonna ja fondi järgi"
+
+#: 
+msgid "View Properties"
+msgstr "Vaata Omadusi"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "nt Külastajad, Lapsed"
+
+#: 
+msgid "of pledges"
+msgstr "lubadustest"
+
+#: 
+msgid "records"
+msgstr "kirjet"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Peab algama /-ga, kui pole tühi; ilma lõpukaldkriipsuta. Lubatud on ainult tähed, numbrid, allkriips, sidekriips, punkt ja /."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d isik"
+msgstr[1] "%d isikut"
+
+#: 
+msgid "All Classifications"
+msgstr "Kõik Klassifikatsioonid"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Teie kriteeriumidele vastavaid inimesi ei leitud."
+
+#: 
+msgid "Off"
+msgstr "Väljas"
+
+#: 
+msgid "On"
+msgstr "Sees"
+
+#: 
+msgid "Photo Directory"
+msgstr "Fotode Kataloog"
+
+#: 
+msgid "Reset Filters"
+msgstr "Lähtesta Filtrid"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Näita ainult fotodega inimesi"
 

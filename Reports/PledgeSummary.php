@@ -8,8 +8,8 @@ require_once __DIR__ . '/../Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\CsvExporter;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 
 // Security
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
@@ -18,15 +18,10 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 $output = InputUtils::legacyFilterInput($_POST['output']);
 $iFYID = (int) InputUtils::legacyFilterInput($_POST['FYID'], 'int');
 if (!$iFYID) {
-    $iFYID = CurrentFY();
+    $iFYID = FiscalYearUtils::getCurrentFiscalYearId();
 }
 // Remember the chosen Fiscal Year ID
 $_SESSION['idefaultFY'] = $iFYID;
-
-// If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output !== 'pdf') {
-    RedirectUtils::securityRedirect('Admin');
-}
 
 // Get the list of funds
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true' ORDER BY fun_Active, fun_Name";

@@ -90,7 +90,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
         }
     })();
 </script>
-<?php if (isset($sGlobalMessage)) {
+<?php if (isset($sGlobalMessage) && !empty($sGlobalMessage)) {
     ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         $("document").ready(function () {
@@ -107,7 +107,3 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 
 // Turn OFF output buffering
 ob_end_flush();
-
-// Reset the Global Message
-unset($_SESSION['sGlobalMessage']);
-unset($_SESSION['sGlobalMessageClass']);

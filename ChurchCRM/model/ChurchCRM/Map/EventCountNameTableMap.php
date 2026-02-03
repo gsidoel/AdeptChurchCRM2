@@ -58,7 +58,7 @@ class EventCountNameTableMap extends TableMap
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 4;
+    const NUM_COLUMNS = 3;
 
     /**
      * The number of lazy-loaded columns
@@ -68,7 +68,7 @@ class EventCountNameTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 4;
+    const NUM_HYDRATE_COLUMNS = 3;
 
     /**
      * the column name for the evctnm_countid field
@@ -86,11 +86,6 @@ class EventCountNameTableMap extends TableMap
     const COL_EVCTNM_COUNTNAME = 'eventcountnames_evctnm.evctnm_countname';
 
     /**
-     * the column name for the evctnm_notes field
-     */
-    const COL_EVCTNM_NOTES = 'eventcountnames_evctnm.evctnm_notes';
-
-    /**
      * The default string format for model objects of the related table
      */
     const DEFAULT_STRING_FORMAT = 'YAML';
@@ -102,11 +97,11 @@ class EventCountNameTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('Id', 'TypeId', 'Name', 'Notes', ),
-        self::TYPE_CAMELNAME     => array('id', 'typeId', 'name', 'notes', ),
-        self::TYPE_COLNAME       => array(EventCountNameTableMap::COL_EVCTNM_COUNTID, EventCountNameTableMap::COL_EVCTNM_EVENTTYPEID, EventCountNameTableMap::COL_EVCTNM_COUNTNAME, EventCountNameTableMap::COL_EVCTNM_NOTES, ),
-        self::TYPE_FIELDNAME     => array('evctnm_countid', 'evctnm_eventtypeid', 'evctnm_countname', 'evctnm_notes', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, )
+        self::TYPE_PHPNAME       => array('Id', 'TypeId', 'Name', ),
+        self::TYPE_CAMELNAME     => array('id', 'typeId', 'name', ),
+        self::TYPE_COLNAME       => array(EventCountNameTableMap::COL_EVCTNM_COUNTID, EventCountNameTableMap::COL_EVCTNM_EVENTTYPEID, EventCountNameTableMap::COL_EVCTNM_COUNTNAME, ),
+        self::TYPE_FIELDNAME     => array('evctnm_countid', 'evctnm_eventtypeid', 'evctnm_countname', ),
+        self::TYPE_NUM           => array(0, 1, 2, )
     );
 
     /**
@@ -116,11 +111,11 @@ class EventCountNameTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('Id' => 0, 'TypeId' => 1, 'Name' => 2, 'Notes' => 3, ),
-        self::TYPE_CAMELNAME     => array('id' => 0, 'typeId' => 1, 'name' => 2, 'notes' => 3, ),
-        self::TYPE_COLNAME       => array(EventCountNameTableMap::COL_EVCTNM_COUNTID => 0, EventCountNameTableMap::COL_EVCTNM_EVENTTYPEID => 1, EventCountNameTableMap::COL_EVCTNM_COUNTNAME => 2, EventCountNameTableMap::COL_EVCTNM_NOTES => 3, ),
-        self::TYPE_FIELDNAME     => array('evctnm_countid' => 0, 'evctnm_eventtypeid' => 1, 'evctnm_countname' => 2, 'evctnm_notes' => 3, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, )
+        self::TYPE_PHPNAME       => array('Id' => 0, 'TypeId' => 1, 'Name' => 2, ),
+        self::TYPE_CAMELNAME     => array('id' => 0, 'typeId' => 1, 'name' => 2, ),
+        self::TYPE_COLNAME       => array(EventCountNameTableMap::COL_EVCTNM_COUNTID => 0, EventCountNameTableMap::COL_EVCTNM_EVENTTYPEID => 1, EventCountNameTableMap::COL_EVCTNM_COUNTNAME => 2, ),
+        self::TYPE_FIELDNAME     => array('evctnm_countid' => 0, 'evctnm_eventtypeid' => 1, 'evctnm_countname' => 2, ),
+        self::TYPE_NUM           => array(0, 1, 2, )
     );
 
     /**
@@ -154,14 +149,6 @@ class EventCountNameTableMap extends TableMap
         'COL_EVCTNM_COUNTNAME' => 'EVCTNM_COUNTNAME',
         'evctnm_countname' => 'EVCTNM_COUNTNAME',
         'eventcountnames_evctnm.evctnm_countname' => 'EVCTNM_COUNTNAME',
-        'Notes' => 'EVCTNM_NOTES',
-        'EventCountName.Notes' => 'EVCTNM_NOTES',
-        'notes' => 'EVCTNM_NOTES',
-        'eventCountName.notes' => 'EVCTNM_NOTES',
-        'EventCountNameTableMap::COL_EVCTNM_NOTES' => 'EVCTNM_NOTES',
-        'COL_EVCTNM_NOTES' => 'EVCTNM_NOTES',
-        'evctnm_notes' => 'EVCTNM_NOTES',
-        'eventcountnames_evctnm.evctnm_notes' => 'EVCTNM_NOTES',
     ];
 
     /**
@@ -184,7 +171,6 @@ class EventCountNameTableMap extends TableMap
         $this->addPrimaryKey('evctnm_countid', 'Id', 'INTEGER', true, 5, null);
         $this->addColumn('evctnm_eventtypeid', 'TypeId', 'SMALLINT', true, 5, 0);
         $this->addColumn('evctnm_countname', 'Name', 'VARCHAR', true, 20, '');
-        $this->addColumn('evctnm_notes', 'Notes', 'VARCHAR', true, 20, '');
     } // initialize()
 
     /**
@@ -338,12 +324,10 @@ class EventCountNameTableMap extends TableMap
             $criteria->addSelectColumn(EventCountNameTableMap::COL_EVCTNM_COUNTID);
             $criteria->addSelectColumn(EventCountNameTableMap::COL_EVCTNM_EVENTTYPEID);
             $criteria->addSelectColumn(EventCountNameTableMap::COL_EVCTNM_COUNTNAME);
-            $criteria->addSelectColumn(EventCountNameTableMap::COL_EVCTNM_NOTES);
         } else {
             $criteria->addSelectColumn($alias . '.evctnm_countid');
             $criteria->addSelectColumn($alias . '.evctnm_eventtypeid');
             $criteria->addSelectColumn($alias . '.evctnm_countname');
-            $criteria->addSelectColumn($alias . '.evctnm_notes');
         }
     }
 
@@ -364,12 +348,10 @@ class EventCountNameTableMap extends TableMap
             $criteria->removeSelectColumn(EventCountNameTableMap::COL_EVCTNM_COUNTID);
             $criteria->removeSelectColumn(EventCountNameTableMap::COL_EVCTNM_EVENTTYPEID);
             $criteria->removeSelectColumn(EventCountNameTableMap::COL_EVCTNM_COUNTNAME);
-            $criteria->removeSelectColumn(EventCountNameTableMap::COL_EVCTNM_NOTES);
         } else {
             $criteria->removeSelectColumn($alias . '.evctnm_countid');
             $criteria->removeSelectColumn($alias . '.evctnm_eventtypeid');
             $criteria->removeSelectColumn($alias . '.evctnm_countname');
-            $criteria->removeSelectColumn($alias . '.evctnm_notes');
         }
     }
 

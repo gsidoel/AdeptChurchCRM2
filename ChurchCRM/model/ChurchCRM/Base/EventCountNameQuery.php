@@ -22,12 +22,10 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildEventCountNameQuery orderById($order = Criteria::ASC) Order by the evctnm_countid column
  * @method     ChildEventCountNameQuery orderByTypeId($order = Criteria::ASC) Order by the evctnm_eventtypeid column
  * @method     ChildEventCountNameQuery orderByName($order = Criteria::ASC) Order by the evctnm_countname column
- * @method     ChildEventCountNameQuery orderByNotes($order = Criteria::ASC) Order by the evctnm_notes column
  *
  * @method     ChildEventCountNameQuery groupById() Group by the evctnm_countid column
  * @method     ChildEventCountNameQuery groupByTypeId() Group by the evctnm_eventtypeid column
  * @method     ChildEventCountNameQuery groupByName() Group by the evctnm_countname column
- * @method     ChildEventCountNameQuery groupByNotes() Group by the evctnm_notes column
  *
  * @method     ChildEventCountNameQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildEventCountNameQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -42,8 +40,7 @@ use Propel\Runtime\Exception\PropelException;
  *
  * @method     ChildEventCountName|null findOneById(int $evctnm_countid) Return the first ChildEventCountName filtered by the evctnm_countid column
  * @method     ChildEventCountName|null findOneByTypeId(int $evctnm_eventtypeid) Return the first ChildEventCountName filtered by the evctnm_eventtypeid column
- * @method     ChildEventCountName|null findOneByName(string $evctnm_countname) Return the first ChildEventCountName filtered by the evctnm_countname column
- * @method     ChildEventCountName|null findOneByNotes(string $evctnm_notes) Return the first ChildEventCountName filtered by the evctnm_notes column *
+ * @method     ChildEventCountName|null findOneByName(string $evctnm_countname) Return the first ChildEventCountName filtered by the evctnm_countname column *
 
  * @method     ChildEventCountName requirePk($key, ConnectionInterface $con = null) Return the ChildEventCountName by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildEventCountName requireOne(ConnectionInterface $con = null) Return the first ChildEventCountName matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -51,13 +48,11 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildEventCountName requireOneById(int $evctnm_countid) Return the first ChildEventCountName filtered by the evctnm_countid column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildEventCountName requireOneByTypeId(int $evctnm_eventtypeid) Return the first ChildEventCountName filtered by the evctnm_eventtypeid column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildEventCountName requireOneByName(string $evctnm_countname) Return the first ChildEventCountName filtered by the evctnm_countname column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
- * @method     ChildEventCountName requireOneByNotes(string $evctnm_notes) Return the first ChildEventCountName filtered by the evctnm_notes column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildEventCountName[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildEventCountName objects based on current ModelCriteria
  * @method     ChildEventCountName[]|ObjectCollection findById(int $evctnm_countid) Return ChildEventCountName objects filtered by the evctnm_countid column
  * @method     ChildEventCountName[]|ObjectCollection findByTypeId(int $evctnm_eventtypeid) Return ChildEventCountName objects filtered by the evctnm_eventtypeid column
  * @method     ChildEventCountName[]|ObjectCollection findByName(string $evctnm_countname) Return ChildEventCountName objects filtered by the evctnm_countname column
- * @method     ChildEventCountName[]|ObjectCollection findByNotes(string $evctnm_notes) Return ChildEventCountName objects filtered by the evctnm_notes column
  * @method     ChildEventCountName[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -156,7 +151,7 @@ abstract class EventCountNameQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT evctnm_countid, evctnm_eventtypeid, evctnm_countname, evctnm_notes FROM eventcountnames_evctnm WHERE evctnm_countid = :p0';
+        $sql = 'SELECT evctnm_countid, evctnm_eventtypeid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_countid = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_INT);
@@ -351,31 +346,6 @@ abstract class EventCountNameQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(EventCountNameTableMap::COL_EVCTNM_COUNTNAME, $name, $comparison);
-    }
-
-    /**
-     * Filter the query on the evctnm_notes column
-     *
-     * Example usage:
-     * <code>
-     * $query->filterByNotes('fooValue');   // WHERE evctnm_notes = 'fooValue'
-     * $query->filterByNotes('%fooValue%', Criteria::LIKE); // WHERE evctnm_notes LIKE '%fooValue%'
-     * </code>
-     *
-     * @param     string $notes The value to use as filter.
-     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
-     *
-     * @return $this|ChildEventCountNameQuery The current query, for fluid interface
-     */
-    public function filterByNotes($notes = null, $comparison = null)
-    {
-        if (null === $comparison) {
-            if (is_array($notes)) {
-                $comparison = Criteria::IN;
-            }
-        }
-
-        return $this->addUsingAlias(EventCountNameTableMap::COL_EVCTNM_NOTES, $notes, $comparison);
     }
 
     /**
