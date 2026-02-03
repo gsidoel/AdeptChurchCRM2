@@ -9,8 +9,10 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\Version;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Utils\SQLUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
@@ -106,7 +108,13 @@ class Bootstrapper
             self::installChurchCRMSchema();
         }
         self::initSession();
-        SystemConfig::init(ConfigQuery::create()->find());
+        
+        // Initialize SystemConfig with database values only once during bootstrap
+        // Fallback error handlers (testMYSQLI, systemFailure) will call init() without parameters
+        if (!SystemConfig::isInitialized()) {
+            SystemConfig::init(ConfigQuery::create()->find());
+        }
+        
         self::configureLogging();
         self::configureUserEnvironment();
         self::configureLocale();
@@ -418,6 +426,11 @@ class Bootstrapper
         session_name($sessionName);
         session_start();
         self::$bootStrapLogger->debug("Session initialized: " . $sessionName);
+        
+        // Cache the installed version in the session (only once per session)
+        if (!isset($_SESSION['sSoftwareInstalledVersion'])) {
+            $_SESSION['sSoftwareInstalledVersion'] = VersionUtils::getInstalledVersion();
+        }
     }
     private static function configureLogging(): void
     {
@@ -538,7 +551,7 @@ class Bootstrapper
             echo '<div style="max-width: 800px; margin: 50px auto; padding: 20px;">';
             echo '<h1>ChurchCRM Error</h1>';
             echo '<div style="padding: 15px; margin: 20px 0; border: 1px solid #f5c6cb; background-color: #f8d7da; color: #721c24; border-radius: 4px;">';
-            echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
+            echo InputUtils::escapeHTML($message);
             echo '</div></div></body></html>';
         }
         exit();

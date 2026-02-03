@@ -725,10 +725,6 @@ msgid "Donation Fund Editor"
 msgstr "עורך קרן תרומות"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "האם אתה בטוח במחיקת תרומה זאת?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "שדות או בחירות לא חוקיים. השינויים לא נשמרו ! אנא תקן ונסה שוב !"
 
@@ -771,10 +767,6 @@ msgstr "תבנית חזרה"
 #: 
 msgid "Attendance Counts"
 msgstr "ספירת נוכחות"
-
-#: 
-msgid "Add counter"
-msgstr "הוסף מונה"
 
 #: 
 msgid "Return to Event Types"
@@ -1614,11 +1606,6 @@ msgid "No properties have been added yet"
 msgstr "עדיין לא נוספו מאפיינים"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "אזהרה: שינויי השדה יאבדו אם לא תלחץ על 'שמור שינויים' לפני שימוש בכפתורי למעלה, למטה, מחק או 'הוסף חדש'!"
-
-#: 
 msgid "Show in"
 msgstr "הצג ב"
 
@@ -2352,10 +2339,6 @@ msgid "Please confirm deletion of this Property Type"
 msgstr "אנא אשר את מחיקת סוג המאפיין הזה"
 
 #: 
-msgid "Property Type Editor"
-msgstr "עורך סוגי מאפיינים"
-
-#: 
 msgid "Property Type List"
 msgstr "רשימת סוגי מאפיינים"
 
@@ -2736,14 +2719,6 @@ msgstr "כיצד למדת על המוסד?"
 #: 
 msgid "eMail Dashboard"
 msgstr "לוח בקרת דואר אלקטרוני"
-
-#: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "מספרי מעטפות הוקצו לכל המשפחות עם לפחות חבר אחד."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "מספרי מעטפות הוקצו לכל המשפחות."
 
 #: 
 msgid "Version"
@@ -3721,10 +3696,6 @@ msgid "Set true to enable use of donation envelopes"
 msgstr "הגדר כ-true כדי לאפשר שימוש במעטפות תרומה"
 
 #: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "הזן קוד HTML שיוצג ככותרת בראש כל עמוד. הקפד לסגור את התגיות שלך! הערה: עליך לרענן את הדפדפן פעם שנייה כדי לראות את הכותרת החדשה."
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "מספר הצ'קים לדוח שובר הפקדה"
 
@@ -3984,12 +3955,6 @@ msgstr "חיפוש"
 msgid "Field"
 msgstr "שדה"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "תלמידים רשומים"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4082,11 +4047,6 @@ msgstr "כיתת בית הספר של יום ראשון שעבורה אתה רו
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "קבוצת תלמידים רשומים"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "חודש יום השנה לחברות שעבורו אתה רוצה לקבל רשומות."
 
@@ -4119,11 +4079,6 @@ msgstr "הובטח השנה"
 #: 
 msgid "but not this year"
 msgstr "אבל לא השנה"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "שנת כספים."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4187,11 +4142,6 @@ msgstr "התחייבויות חסרות"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "התחייבות משפחה לפי שנת כספים"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "חיפוש מותאם אישית"
 
@@ -4204,11 +4154,6 @@ msgstr "מחזיר רשומות אנשים שהוקצה להם המאפיין ה
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "אנשים שיש להם יום הולדת בחודש מסוים"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "מצא תלמידים רשומים"
 
 #. Context: query_qry
 #: 
@@ -4234,11 +4179,6 @@ msgstr "השווה התחייבויות בין שתי שנות כספים"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "מצא אנשים שהתחייבו בשנה אחת אך לא באחרת"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "סיכום התחייבויות לפי שם משפחה עבור כל קרן לשנת הכספים שנבחרה"
 
 #. Context: query_qry
 #: 
@@ -9337,10 +9277,6 @@ msgid "Editing Event"
 msgstr "עורך אירוע"
 
 #: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "הזן קטגוריות ספירה מופרדות בפסיקים. \"סה\"כ\" נכלל אוטומטית."
-
-#: 
 msgid "Enter event title..."
 msgstr "הזן כותרת לאירוע..."
 
@@ -11403,4 +11339,198 @@ msgstr "ספרדית - אל סלבדור"
 #: 
 msgid "Spanish - Mexico"
 msgstr "ספרדית - מקסיקו"
+
+#: 
+msgid "Add Property Type"
+msgstr "הוסף סוג מאפיין"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "הוסף את סוג המאפיין הראשון שלך"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "מחושב אוטומטית מהספירות למעלה"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "מחיקת שדה זה תגרום לאובדן בלתי הפיך של כל נתוני חברי הקבוצה שהוקצו לשדה זה!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "מחיקת קרן זו עלולה להשפיע על רשומות תרומות היסטוריות!"
+
+#: 
+msgid "Category Name"
+msgstr "שם קטגוריה"
+
+#: 
+msgid "Checked In"
+msgstr "נרשם כנוכח"
+
+#: 
+msgid "Checked Out"
+msgstr "נרשם כיוצא"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "שנת הכספים הנוכחית"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "מחק (ימחק את כל הרשומות המשויכות)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "ערוך סוג מאפיין"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "הזן קטגוריות ספירה מופרדות בפסיקים (לדוגמה, חברים, מבקרים, ילדים)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "הזן הערות דרשה או טקסט אירוע..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "קרנות תרומה קיימות"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "מאפייני קבוצה קיימים"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "עדכון התפקיד נכשל. נא לנסות שוב."
+
+#: 
+msgid "Family Pledges"
+msgstr "התחייבויות משפחתיות"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "שינויי השדה יאבדו אם לא תלחץ על 'שמור שינויים' לפני שימוש בכפתור מחק או 'הוסף חדש'!"
+
+#: 
+msgid "Filter by Class"
+msgstr "סנן לפי כיתה"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "הקרן נמחקה בהצלחה"
+
+#: 
+msgid "In Use"
+msgstr "בשימוש"
+
+#: 
+msgid "Manage"
+msgstr "נהל"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "לא נמצאו התחייבויות לשנת הכספים שנבחרה"
+
+#: 
+msgid "No property types found"
+msgstr "לא נמצאו סוגי מאפיינים"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "מספר הרשומות המשתמשות בסוג מאפיין זה"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "תיאור מפורט אופציונלי של סוג מאפיין זה"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "נא לתקן את השגיאות למטה."
+
+#: 
+msgid "Pledge Amount"
+msgstr "סכום ההתחייבות"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "לוח בקרת התחייבויות"
+
+#: 
+msgid "Remaining"
+msgstr "נותר"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "להסיר ספירת נוכחות זו?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "בחר את סוג הרשומה שאליה מאפיין זה חל"
+
+#: 
+msgid "That fund name already exists."
+msgstr "שם קרן זה כבר קיים."
+
+#: 
+msgid "Total Pledges"
+msgstr "סה\"כ התחייבויות"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "עקוב ונהל התחייבויות לפי משפחה וקרן"
+
+#: 
+msgid "View Properties"
+msgstr "הצג מאפיינים"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "לדוגמה, מבקרים, ילדים"
+
+#: 
+msgid "of pledges"
+msgstr "מההתחייבויות"
+
+#: 
+msgid "records"
+msgstr "רשומות"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "חייב להתחיל ב-/ אם לא ריק; ללא קו נטוי בסוף. מותרים רק אותיות, מספרים, קו תחתון, מקף, נקודה ו-/."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d אדם"
+msgstr[1] "%d אנשים"
+
+#: 
+msgid "All Classifications"
+msgstr "כל הסיווגים"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "לא נמצאו אנשים התואמים לקריטריונים שלך."
+
+#: 
+msgid "Off"
+msgstr "כבוי"
+
+#: 
+msgid "On"
+msgstr "פעיל"
+
+#: 
+msgid "Photo Directory"
+msgstr "ספריית תמונות"
+
+#: 
+msgid "Reset Filters"
+msgstr "אפס מסננים"
+
+#: 
+msgid "Show only people with photos"
+msgstr "הצג רק אנשים עם תמונות"
 

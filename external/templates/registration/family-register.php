@@ -2,32 +2,27 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\ChurchMetaData;
 
 $sPageTitle = gettext("Family Registration");
 require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
-
-$headerHTML = '<b>Church</b>CRM';
-$sHeader = SystemConfig::getValue("sHeader");
-$sChurchName = SystemConfig::getValue("sChurchName");
-
-if (!empty($sHeader)) {
-    $headerHTML = html_entity_decode($sHeader, ENT_QUOTES);
-} elseif (!empty($sChurchName)) {
-    $headerHTML = $sChurchName;
-}
 
 ?>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/family-register.min.css') ?>">
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM = {
         root: "<?= SystemURLs::getRootPath() ?>",
-        churchWebSite: "<?= SystemURLs::getRootPath() ?>/"
+        churchWebSite: "<?= SystemURLs::getRootPath() ?>/",
+        phoneFormats: {
+            home: "<?= SystemConfig::getValue('sPhoneFormat') ?>",
+            cell: "<?= SystemConfig::getValue('sPhoneFormatCell') ?>",
+            work: "<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"
+        }
     };
 </script>
 <div class="register-box" style="width: 90%; max-width: 900px;">
     <div class="register-logo text-center mb-4">
-        <a href="<?= SystemURLs::getRootPath() ?>/" class="h2"><?= InputUtils::escapeHTML($headerHTML) ?></a>
+        <a href="<?= SystemURLs::getRootPath() ?>/" class="h2"><?= ChurchMetaData::getChurchName() ?></a>
         <p class="text-muted mt-2"><?= gettext("Join our community by registering your family") ?></p>
     </div>
     <div class="card registration-card">
@@ -117,6 +112,14 @@ if (!empty($sHeader)) {
                                     <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
                                 </div>
                                 <input id="familyHomePhone" name="familyHomePhone" class="form-control" placeholder="<?= gettext('Home phone number') ?>" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask required>
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <div class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input" id="NoFormat_familyHomePhone" name="NoFormat_familyHomePhone" value="1">
+                                            <label class="custom-control-label" for="NoFormat_familyHomePhone"><?= gettext('No format') ?></label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="invalid-feedback"></div>
                         </div>
@@ -211,7 +214,15 @@ if (!empty($sHeader)) {
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
                                                 </div>
-                                                <input class="form-control member-phone" maxlength="30" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask placeholder="<?= gettext('Phone number') ?>">
+                                                <input class="form-control member-phone" maxlength="30" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask placeholder="<?= gettext('Phone number') ?>" data-phone-format-home="<?= SystemConfig::getValue('sPhoneFormat') ?>" data-phone-format-cell="<?= SystemConfig::getValue('sPhoneFormatCell') ?>">
+                                                <div class="input-group-append">
+                                                    <div class="input-group-text">
+                                                        <div class="custom-control custom-checkbox mb-0">
+                                                            <input type="checkbox" class="custom-control-input member-phone-noformat" name="member-phone-noformat" value="1">
+                                                            <label class="custom-control-label member-phone-noformat-label"><?= gettext('No format') ?></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="invalid-feedback"></div>
                                         </div>
@@ -220,7 +231,6 @@ if (!empty($sHeader)) {
                                             <select class="form-control member-phone-type">
                                                 <option value="mobile"><?= gettext('Mobile') ?></option>
                                                 <option value="home"><?= gettext('Home') ?></option>
-                                                <option value="work"><?= gettext('Work') ?></option>
                                             </select>
                                         </div>
                                     </div>
@@ -301,7 +311,8 @@ if (!empty($sHeader)) {
                                 <h5 class="mb-0"><i class="fa-solid fa-users mr-2"></i><?= gettext("Family Members") ?></h5>
                             </div>
                             <div class="card-body p-0">
-                                <div class="table-responsive">
+                                <!-- Desktop/table view (md and up) -->
+                                <div class="table-responsive d-none d-md-block">
                                     <table class="table table-striped table-hover mb-0">
                                         <thead class="thead-light">
                                             <tr>
@@ -314,7 +325,7 @@ if (!empty($sHeader)) {
                                         </thead>
                                         <tbody>
                                             <?php for ($x = 1; $x <= 8; $x++) { ?>
-                                                <tr id="displayFamilyPerson<?= $x ?>">
+                                                <tr id="displayFamilyPerson<?= $x ?>" class="d-none">
                                                     <td><span id="displayFamilyPersonFName<?= $x ?>"></span></td>
                                                     <td><span id="displayFamilyPersonLName<?= $x ?>"></span></td>
                                                     <td><span id="displayFamilyPersonEmail<?= $x ?>"></span></td>
@@ -324,6 +335,38 @@ if (!empty($sHeader)) {
                                             <?php } ?>
                                         </tbody>
                                     </table>
+                                </div>
+
+                                <!-- Mobile/card view (small screens) -->
+                                <div class="d-block d-md-none">
+                                    <?php for ($x = 1; $x <= 8; $x++) { ?>
+                                        <div id="displayFamilyPersonCard<?= $x ?>" class="card mb-3 d-none border-0 shadow-none">
+                                            <div class="card-body bg-white p-3">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <i id="displayFamilyPersonCardGenderIcon<?= $x ?>" class="fa-solid fa-user text-primary mr-2"></i>
+                                                    <h6 class="card-title mb-0">
+                                                        <span id="displayFamilyPersonCardFName<?= $x ?>"></span>
+                                                        <span id="displayFamilyPersonCardLName<?= $x ?>"></span>
+                                                    </h6>
+                                                </div>
+                                                <div id="displayFamilyPersonCardEmailBlock<?= $x ?>" class="mb-2 d-none">
+                                                    <i class="fa-solid fa-envelope text-muted mr-2"></i>
+                                                    <strong><?= gettext('Email') ?>:</strong>
+                                                    <div class="ml-4"><span id="displayFamilyPersonCardEmail<?= $x ?>"></span></div>
+                                                </div>
+                                                <div id="displayFamilyPersonCardPhoneBlock<?= $x ?>" class="mb-2 d-none">
+                                                    <i class="fa-solid fa-phone text-muted mr-2"></i>
+                                                    <strong><?= gettext('Phone') ?>:</strong>
+                                                    <div class="ml-4"><span id="displayFamilyPersonCardPhone<?= $x ?>"></span></div>
+                                                </div>
+                                                <div id="displayFamilyPersonCardBDayBlock<?= $x ?>" class="mb-0 d-none">
+                                                    <i class="fa-solid fa-birthday-cake text-muted mr-2"></i>
+                                                    <strong><?= gettext('Birthday') ?>:</strong>
+                                                    <div class="ml-4"><span id="displayFamilyPersonCardBDay<?= $x ?>"></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>

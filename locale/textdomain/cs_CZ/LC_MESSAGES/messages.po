@@ -725,10 +725,6 @@ msgid "Donation Fund Editor"
 msgstr "Editor příspěvkových fondů"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "Opravdu chcete smazat tento fond?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Neplatná pole nebo výběry. Změny nebyly uloženy! Proveďte opravu a zkuste to znovu!"
 
@@ -771,10 +767,6 @@ msgstr "Opakování"
 #: 
 msgid "Attendance Counts"
 msgstr "Počty účastníků"
-
-#: 
-msgid "Add counter"
-msgstr "Přidat počítadlo"
 
 #: 
 msgid "Return to Event Types"
@@ -1614,11 +1606,6 @@ msgid "No properties have been added yet"
 msgstr "Zatím nebyly přidány žádné vlastnosti"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "Varování: Pokud před použitím tlačítek nahoru, dolů, smazat nebo 'přidat nový' nepoužijete tlačítko 'Uložit změny', budou změny polí ztraceny!"
-
-#: 
 msgid "Show in"
 msgstr "Ukázat v"
 
@@ -2350,10 +2337,6 @@ msgid "Please confirm deletion of this Property Type"
 msgstr "Potvrďte smazání toho typu vlastnosti"
 
 #: 
-msgid "Property Type Editor"
-msgstr "Editor typů vlastností"
-
-#: 
 msgid "Property Type List"
 msgstr "Seznam typů vlastností"
 
@@ -2734,14 +2717,6 @@ msgstr "Jak ses o sboru dozvěděl?"
 #: 
 msgid "eMail Dashboard"
 msgstr "Nástěnka e-Mailů"
-
-#: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Přidělena čísla obálek všem rodinám s alespoň jedním členem."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Přidělena čísla obálek všem rodinám."
 
 #: 
 msgid "Version"
@@ -3717,10 +3692,6 @@ msgid "Set true to enable use of donation envelopes"
 msgstr "Nastavením hodnoty true povolíte používání dárcovských obálek"
 
 #: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Zadejte kód HTML, který se zobrazí jako záhlaví v horní části každé stránky. Nezapomeňte uzavřít značky! Poznámka: Aby se nové záhlaví zobrazilo, je třeba PODRUHÉ OBNOVIT PROHLÍŽEČ."
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Počet šeků pro zprávu o vkladových listech"
 
@@ -3980,12 +3951,6 @@ msgstr "Hledat"
 msgid "Field"
 msgstr "Pole"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Registrovaní žáci"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4078,11 +4043,6 @@ msgstr "Třída nedělní školy, pro kterou chcete vrátit záznamy."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Skupina registrovaných žáků"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Výroční měsíc členství, za který chcete vrátit záznamy."
 
@@ -4115,11 +4075,6 @@ msgstr "Přispěl tento rok"
 #: 
 msgid "but not this year"
 msgstr "ale ne tento rok"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Fiskální rok."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4183,11 +4138,6 @@ msgstr "Chybějící příspěvky"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Příspěvky rodiny podle fiskálního roku"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "Hledání podle vlastních polí"
 
@@ -4200,11 +4150,6 @@ msgstr "Vrátí záznamy osob, kterým je přiřazena daná vlastnost."
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Osoby s narozeninami v určitém měsíci"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Najít registrované žáky"
 
 #. Context: query_qry
 #: 
@@ -4230,11 +4175,6 @@ msgstr "Porovnat přísliby mezi dvěma fiskálními roky"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Najít osoby, které v jednom roce přislíbili, ale v jiném ne"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Přehled příslibů podle jmen rodin pro každý fond za vybraný fiskální rok"
 
 #. Context: query_qry
 #: 
@@ -8538,11 +8478,6 @@ msgid "Must be a valid port number (e.g., 3306)"
 msgstr "Musí být platné číslo portu (např. 3306)"
 
 #: 
-msgctxt ", -, ., / allowed."
-msgid "Must start with / if not empty, no trailing slash. Only letters, numbers, "
-msgstr "Musí začínat znakem /, pokud není prázdný, bez koncového lomítka. Pouze písmena, číslice, "
-
-#: 
 msgid "Next Member"
 msgstr "Další člen"
 
@@ -9328,10 +9263,6 @@ msgstr "Upravit událost"
 #: 
 msgid "Editing Event"
 msgstr "Úprava akce"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "Zadejte kategorie počtu oddělené čárkami. „Celkem“ je zahrnuto automaticky."
 
 #: 
 msgid "Enter event title..."
@@ -11400,4 +11331,192 @@ msgstr "Španělština - El Salvador"
 #: 
 msgid "Spanish - Mexico"
 msgstr "Španělština - Mexiko"
+
+#: 
+msgid "Add Property Type"
+msgstr "Přidat typ vlastnosti"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Přidejte svůj první typ vlastnosti"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Automaticky vypočítáno z výše uvedených počtů"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Smazáním tohoto pole nevratně ztratíte všechna data členů skupiny přiřazená k tomuto poli!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Smazáním tohoto fondu můžete ovlivnit historické záznamy o darech!"
+
+#: 
+msgid "Category Name"
+msgstr "Název kategorie"
+
+#: 
+msgid "Checked In"
+msgstr "Přihlášen"
+
+#: 
+msgid "Checked Out"
+msgstr "Odhlášen"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Aktuální fiskální rok"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Smazat (smaže všechny související záznamy)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Upravit typ vlastnosti"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Zadejte kategorie počtů oddělené čárkami (např. Členové, Návštěvníci, Děti)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Zadejte poznámky ke kázání nebo text události..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Existující fondy darů"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Existující vlastnosti skupiny"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Nepodařilo se aktualizovat roli. Zkuste to prosím znovu."
+
+#: 
+msgid "Family Pledges"
+msgstr "Rodinné sliby"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Změny polí budou ztraceny, pokud neprovedete 'Uložit změny' před použitím tlačítka smazat nebo 'Přidat nový'!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Filtrovat podle třídy"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Fond úspěšně smazán"
+
+#: 
+msgid "In Use"
+msgstr "Používá se"
+
+#: 
+msgid "Manage"
+msgstr "Spravovat"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Pro vybraný fiskální rok nebyly nalezeny žádné sliby"
+
+#: 
+msgid "No property types found"
+msgstr "Nebyly nalezeny žádné typy vlastností"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Počet záznamů používajících tento typ vlastnosti"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Volitelný podrobný popis tohoto typu vlastnosti"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Opravte prosím níže uvedené chyby."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Částka slibu"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Přehled slibů"
+
+#: 
+msgid "Remaining"
+msgstr "Zbývající"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Odebrat tento počet účasti?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Vyberte typ záznamu, na který se tato vlastnost vztahuje"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Tento název fondu již existuje."
+
+#: 
+msgid "Total Pledges"
+msgstr "Celkové sliby"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Sledujte a spravujte závazky slibů podle rodiny a fondu"
+
+#: 
+msgid "View Properties"
+msgstr "Zobrazit vlastnosti"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "např. Návštěvníci, Děti"
+
+#: 
+msgid "of pledges"
+msgstr "ze slibů"
+
+#: 
+msgid "records"
+msgstr "záznamy"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Musí začínat / pokud není prázdné; bez koncového lomítka. Povolena jsou pouze písmena, čísla, podtržítko, pomlčka, tečka a /."
+
+#: 
+msgid "All Classifications"
+msgstr "Všechny klasifikace"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Nebyly nalezeny žádné osoby odpovídající vašim kritériím."
+
+#: 
+msgid "Off"
+msgstr "Vypnuto"
+
+#: 
+msgid "On"
+msgstr "Zapnuto"
+
+#: 
+msgid "Photo Directory"
+msgstr "Adresář fotografií"
+
+#: 
+msgid "Reset Filters"
+msgstr "Resetovat filtry"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Zobrazit pouze osoby s fotografiemi"
 

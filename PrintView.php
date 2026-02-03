@@ -85,9 +85,9 @@ $sState = $per_State ?? '';
 $sZip = $per_Zip ?? '';
 $sCountry = $per_Country ?? '';
 
-$sHomePhone = ExpandPhoneNumber($per_HomePhone, $sCountry, $dummy);
-$sWorkPhone = ExpandPhoneNumber($per_WorkPhone, $sCountry, $dummy);
-$sCellPhone = ExpandPhoneNumber($per_CellPhone, $sCountry, $dummy);
+$sHomePhone = $per_HomePhone ?? '';
+$sWorkPhone = $per_WorkPhone ?? '';
+$sCellPhone = $per_CellPhone ?? '';
 
 $sUnformattedEmail = $per_Email ?? '';
 
@@ -304,7 +304,7 @@ require_once __DIR__ . '/Include/Header-Short.php';
 ?>
 
     <b><?= gettext('Family Members') ?>:</b>
-    <table cellpadding=5 cellspacing=0 width="100%">
+    <table class="table table-striped w-100">
         <tr class="TableHeader">
             <td><?= gettext('Name') ?></td>
             <td><?= gettext('Gender') ?></td>
@@ -312,7 +312,6 @@ require_once __DIR__ . '/Include/Header-Short.php';
             <td><?= gettext('Age') ?></td>
         </tr>
         <?php
-        $sRowClass = 'RowColorA';
 
         // Loop through all the family members
         while ($aRow = mysqli_fetch_array($rsFamilyMembers)) {
@@ -321,12 +320,11 @@ require_once __DIR__ . '/Include/Header-Short.php';
 
             extract($aRow);
 
-            // Alternate the row style
-            $sRowClass = AlternateRowStyle($sRowClass)
+
 
             // Display the family member
         ?>
-            <tr class="<?= $sRowClass ?>">
+            <tr>
                 <td>
                     <?= $per_FirstName . ' ' . $per_LastName ?>
                     <br>
@@ -358,16 +356,13 @@ require_once __DIR__ . '/Include/Header-Short.php';
 
     <?php
 
-    //Initialize row shading
-    $sRowClass = 'RowColorA';
-
     $sAssignedGroups = ',';
 
     //Was anything returned?
     if (mysqli_num_rows($rsAssignedGroups) === 0) {
         echo '<p align"center">' . gettext('No group assignments.') . '</p>';
     } else {
-        echo '<table width="100%" cellpadding="4" cellspacing="0">';
+        echo '<table class="table table-striped w-100">';
         echo '<tr class="TableHeader">';
         echo '<td width="15%"><b>' . gettext('Group Name') . '</b>';
         echo '<td><b>' . gettext('Role') . '</b></td>';
@@ -377,11 +372,8 @@ require_once __DIR__ . '/Include/Header-Short.php';
         while ($aRow = mysqli_fetch_array($rsAssignedGroups)) {
             extract($aRow);
 
-            //Alternate the row style
-            $sRowClass = AlternateRowStyle($sRowClass);
-
             // DISPLAY THE ROW
-            echo '<tr class="' . $sRowClass . '">';
+            echo '<tr>';
             echo ' <td>' . $grp_Name . '</td>';
             echo ' <td>' . gettext($roleName) . '</td>';
             echo '</tr>';
@@ -403,16 +395,16 @@ require_once __DIR__ . '/Include/Header-Short.php';
                     $currentData = trim($aPersonProps[$prop_Field]);
                     if (strlen($currentData) > 0) {
                         // only create the properties table if it's actually going to be used
-                        if ($firstRow) {
-                            echo '<tr><td colspan="2"><table width="50%"><tr><td width="15%"></td><td><table width="90%" cellspacing="0">';
-                            echo '<tr class="TinyTableHeader"><td>Property</td><td>Value</td></tr>';
-                            $firstRow = false;
-                        }
-                        $sRowClass = AlternateRowStyle($sRowClass);
+                            if ($firstRow) {
+                                echo '<tr><td colspan="2"><table class="table table-sm"><tr><td style="width:15%"></td><td><table class="table table-sm">';
+                                echo '<tr class="TinyTableHeader"><td>Property</td><td>Value</td></tr>';
+                                $firstRow = false;
+                            }
+
                         if ($type_ID == 11) {
                             $prop_Special = $sCountry;
                         }
-                        echo "<tr class=\"$sRowClass\"><td>" . $prop_Name . '</td><td>' . displayCustomField($type_ID, $currentData, $prop_Special) . '</td></tr>';
+                        echo '<tr><td>' . $prop_Name . '</td><td>' . displayCustomField($type_ID, $currentData, $prop_Special) . '</td></tr>';
                     }
                 }
                 if (!$firstRow) {
@@ -430,16 +422,13 @@ require_once __DIR__ . '/Include/Header-Short.php';
 
     <?php
 
-    //Initialize row shading
-    $sRowClass = 'RowColorA';
-
     $sAssignedProperties = ',';
 
     //Was anything returned?
     if (mysqli_num_rows($rsAssignedProperties) === 0) {
         echo '<p align"center">' . gettext('No property assignments.') . '</p>';
     } else {
-        echo '<table width="100%" cellpadding="4" cellspacing="0">';
+        echo '<table class="table table-striped w-100">';
         echo '<tr class="TableHeader">';
         echo '<td width="25%" class="align-top"><b>' . gettext('Name') . '</b>';
         echo '<td class="align-top"><b>' . gettext('Value') . '</td>';
@@ -450,13 +439,10 @@ require_once __DIR__ . '/Include/Header-Short.php';
             $r2p_Value = '';
             extract($aRow);
 
-            //Alternate the row style
-            $sRowClass = AlternateRowStyle($sRowClass);
-
             //Display the row
-            echo '<tr class="' . $sRowClass . '">';
-            echo '<td class="align-top">' . gettext($pro_Name) . '&nbsp;</td>';
-            echo '<td class="align-top">' . $r2p_Value . '&nbsp;</td>';
+            echo '<tr>';
+            echo '<td class="align-top">' . InputUtils::escapeHTML($pro_Name) . '&nbsp;</td>';
+            echo '<td class="align-top">' . InputUtils::escapeHTML($r2p_Value) . '&nbsp;</td>';
 
             echo '</tr>';
 
@@ -471,11 +457,11 @@ require_once __DIR__ . '/Include/Header-Short.php';
         // Loop through all the notes
         while ($aRow = mysqli_fetch_array($rsNotes)) {
             extract($aRow);
-            echo '<p class="card card-body")>' . $nte_Text . '</p>';
+            echo '<p class="card card-body")>' . InputUtils::escapeHTML($nte_Text) . '</p>';
             echo '<span class="SmallText">' . gettext('Entered') . ': ' . FormatDate($nte_DateEntered, true) . '</span><br>';
 
             if (strlen($nte_DateLastEdited)) {
-                echo '<span class="SmallText">' . gettext('Last Edited') . FormatDate($nte_DateLastEdited, true) . ' ' . gettext('by') . ' ' . $EditedFirstName . ' ' . $EditedLastName . '</span><br>';
+                echo '<span class="SmallText">' . gettext('Last Edited') . FormatDate($nte_DateLastEdited, true) . ' ' . gettext('by') . ' ' . InputUtils::escapeHTML($EditedFirstName) . ' ' . InputUtils::escapeHTML($EditedLastName) . '</span><br>';
             }
         }
     }

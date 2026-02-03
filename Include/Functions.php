@@ -6,32 +6,16 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Utils\FiscalYearUtils;
+use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\Utils\VersionUtils;
 
 $personService = new PersonService();
 $systemService = new SystemService();
-$_SESSION['sSoftwareInstalledVersion'] = VersionUtils::getInstalledVersion();
 
 // Basic security checks:
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     AuthenticationManager::ensureAuthentication();
-}
-
-// If magic_quotes off and array
-function addslashes_deep($value)
-{
-    return is_array($value) ?
-        array_map('addslashes_deep', $value) :
-        addslashes($value);
-}
-
-// If Magic Quotes is turned off, do the same thing manually..
-if (!isset($_SESSION['bHasMagicQuotes'])) {
-    foreach ($_REQUEST as $value) {
-        $value = addslashes_deep($value);
-    }
 }
 
 // Constants
@@ -135,19 +119,6 @@ if (isset($_POST['BulkAddToCart'])) {
 // Some very basic functions that all scripts use
 //
 
-// Returns the current fiscal year
-function CurrentFY(): int
-{
-    $yearNow = (int) date('Y');
-    $monthNow = (int) date('m');
-    $FYID = $yearNow - 1996;
-    if ($monthNow >= SystemConfig::getValue('iFYMonth') && SystemConfig::getValue('iFYMonth') > 1) {
-        $FYID += 1;
-    }
-
-    return $FYID;
-}
-
 // PrintFYIDSelect: make a fiscal year selection menu.
 function PrintFYIDSelect(string $selectName, ?int $iFYID = null): void
 {
@@ -155,7 +126,7 @@ function PrintFYIDSelect(string $selectName, ?int $iFYID = null): void
 
     $hasSelected = false;
     $selectableOptions = [];
-    for ($fy = 1; $fy < CurrentFY() + 2; $fy++) {
+    for ($fy = 1; $fy < FiscalYearUtils::getCurrentFiscalYearId() + 2; $fy++) {
         $selectedTag = '';
         if ($iFYID === $fy) {
             $hasSelected = true;
@@ -188,10 +159,10 @@ function MakeFYString(int|string|null $iFYID): string
 
 // Runs an SQL query.  Returns the result resource.
 // By default stop on error, unless a second (optional) argument is passed as false.
-// Delegates to ChurchCRM\Utils\Functions::runQuery() to avoid code duplication.
+// Delegates to ChurchCRM\Utils\FunctionsUtils::runQuery() to avoid code duplication.
 function RunQuery(string $sSQL, bool $bStopOnError = true)
 {
-    return \ChurchCRM\Utils\Functions::runQuery($sSQL, $bStopOnError);
+    return FunctionsUtils::runQuery($sSQL, $bStopOnError);
 }
 
 function convertCartToString(array $aCartArray): string
@@ -208,13 +179,6 @@ function convertCartToString(array $aCartArray): string
     $sCartString = str_replace(',,', '', $sCartString);
 
     return $sCartString;
-}
-
-
-
-function ChopLastCharacter(string $sText): string
-{
-    return mb_substr($sText, 0, strlen($sText) - 1);
 }
 
 function change_date_for_place_holder(?string $string = null): string
@@ -266,102 +230,6 @@ function FormatDate($dDate, bool $bWithTime = false): string
     }
 
     return $formattedDate;
-}
-
-function AlternateRowStyle(string $sCurrentStyle): string
-{
-    if ($sCurrentStyle === 'RowColorA') {
-        return 'RowColorB';
-    } else {
-        return 'RowColorA';
-    }
-}
-
-
-
-//
-// Collapses a formatted phone number as long as the Country is known
-// Eg. for United States:  555-555-1212 Ext. 123 ==> 5555551212e123
-//
-// Need to add other countries besides the US...
-//
-function CollapsePhoneNumber($sPhoneNumber, $sPhoneCountry)
-{
-    switch ($sPhoneCountry) {
-        case 'United States':
-            $sCollapsedPhoneNumber = '';
-            $bHasExtension = false;
-
-          // Loop through the input string
-            for ($iCount = 0; $iCount <= strlen($sPhoneNumber); $iCount++) {
-            // Take one character...
-                $sThisCharacter = mb_substr($sPhoneNumber, $iCount, 1);
-
-              // Is it a number?
-                if (ord($sThisCharacter) >= 48 && ord($sThisCharacter) <= 57) {
-                    // Yes, add it to the returned value.
-                    $sCollapsedPhoneNumber .= $sThisCharacter;
-                } elseif (!$bHasExtension && ($sThisCharacter == 'e' || $sThisCharacter == 'E')) {
-                    // Is the user trying to add an extension?
-                    // Yes, add the extension identifier 'e' to the stored string.
-                    $sCollapsedPhoneNumber .= 'e';
-                    // From now on, ignore other non-digits and process normally
-                    $bHasExtension = true;
-                }
-            }
-            break;
-
-        default:
-            $sCollapsedPhoneNumber = $sPhoneNumber;
-            break;
-    }
-
-    return $sCollapsedPhoneNumber;
-}
-
-//
-// Expands a collapsed phone number into the proper format for a known country.
-//
-// If, during expansion, an unknown format is found, the original will be returned
-// and the boolean flag $bWeird will be set.  Unfortunately, because PHP does not
-// allow for pass-by-reference in conjunction with a variable-length argument list,
-// a dummy variable will have to be passed even if this functionality is unneeded.
-//
-// Need to add other countries besides the US...
-//
-function ExpandPhoneNumber(?string $sPhoneNumber = null, ?string $sPhoneCountry = null, &$bWeird): string
-{
-    $sPhoneNumber ??= '';
-    $sPhoneCountry ??= '';
-
-    $bWeird = false;
-    $length = strlen($sPhoneNumber);
-
-    switch ($sPhoneCountry) {
-        case 'United States' || 'Canada':
-            if ($length === 0) {
-                return '';
-            } elseif (mb_substr($sPhoneNumber, 7, 1) === 'e') {
-                // 7 digit phone # with extension
-                return mb_substr($sPhoneNumber, 0, 3) . '-' . mb_substr($sPhoneNumber, 3, 4) . ' Ext.' . mb_substr($sPhoneNumber, 8, 6);
-            } elseif (mb_substr($sPhoneNumber, 10, 1) === 'e') {
-                // 10 digit phone # with extension
-                return mb_substr($sPhoneNumber, 0, 3) . '-' . mb_substr($sPhoneNumber, 3, 3) . '-' . mb_substr($sPhoneNumber, 6, 4) . ' Ext.' . mb_substr($sPhoneNumber, 11, 6);
-            } elseif ($length === 7) {
-                return mb_substr($sPhoneNumber, 0, 3) . '-' . mb_substr($sPhoneNumber, 3, 4);
-            } elseif ($length === 10) {
-                return mb_substr($sPhoneNumber, 0, 3) . '-' . mb_substr($sPhoneNumber, 3, 3) . '-' . mb_substr($sPhoneNumber, 6, 4);
-            } else {
-                // Otherwise, there is something weird stored, so just leave it untouched and set the flag
-                $bWeird = true;
-
-                return $sPhoneNumber;
-            }
-
-        // If the country is unknown, we don't know how to format it, so leave it untouched
-        default:
-            return $sPhoneNumber;
-    }
 }
 
 // Returns a string of a person's full name, formatted as specified by $Style
@@ -519,7 +387,8 @@ function displayCustomField($type, ?string $data, $special)
 
     // Handler for phone numbers
         case 11:
-            return ExpandPhoneNumber($data, $special, $dummy);
+            // Display raw stored phone value (no formatting)
+            return $data;
 
     // Handler for custom lists
         case 12:
@@ -571,7 +440,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             '<div class="input-group-prepend">' .
             '<span class="input-group-text"><i class="fa-solid fa-font"></i></span>' .
             '</div>' .
-            '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="50" value="' . htmlentities(stripslashes($data), ENT_QUOTES, 'UTF-8') . '">' .
+            '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="50" value="' . InputUtils::escapeAttribute($data) . '">' .
             '</div>';
             break;
 
@@ -581,7 +450,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             '<div class="input-group-prepend">' .
             '<span class="input-group-text"><i class="fa-solid fa-align-left"></i></span>' .
             '</div>' .
-            '<textarea class="form-control" id="' . $fieldname . '" name="' . $fieldname . '" rows="2" maxlength="100">' . htmlentities(stripslashes($data), ENT_QUOTES, 'UTF-8') . '</textarea>' .
+            '<textarea class="form-control" id="' . $fieldname . '" name="' . $fieldname . '" rows="2" maxlength="100">' . InputUtils::escapeHTML($data) . '</textarea>' .
             '</div>';
             break;
 
@@ -591,7 +460,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             '<div class="input-group-prepend">' .
             '<span class="input-group-text"><i class="fa-solid fa-paragraph"></i></span>' .
             '</div>' .
-            '<textarea class="form-control" id="' . $fieldname . '" name="' . $fieldname . '" rows="4" maxlength="65535">' . htmlentities(stripslashes($data), ENT_QUOTES, 'UTF-8') . '</textarea>' .
+            '<textarea class="form-control" id="' . $fieldname . '" name="' . $fieldname . '" rows="4" maxlength="65535">' . InputUtils::escapeHTML($data) . '</textarea>' .
             '</div>';
             break;
 
@@ -698,26 +567,32 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
         case 11:
           // This is silly. Perhaps ExpandPhoneNumber before this function is called!
           // this business of overloading the special field is really troublesome when trying to follow the code.
-            if ($bFirstPassFlag) {
-              // in this case, $special is the phone country
-                $data = ExpandPhoneNumber($data, $special, $bNoFormat_Phone);
-            }
+                        // No expansion/formatting on display; keep raw stored value in $data
+            
+            // Determine checkbox state:
+            // - If field has data: check "No format" (preserve stored value)
+            // - If field is empty: uncheck "No format" (allow mask for new entry)
+            $checked = '';
             if (isset($_POST[$fieldname . 'noformat'])) {
-                $bNoFormat_Phone = true;
+                // POST takes precedence (user just submitted the form)
+                $checked = ' checked';
+            } elseif (!empty($data)) {
+                // Field has data - check "No format" to preserve it
+                $checked = ' checked';
             }
+            // If field is empty, leave unchecked so mask can be applied
 
             echo '<div class="input-group">';
             echo '<div class="input-group-prepend">';
             echo '<span class="input-group-text"><i class="fa-solid fa-phone"></i></span>';
             echo '</div>';
-            echo '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="30" value="' . htmlentities(stripslashes($data), ENT_QUOTES, 'UTF-8') . '" data-inputmask=\'"mask": "' . SystemConfig::getValue('sPhoneFormat') . '"\' data-mask>';
+            // Note: using data-phone-mask instead of data-inputmask to prevent auto-initialization
+            echo '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="30" value="' . InputUtils::escapeAttribute($data) . '" data-phone-mask=\'{"mask": "' . SystemConfig::getValue('sPhoneFormat') . '"}\'>'; 
             echo '<div class="input-group-append">';
             echo '<div class="input-group-text">';
             echo '<div class="custom-control custom-checkbox mb-0">';
             echo '<input type="checkbox" class="custom-control-input" id="' . $fieldname . 'noformat" name="' . $fieldname . 'noformat" value="1"';
-            if ($bNoFormat_Phone) {
-                echo ' checked';
-            }
+            echo $checked;
             echo '>';
             echo '<label class="custom-control-label" for="' . $fieldname . 'noformat">' . gettext('No format') . '</label>';
             echo '</div></div></div></div>';
@@ -1075,11 +950,7 @@ function sqlCustomField(string &$sSQL, $type, $data, string $col_Name, $special)
     // phone
         case 11:
             if (strlen($data) > 0) {
-                if (!isset($_POST[$col_Name . 'noformat'])) {
-                    $sSQL .= $col_Name . " = '" . CollapsePhoneNumber($data, $special) . "', ";
-                } else {
-                    $sSQL .= $col_Name . " = '" . $data . "', ";
-                }
+                $sSQL .= $col_Name . " = '" . $data . "', ";
             } else {
                 $sSQL .= $col_Name . ' = NULL, ';
             }
@@ -1137,33 +1008,6 @@ function FindMemberClassID()
     }
 
     return 1; // Should not get here, but if we do get here use the default value.
-}
-
-// Prepare data for entry into MySQL database.
-// This function solves the problem of inserting a NULL value into MySQL since
-// MySQL will not accept 'NULL'.  One drawback is that it is not possible
-// to insert the character string "NULL" because it will be inserted as a MySQL NULL!
-// This will produce a database error if NULL's are not allowed!  Do not use this
-// function if you intend to insert the character string "NULL" into a field.
-function MySQLquote($sfield): string
-{
-    $sfield = trim($sfield);
-
-    if ($sfield == 'NULL') {
-        return 'NULL';
-    } elseif ($sfield == "'NULL'") {
-        return 'NULL';
-    } elseif ($sfield == '') {
-        return 'NULL';
-    } elseif ($sfield == "''") {
-        return 'NULL';
-    } else {
-        if ((mb_substr($sfield, 0, 1) == "'") && (mb_substr($sfield, strlen($sfield) - 1, 1)) == "'") {
-            return $sfield;
-        } else {
-            return "'" . $sfield . "'";
-        }
-    }
 }
 
 //Function to check email

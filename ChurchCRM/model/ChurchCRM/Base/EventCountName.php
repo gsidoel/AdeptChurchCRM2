@@ -83,14 +83,6 @@ abstract class EventCountName implements ActiveRecordInterface
     protected $evctnm_countname;
 
     /**
-     * The value for the evctnm_notes field.
-     *
-     * Note: this column has a database default value of: ''
-     * @var        string
-     */
-    protected $evctnm_notes;
-
-    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
@@ -108,7 +100,6 @@ abstract class EventCountName implements ActiveRecordInterface
     {
         $this->evctnm_eventtypeid = 0;
         $this->evctnm_countname = '';
-        $this->evctnm_notes = '';
     }
 
     /**
@@ -369,16 +360,6 @@ abstract class EventCountName implements ActiveRecordInterface
     }
 
     /**
-     * Get the [evctnm_notes] column value.
-     *
-     * @return string
-     */
-    public function getNotes()
-    {
-        return $this->evctnm_notes;
-    }
-
-    /**
      * Set the value of [evctnm_countid] column.
      *
      * @param int $v New value
@@ -439,26 +420,6 @@ abstract class EventCountName implements ActiveRecordInterface
     } // setName()
 
     /**
-     * Set the value of [evctnm_notes] column.
-     *
-     * @param string $v New value
-     * @return $this|\ChurchCRM\model\ChurchCRM\EventCountName The current object (for fluent API support)
-     */
-    public function setNotes($v)
-    {
-        if ($v !== null) {
-            $v = (string) $v;
-        }
-
-        if ($this->evctnm_notes !== $v) {
-            $this->evctnm_notes = $v;
-            $this->modifiedColumns[EventCountNameTableMap::COL_EVCTNM_NOTES] = true;
-        }
-
-        return $this;
-    } // setNotes()
-
-    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -473,10 +434,6 @@ abstract class EventCountName implements ActiveRecordInterface
             }
 
             if ($this->evctnm_countname !== '') {
-                return false;
-            }
-
-            if ($this->evctnm_notes !== '') {
                 return false;
             }
 
@@ -514,9 +471,6 @@ abstract class EventCountName implements ActiveRecordInterface
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : EventCountNameTableMap::translateFieldName('Name', TableMap::TYPE_PHPNAME, $indexType)];
             $this->evctnm_countname = (null !== $col) ? (string) $col : null;
-
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : EventCountNameTableMap::translateFieldName('Notes', TableMap::TYPE_PHPNAME, $indexType)];
-            $this->evctnm_notes = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -525,7 +479,7 @@ abstract class EventCountName implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 4; // 4 = EventCountNameTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 3; // 3 = EventCountNameTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\ChurchCRM\\model\\ChurchCRM\\EventCountName'), 0, $e);
@@ -735,9 +689,6 @@ abstract class EventCountName implements ActiveRecordInterface
         if ($this->isColumnModified(EventCountNameTableMap::COL_EVCTNM_COUNTNAME)) {
             $modifiedColumns[':p' . $index++]  = 'evctnm_countname';
         }
-        if ($this->isColumnModified(EventCountNameTableMap::COL_EVCTNM_NOTES)) {
-            $modifiedColumns[':p' . $index++]  = 'evctnm_notes';
-        }
 
         $sql = sprintf(
             'INSERT INTO eventcountnames_evctnm (%s) VALUES (%s)',
@@ -757,9 +708,6 @@ abstract class EventCountName implements ActiveRecordInterface
                         break;
                     case 'evctnm_countname':
                         $stmt->bindValue($identifier, $this->evctnm_countname, PDO::PARAM_STR);
-                        break;
-                    case 'evctnm_notes':
-                        $stmt->bindValue($identifier, $this->evctnm_notes, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -832,9 +780,6 @@ abstract class EventCountName implements ActiveRecordInterface
             case 2:
                 return $this->getName();
                 break;
-            case 3:
-                return $this->getNotes();
-                break;
             default:
                 return null;
                 break;
@@ -867,7 +812,6 @@ abstract class EventCountName implements ActiveRecordInterface
             $keys[0] => $this->getId(),
             $keys[1] => $this->getTypeId(),
             $keys[2] => $this->getName(),
-            $keys[3] => $this->getNotes(),
         );
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
@@ -916,9 +860,6 @@ abstract class EventCountName implements ActiveRecordInterface
             case 2:
                 $this->setName($value);
                 break;
-            case 3:
-                $this->setNotes($value);
-                break;
         } // switch()
 
         return $this;
@@ -953,9 +894,6 @@ abstract class EventCountName implements ActiveRecordInterface
         }
         if (array_key_exists($keys[2], $arr)) {
             $this->setName($arr[$keys[2]]);
-        }
-        if (array_key_exists($keys[3], $arr)) {
-            $this->setNotes($arr[$keys[3]]);
         }
     }
 
@@ -1006,9 +944,6 @@ abstract class EventCountName implements ActiveRecordInterface
         }
         if ($this->isColumnModified(EventCountNameTableMap::COL_EVCTNM_COUNTNAME)) {
             $criteria->add(EventCountNameTableMap::COL_EVCTNM_COUNTNAME, $this->evctnm_countname);
-        }
-        if ($this->isColumnModified(EventCountNameTableMap::COL_EVCTNM_NOTES)) {
-            $criteria->add(EventCountNameTableMap::COL_EVCTNM_NOTES, $this->evctnm_notes);
         }
 
         return $criteria;
@@ -1098,7 +1033,6 @@ abstract class EventCountName implements ActiveRecordInterface
     {
         $copyObj->setTypeId($this->getTypeId());
         $copyObj->setName($this->getName());
-        $copyObj->setNotes($this->getNotes());
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setId(NULL); // this is a auto-increment column, so set to default value
@@ -1137,7 +1071,6 @@ abstract class EventCountName implements ActiveRecordInterface
         $this->evctnm_countid = null;
         $this->evctnm_eventtypeid = null;
         $this->evctnm_countname = null;
-        $this->evctnm_notes = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->applyDefaultValues();

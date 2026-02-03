@@ -49,11 +49,8 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
             $sState = InputUtils::legacyFilterInput($_POST['StateTextbox']);
         }
 
-        // Get and format any phone data from the form.
+        // Get phone data from the form (store as entered by user).
         $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
-        if (!isset($_POST['NoFormat_HomePhone'])) {
-            $sHomePhone = CollapsePhoneNumber($sHomePhone, $sCountry);
-        }
 
         $sEmail = InputUtils::legacyFilterInput($_POST['Email']);
 
@@ -150,18 +147,16 @@ echo $sError;
                 ->orderByLastName()
                 ->find();
 
-            echo "<table class='table'>";
+            echo "<table class='table table-striped'>";
             echo '<tr>';
             echo '<td>&nbsp;</td>';
             echo '<td><b>' . gettext('Name') . '</b></td>';
             echo '<td class="text-center"><b>' . gettext('Assign Role') . '</b></td>';
 
             $count = 1;
-            $sRowClass = 'RowColorA';
             foreach ($cartPersons as $cartPerson) {
-                $sRowClass = AlternateRowStyle($sRowClass);
 
-                echo '<tr class="' . $sRowClass . '">';
+                echo '<tr>';
                 echo '<td class="text-center">' . $count++ . '</td>';
                 $personPhoto = new \ChurchCRM\dto\Photo('person', $cartPerson->getId());
                 $photoIcon = '';
@@ -286,7 +281,7 @@ echo $sError;
             <tr>
                 <td class="LabelColumn"><?= gettext('Home Phone') ?>:</td>
                 <td class="TextColumn">
-                    <input type="text" Name="HomePhone" value="<?= $sHomePhone ?>" size="30" maxlength="30">
+                    <input type="text" Name="HomePhone" value="<?= $sHomePhone ?>" size="30" maxlength="30" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
                     <input type="checkbox" name="NoFormat_HomePhone" value="1" <?php if ($bNoFormat_HomePhone) {
                                                                                     echo ' checked';
                                                                                 } ?>><?= gettext('Do not auto-format') ?>
@@ -318,6 +313,18 @@ echo $sError;
 <script src="<?= SystemURLs::assetVersioned('/skin/js/DropdownManager.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/CartToFamily.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.CRM && window.CRM.formUtils && typeof window.CRM.formUtils.togglePhoneMask === 'function') {
+            try {
+                window.CRM.formUtils.togglePhoneMask('NoFormat_HomePhone','HomePhone');
+            } catch (e) {
+                // noop - fail silently if toggle not available
+            }
+        }
+    });
+</script>
 
 <?php
 require_once __DIR__ . '/Include/Footer.php';

@@ -100,8 +100,7 @@ class   SystemConfig
             'sDirRoleSpouse'                       => new ConfigItem(7, 'sDirRoleSpouse', 'choice', '2', gettext('These are the family role numbers designated as spouse'), '', json_encode(SystemConfig::getFamilyRoleChoices(), JSON_THROW_ON_ERROR)),
             'sDirRoleChild'                        => new ConfigItem(8, 'sDirRoleChild', 'choice', '3', gettext('These are the family role numbers designated as child'), '', json_encode(SystemConfig::getFamilyRoleChoices(), JSON_THROW_ON_ERROR)),
             'iSessionTimeout'                      => new ConfigItem(9, 'iSessionTimeout', 'number', '3600', gettext("Session timeout length in seconds\nSet to zero to disable session timeouts.")),
-            'aFinanceQueries'                      => new ConfigItem(10, 'aFinanceQueries', 'text', '30,31,32', gettext('Queries for which user must have finance permissions to use') . ':'),
-            'bCSVAdminOnly'                        => new ConfigItem(11, 'bCSVAdminOnly', 'boolean', '1', gettext('Should only administrators have access to the CSV export system and directory report?')),
+            'aFinanceQueries'                      => new ConfigItem(10, 'aFinanceQueries', 'text', '28,30', gettext('Queries for which user must have finance permissions to use') . ':'),
             'iMinPasswordLength'                   => new ConfigItem(13, 'iMinPasswordLength', 'number', '6', gettext('Minimum length a user may set their password to')),
             'iMinPasswordChange'                   => new ConfigItem(14, 'iMinPasswordChange', 'number', '4', gettext("Minimum amount that a new password must differ from the old one (# of characters changed)\nSet to zero to disable this feature")),
             'aDisallowedPasswords'                 => new ConfigItem(15, 'aDisallowedPasswords', 'text', 'password,god,jesus,church,christian', gettext('A comma-separated list of disallowed (too obvious) passwords.')),
@@ -129,7 +128,6 @@ class   SystemConfig
             'bHideWeddingDate'                     => new ConfigItem(50, 'bHideWeddingDate', 'boolean', '0', gettext('Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.')),
             'bHideLatLon'                          => new ConfigItem(51, 'bHideLatLon', 'boolean', '0', gettext('Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.')),
             'bUseDonationEnvelopes'                => new ConfigItem(52, 'bUseDonationEnvelopes', 'boolean', '0', gettext('Set true to enable use of donation envelopes')),
-            'sHeader'                              => new ConfigItem(53, 'sHeader', 'textarea', '', gettext('Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.')),
             'sGeoCoderProvider'                    => new ConfigItem(56, 'sGeoCoderProvider', 'choice', 'GoogleMaps', gettext('Select GeoCoder Provider'), 'https://github.com/geocoder-php/Geocoder/blob/3.x/README.md#address-based-providers', '{"Choices":["GoogleMaps", "BingMaps"]}'),
             'iChecksPerDepositForm'                => new ConfigItem(57, 'iChecksPerDepositForm', 'number', '14', gettext('Number of checks for Deposit Slip Report')),
             'bUseScannedChecks'                    => new ConfigItem(58, 'bUseScannedChecks', 'boolean', '0', gettext('Set true to enable use of scanned checks')),
@@ -275,7 +273,7 @@ class   SystemConfig
             gettext('Church Services')    => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
             gettext('Backup')             => ['sLastBackupTimeStamp', 'bEnableExternalBackupTarget', 'sExternalBackupType', 'sExternalBackupAutoInterval', 'sExternalBackupEndpoint', 'sExternalBackupUsername', 'sExternalBackupPassword'],
             gettext('Two-Factor Authentication') => ['bEnable2FA', 'bRequire2FA', 's2FAApplicationName', 'sTwoFASecretKey'],
-            gettext('System Settings')    => ['sLogLevel', 'bCSVAdminOnly', 'sHeader', 'bEnforceCSP', 'bHSTSEnable', 'iDashboardServiceIntervalTime', 'bAllowPrereleaseUpgrade'],
+            gettext('System Settings')    => ['sLogLevel', 'bEnforceCSP', 'bHSTSEnable', 'iDashboardServiceIntervalTime', 'bAllowPrereleaseUpgrade'],
         ];
     }
 

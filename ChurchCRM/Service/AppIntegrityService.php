@@ -6,7 +6,7 @@ use ChurchCRM\dto\Prerequisite;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
-use ChurchCRM\Utils\PhpVersion;
+use ChurchCRM\Utils\VersionUtils;
 
 class AppIntegrityService
 {
@@ -30,19 +30,42 @@ class AppIntegrityService
     private static function getIntegrityCheckData()
     {
         $logger = LoggerUtils::getAppLogger();
+        
+        // Check in-memory cache first (within same request)
         if (AppIntegrityService::$IntegrityCheckDetails !== null) {
             $logger->debug('Integrity check results already cached in memory; not recalculating');
-
             return AppIntegrityService::$IntegrityCheckDetails;
         }
 
-        $logger->debug('Running integrity check');
+        // Check session cache (persists across admin requests)
+        if (isset($_SESSION['integrity_check_data']) && is_object($_SESSION['integrity_check_data'])) {
+            $logger->debug('Integrity check results found in session cache; not recalculating');
+            AppIntegrityService::$IntegrityCheckDetails = $_SESSION['integrity_check_data'];
+            return AppIntegrityService::$IntegrityCheckDetails;
+        }
 
-        // Always run verification fresh - don't use persistent cache files
+        // No cache found - run full integrity verification
+        $logger->info('Running full integrity check (not cached in session)');
         $verificationResult = AppIntegrityService::verifyApplicationIntegrity();
         AppIntegrityService::$IntegrityCheckDetails = (object) $verificationResult;
+        
+        // Cache results in session for subsequent admin page loads
+        $_SESSION['integrity_check_data'] = AppIntegrityService::$IntegrityCheckDetails;
 
         return AppIntegrityService::$IntegrityCheckDetails;
+    }
+    
+    /**
+     * Clear the integrity check cache to force re-verification on next check
+     * Should be called when files are modified (e.g., after upgrade)
+     */
+    public static function clearIntegrityCache(): void
+    {
+        AppIntegrityService::$IntegrityCheckDetails = null;
+        if (isset($_SESSION['integrity_check_data'])) {
+            unset($_SESSION['integrity_check_data']);
+        }
+        LoggerUtils::getAppLogger()->info('Integrity check cache cleared');
     }
 
     public static function getIntegrityCheckStatus(): string
@@ -185,7 +208,7 @@ class AppIntegrityService
      */
     public static function getApplicationPrerequisites(): array
     {
-        $requiredPhp = PhpVersion::getRequiredPhpVersion();
+        $requiredPhp = VersionUtils::getRequiredPhpVersion();
 
         return [
             new Prerequisite('PHP ' . $requiredPhp . '+', fn (): bool => version_compare(PHP_VERSION, $requiredPhp, '>=')),

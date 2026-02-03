@@ -94,6 +94,14 @@ abstract class DonationFund implements ActiveRecordInterface
     protected $fun_description;
 
     /**
+     * The value for the fun_order field.
+     *
+     * Note: this column has a database default value of: 0
+     * @var        int
+     */
+    protected $fun_order;
+
+    /**
      * @var        ObjectCollection|ChildPledge[] Collection to store aggregation of ChildPledge objects.
      */
     protected $collPledges;
@@ -122,6 +130,7 @@ abstract class DonationFund implements ActiveRecordInterface
     public function applyDefaultValues()
     {
         $this->fun_active = 'true';
+        $this->fun_order = 0;
     }
 
     /**
@@ -392,6 +401,16 @@ abstract class DonationFund implements ActiveRecordInterface
     }
 
     /**
+     * Get the [fun_order] column value.
+     *
+     * @return int
+     */
+    public function getOrder()
+    {
+        return $this->fun_order;
+    }
+
+    /**
      * Set the value of [fun_id] column.
      *
      * @param int $v New value
@@ -472,6 +491,26 @@ abstract class DonationFund implements ActiveRecordInterface
     } // setDescription()
 
     /**
+     * Set the value of [fun_order] column.
+     *
+     * @param int $v New value
+     * @return $this|\ChurchCRM\model\ChurchCRM\DonationFund The current object (for fluent API support)
+     */
+    public function setOrder($v)
+    {
+        if ($v !== null) {
+            $v = (int) $v;
+        }
+
+        if ($this->fun_order !== $v) {
+            $this->fun_order = $v;
+            $this->modifiedColumns[DonationFundTableMap::COL_FUN_ORDER] = true;
+        }
+
+        return $this;
+    } // setOrder()
+
+    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -482,6 +521,10 @@ abstract class DonationFund implements ActiveRecordInterface
     public function hasOnlyDefaultValues()
     {
             if ($this->fun_active !== 'true') {
+                return false;
+            }
+
+            if ($this->fun_order !== 0) {
                 return false;
             }
 
@@ -522,6 +565,9 @@ abstract class DonationFund implements ActiveRecordInterface
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : DonationFundTableMap::translateFieldName('Description', TableMap::TYPE_PHPNAME, $indexType)];
             $this->fun_description = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : DonationFundTableMap::translateFieldName('Order', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->fun_order = (null !== $col) ? (int) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -530,7 +576,7 @@ abstract class DonationFund implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 4; // 4 = DonationFundTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 5; // 5 = DonationFundTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\ChurchCRM\\model\\ChurchCRM\\DonationFund'), 0, $e);
@@ -763,6 +809,9 @@ abstract class DonationFund implements ActiveRecordInterface
         if ($this->isColumnModified(DonationFundTableMap::COL_FUN_DESCRIPTION)) {
             $modifiedColumns[':p' . $index++]  = 'fun_Description';
         }
+        if ($this->isColumnModified(DonationFundTableMap::COL_FUN_ORDER)) {
+            $modifiedColumns[':p' . $index++]  = 'fun_Order';
+        }
 
         $sql = sprintf(
             'INSERT INTO donationfund_fun (%s) VALUES (%s)',
@@ -785,6 +834,9 @@ abstract class DonationFund implements ActiveRecordInterface
                         break;
                     case 'fun_Description':
                         $stmt->bindValue($identifier, $this->fun_description, PDO::PARAM_STR);
+                        break;
+                    case 'fun_Order':
+                        $stmt->bindValue($identifier, $this->fun_order, PDO::PARAM_INT);
                         break;
                 }
             }
@@ -860,6 +912,9 @@ abstract class DonationFund implements ActiveRecordInterface
             case 3:
                 return $this->getDescription();
                 break;
+            case 4:
+                return $this->getOrder();
+                break;
             default:
                 return null;
                 break;
@@ -894,6 +949,7 @@ abstract class DonationFund implements ActiveRecordInterface
             $keys[1] => $this->getActive(),
             $keys[2] => $this->getName(),
             $keys[3] => $this->getDescription(),
+            $keys[4] => $this->getOrder(),
         );
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
@@ -962,6 +1018,9 @@ abstract class DonationFund implements ActiveRecordInterface
             case 3:
                 $this->setDescription($value);
                 break;
+            case 4:
+                $this->setOrder($value);
+                break;
         } // switch()
 
         return $this;
@@ -999,6 +1058,9 @@ abstract class DonationFund implements ActiveRecordInterface
         }
         if (array_key_exists($keys[3], $arr)) {
             $this->setDescription($arr[$keys[3]]);
+        }
+        if (array_key_exists($keys[4], $arr)) {
+            $this->setOrder($arr[$keys[4]]);
         }
     }
 
@@ -1052,6 +1114,9 @@ abstract class DonationFund implements ActiveRecordInterface
         }
         if ($this->isColumnModified(DonationFundTableMap::COL_FUN_DESCRIPTION)) {
             $criteria->add(DonationFundTableMap::COL_FUN_DESCRIPTION, $this->fun_description);
+        }
+        if ($this->isColumnModified(DonationFundTableMap::COL_FUN_ORDER)) {
+            $criteria->add(DonationFundTableMap::COL_FUN_ORDER, $this->fun_order);
         }
 
         return $criteria;
@@ -1142,6 +1207,7 @@ abstract class DonationFund implements ActiveRecordInterface
         $copyObj->setActive($this->getActive());
         $copyObj->setName($this->getName());
         $copyObj->setDescription($this->getDescription());
+        $copyObj->setOrder($this->getOrder());
 
         if ($deepCopy) {
             // important: temporarily setNew(false) because this affects the behavior of
@@ -1521,6 +1587,7 @@ abstract class DonationFund implements ActiveRecordInterface
         $this->fun_active = null;
         $this->fun_name = null;
         $this->fun_description = null;
+        $this->fun_order = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->applyDefaultValues();

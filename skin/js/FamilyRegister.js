@@ -9,11 +9,91 @@
         currentMemberCount: 0,
     };
 
-    // ==================== Member Management ====================
+    // ==================== Phone Mask Toggle ====================
 
     /**
-     * Collapse all member cards except the specified one (accordion behavior)
+     * Initialize phone mask toggle for family home phone field
+     * Fallback for external pages that don't load the main bundle
      */
+    function initializeFamilyHomePhoneToggle() {
+        var checkbox = $('input[name="NoFormat_familyHomePhone"]');
+        var input = $('input[name="familyHomePhone"]');
+
+        if (checkbox.length === 0 || input.length === 0) {
+            return; // Elements not found
+        }
+
+        function updateMask() {
+            if (checkbox.is(":checked")) {
+                // Remove input mask to allow free-form entry
+                input.inputmask("remove");
+            } else {
+                // Re-apply input mask
+                input.inputmask();
+            }
+        }
+
+        // Set initial state with a small delay to ensure inputmask is ready
+        setTimeout(updateMask, 10);
+
+        // Listen for checkbox changes
+        checkbox.change(updateMask);
+    }
+
+    /**
+     * Initialize phone mask toggle for a specific member
+     * @param {number} memberIndex - The member index
+     */
+    function initializeMemberPhoneToggle(memberIndex) {
+        var checkbox = $(`#member-phone-noformat-${memberIndex}`);
+        var input = $(`#member-phone-${memberIndex}`);
+        var typeSelect = $(`#member-phone-type-${memberIndex}`);
+
+        if (checkbox.length === 0 || input.length === 0 || typeSelect.length === 0) {
+            return; // Elements not found
+        }
+
+        function updateMask() {
+            if (checkbox.is(":checked")) {
+                // Remove input mask to allow free-form entry
+                input.inputmask("remove");
+            } else {
+                // Apply mask based on phone type
+                var phoneType = typeSelect.val();
+                var mask = window.CRM.phoneFormats.home; // default
+
+                switch (phoneType) {
+                    case "mobile":
+                        mask = window.CRM.phoneFormats.cell;
+                        break;
+                    case "home":
+                        mask = window.CRM.phoneFormats.home;
+                        break;
+                }
+
+                // Remove existing mask and apply new one
+                input.inputmask("remove");
+                if (mask) {
+                    input.inputmask({ mask: mask });
+                }
+            }
+        }
+
+        function onPhoneTypeChange() {
+            // Always update mask when phone type changes, regardless of checkbox state
+            updateMask();
+        }
+
+        // Set initial state with a small delay to ensure inputmask is ready
+        setTimeout(updateMask, 10);
+
+        // Listen for checkbox changes
+        checkbox.change(updateMask);
+
+        // Listen for phone type changes - always update mask
+        typeSelect.change(onPhoneTypeChange);
+    }
+
     function collapseAllExcept(memberIndex) {
         document.querySelectorAll(".member-card").forEach((card) => {
             const index = card.getAttribute("data-member-index");
@@ -54,6 +134,7 @@
             "member-email": "email",
             "member-phone": "phone",
             "member-phone-type": "phoneType",
+            "member-phone-noformat": "phoneNoFormat",
             "member-birthday": "birthday",
             "member-hide-age": "hideAge",
         };
@@ -63,6 +144,11 @@
             if (element) {
                 element.id = `${className}-${memberIndex}`;
                 element.setAttribute("data-field-name", fieldName);
+
+                // Set unique name for form submission
+                if (element.name) {
+                    element.name = `${element.name}-${memberIndex}`;
+                }
 
                 // Set the label's "for" attribute if this is a checkbox/radio
                 if (element.type === "checkbox" || element.type === "radio") {
@@ -182,8 +268,8 @@
         // Initialize state on page load
         updateHideAgeState();
 
-        // Initialize input mask on new phone field
-        $(`#member-phone-${memberIndex}`).inputmask();
+        // Initialize phone mask toggle for new member
+        initializeMemberPhoneToggle(memberIndex);
 
         // Update display
         updateMemberCount();
@@ -474,27 +560,78 @@
         $("#displayFamilyAddress").text(familyAddress);
         $("#displayFamilyPhone").text(family.HomePhone);
 
-        // Clear all member rows first (template shows rows 1-8)
+        // Clear all member rows/cards first (template shows slots 1-8)
         for (let i = 1; i <= 8; i++) {
-            $(`#displayFamilyPerson${i}`).hide();
+            $(`#displayFamilyPerson${i}`).addClass("d-none");
+            $(`#displayFamilyPersonCard${i}`).addClass("d-none");
             $(`#displayFamilyPersonFName${i}`).text("");
             $(`#displayFamilyPersonLName${i}`).text("");
             $(`#displayFamilyPersonEmail${i}`).text("");
             $(`#displayFamilyPersonPhone${i}`).text("");
             $(`#displayFamilyPersonBDay${i}`).text("");
+            $(`#displayFamilyPersonCardFName${i}`).text("");
+            $(`#displayFamilyPersonCardLName${i}`).text("");
+            $(`#displayFamilyPersonCardEmail${i}`).text("");
+            $(`#displayFamilyPersonCardPhone${i}`).text("");
+            $(`#displayFamilyPersonCardBDay${i}`).text("");
+            $(`#displayFamilyPersonCardEmailBlock${i}`).addClass("d-none");
+            $(`#displayFamilyPersonCardPhoneBlock${i}`).addClass("d-none");
+            $(`#displayFamilyPersonCardBDayBlock${i}`).addClass("d-none");
         }
 
         // Display member details
         family.people.forEach((person, index) => {
             const memberNum = index + 1;
-            $(`#displayFamilyPerson${memberNum}`).show();
+            const displayPhone = person.cellPhone || person.workPhone || person.homePhone || "";
+
+            // Show and populate table row (desktop)
+            $(`#displayFamilyPerson${memberNum}`).removeClass("d-none");
             $(`#displayFamilyPersonFName${memberNum}`).text(person.firstName);
             $(`#displayFamilyPersonLName${memberNum}`).text(person.lastName);
             $(`#displayFamilyPersonEmail${memberNum}`).text(person.email);
-
-            const displayPhone = person.cellPhone || person.workPhone || person.homePhone || "";
             $(`#displayFamilyPersonPhone${memberNum}`).text(displayPhone);
             $(`#displayFamilyPersonBDay${memberNum}`).text(person.birthday);
+
+            // Show and populate card (mobile)
+            $(`#displayFamilyPersonCard${memberNum}`).removeClass("d-none");
+            $(`#displayFamilyPersonCardFName${memberNum}`).text(person.firstName);
+            $(`#displayFamilyPersonCardLName${memberNum}`).text(person.lastName);
+
+            // Set gender icon on mobile card (1 = Male, 2 = Female)
+            try {
+                const $genderIcon = $(`#displayFamilyPersonCardGenderIcon${memberNum}`);
+                if ($genderIcon && $genderIcon.length) {
+                    if (String(person.gender) === "2") {
+                        $genderIcon.attr("class", "fa-solid fa-venus text-danger mr-2");
+                    } else if (String(person.gender) === "1") {
+                        $genderIcon.attr("class", "fa-solid fa-mars text-primary mr-2");
+                    } else {
+                        $genderIcon.attr("class", "fa-solid fa-user text-secondary mr-2");
+                    }
+                }
+            } catch (e) {
+                if (window.console && typeof window.console.error === "function") {
+                    window.console.error("FamilyRegister: failed to set gender icon for member", memberNum, e);
+                }
+            }
+
+            // Show email field only if email exists
+            if (person.email && person.email.trim() !== "") {
+                $(`#displayFamilyPersonCardEmail${memberNum}`).text(person.email);
+                $(`#displayFamilyPersonCardEmailBlock${memberNum}`).removeClass("d-none");
+            }
+
+            // Show phone field only if phone exists
+            if (displayPhone && displayPhone.trim() !== "") {
+                $(`#displayFamilyPersonCardPhone${memberNum}`).text(displayPhone);
+                $(`#displayFamilyPersonCardPhoneBlock${memberNum}`).removeClass("d-none");
+            }
+
+            // Show birthday field only if birthday exists
+            if (person.birthday && person.birthday.trim() !== "") {
+                $(`#displayFamilyPersonCardBDay${memberNum}`).text(person.birthday);
+                $(`#displayFamilyPersonCardBDayBlock${memberNum}`).removeClass("d-none");
+            }
         });
     }
 
@@ -645,20 +782,15 @@
                         state.validatedNavigation = { from: 0, to: 1 };
                         registrationStepper.next();
                     } else {
-                        $.notify(
-                            {
-                                icon: "fa fa-exclamation-triangle",
-                                message: i18next.t("Please fill in all required fields correctly."),
-                            },
-                            {
+                        // Use notify if available, otherwise fallback to alert for external pages
+                        if (window.CRM && window.CRM.notify) {
+                            window.CRM.notify(i18next.t("Please fill in all required fields correctly."), {
                                 type: "warning",
                                 delay: 4000,
-                                placement: {
-                                    from: "top",
-                                    align: "right",
-                                },
-                            },
-                        );
+                            });
+                        } else {
+                            alert(i18next.t("Please fill in all required fields correctly."));
+                        }
                     }
                 });
             } else {
@@ -675,20 +807,10 @@
 
             // Validate at least 1 member exists
             if (state.currentMemberCount === 0) {
-                $.notify(
-                    {
-                        icon: "fa fa-exclamation-triangle",
-                        message: i18next.t("Please add at least one family member."),
-                    },
-                    {
-                        type: "warning",
-                        delay: 4000,
-                        placement: {
-                            from: "top",
-                            align: "right",
-                        },
-                    },
-                );
+                window.CRM.notify(i18next.t("Please add at least one family member."), {
+                    type: "warning",
+                    delay: 4000,
+                });
                 return;
             }
 
@@ -698,20 +820,10 @@
                         state.validatedNavigation = { from: 1, to: 2 };
                         registrationStepper.next();
                     } else {
-                        $.notify(
-                            {
-                                icon: "fa fa-exclamation-triangle",
-                                message: i18next.t("Please fill in all required fields correctly."),
-                            },
-                            {
-                                type: "warning",
-                                delay: 4000,
-                                placement: {
-                                    from: "top",
-                                    align: "right",
-                                },
-                            },
-                        );
+                        window.CRM.notify(i18next.t("Please fill in all required fields correctly."), {
+                            type: "warning",
+                            delay: 4000,
+                        });
                     }
                 });
             } else {
@@ -754,5 +866,13 @@
                 console.error("Failed to initialize inputmask:", e);
             }
         });
+
+        // Initialize phone mask toggles
+        if (window.CRM && window.CRM.formUtils && window.CRM.formUtils.togglePhoneMask) {
+            window.CRM.formUtils.togglePhoneMask("NoFormat_familyHomePhone", "familyHomePhone");
+        } else {
+            // Fallback: inline toggle functionality for external pages that don't load main bundle
+            initializeFamilyHomePhoneToggle();
+        }
     });
 })();

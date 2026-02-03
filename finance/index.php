@@ -1,7 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../Include/LoadConfig.php';
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../Include/LoadConfigs.php';
 
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
@@ -27,6 +26,7 @@ $app->setBasePath($basePath);
 // Register routes FIRST before middleware
 require __DIR__ . '/routes/dashboard.php';
 require __DIR__ . '/routes/reports.php';
+require __DIR__ . '/routes/pledges.php';
 
 // Body parsing and routing middleware
 $app->addBodyParsingMiddleware();

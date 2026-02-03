@@ -5,10 +5,14 @@ require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be allowed to edit records to use this page.
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(), 'EditRecords');
+
+// Initialize logger for error tracking
+$logger = LoggerUtils::getAppLogger();
 
 $sPageTitle = gettext('Group Member Properties Editor');
 
@@ -78,13 +82,40 @@ if (isset($_POST['GroupPropSubmit'])) {
         $sSQL .= ' WHERE per_ID = ' . $iPersonID;
 
         //Execute the SQL
-        RunQuery($sSQL);
-
-        // Return to the Person View
-        RedirectUtils::redirect('PersonView.php?PersonID=' . $iPersonID);
+        $updateResult = RunQuery($sSQL);
+        
+        if (!$updateResult) {
+            $logger->error('Failed to update group properties', [
+                'person_id' => $iPersonID,
+                'group_id' => $iGroupID,
+            ]);
+            $bErrorFlag = true;
+        } else {
+            // Return to the Person View
+            RedirectUtils::redirect('PersonView.php?PersonID=' . $iPersonID);
+        }
     }
 } else {
     // First Pass
+    // Verify that the groupprop_X table exists
+    $checkTableSQL = 'SHOW TABLES LIKE "groupprop_' . $iGroupID . '"';
+    $tableCheckResult = RunQuery($checkTableSQL);
+    
+    if (mysqli_num_rows($tableCheckResult) === 0) {
+        // Table does not exist - create it with initial per_ID column
+        $createTableSQL = 'CREATE TABLE IF NOT EXISTS groupprop_' . $iGroupID . ' (
+            per_ID mediumint(8) unsigned NOT NULL default "0",
+            PRIMARY KEY (per_ID),
+            UNIQUE KEY per_ID (per_ID)
+        ) ENGINE=InnoDB';
+        $createResult = RunQuery($createTableSQL);
+        
+        if (!$createResult) {
+            $logger->error('Failed to create group properties table', ['group_id' => $iGroupID]);
+            $bErrorFlag = true;
+        }
+    }
+    
     // Get the existing data for this group member
     $sSQL = 'SELECT * FROM groupprop_' . $iGroupID . ' WHERE per_ID = ' . $iPersonID;
     $rsPersonProps = RunQuery($sSQL);
@@ -133,22 +164,22 @@ if (mysqli_num_rows($rsPropList) === 0) {
                     while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
                         extract($rowPropList); ?>
                         <tr>
-                            <td><?= $prop_Name ?>: </td>
+                            <td><?= InputUtils::escapeHTML($prop_Name) ?>: </td>
                             <td>
                                 <?php
                                 $currentFieldData = trim($aPersonProps[$prop_Field]);
 
                                 if ($type_ID == 11) {
-                                    $prop_Special = $sPhoneCountry;
+                                    $prop_Special = null;
                                 }  // ugh.. an argument with special cases!
 
                                 formCustomField($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST['GroupPropSubmit']));
 
                                 if (array_key_exists($prop_Field, $aPropErrors)) {
-                                    echo '<span class="text-error">' . $aPropErrors[$prop_Field] . '</span>';
+                                    echo '<span class="text-error">' . InputUtils::escapeHTML($aPropErrors[$prop_Field]) . '</span>';
                                 } ?>
                             </td>
-                            <td><?= $prop_Description ?></td>
+                            <td><?= InputUtils::escapeHTML($prop_Description) ?></td>
                         </tr>
                     <?php
                     } ?>
@@ -166,4 +197,19 @@ if (mysqli_num_rows($rsPropList) === 0) {
     </div>
 <?php
 }
+?>
+<script>
+    // Initialize all phone mask toggles for custom fields (guarded)
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.CRM && window.CRM.formUtils && typeof window.CRM.formUtils.initializeAllPhoneMaskToggles === 'function') {
+            try {
+                window.CRM.formUtils.initializeAllPhoneMaskToggles();
+            } catch (e) {
+                // silent
+            }
+        }
+    });
+</script>
+<?php
 require_once __DIR__ . '/Include/Footer.php';
+?>

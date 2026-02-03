@@ -58,7 +58,7 @@ class DonationFundTableMap extends TableMap
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 4;
+    const NUM_COLUMNS = 5;
 
     /**
      * The number of lazy-loaded columns
@@ -68,7 +68,7 @@ class DonationFundTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 4;
+    const NUM_HYDRATE_COLUMNS = 5;
 
     /**
      * the column name for the fun_ID field
@@ -91,6 +91,11 @@ class DonationFundTableMap extends TableMap
     const COL_FUN_DESCRIPTION = 'donationfund_fun.fun_Description';
 
     /**
+     * the column name for the fun_Order field
+     */
+    const COL_FUN_ORDER = 'donationfund_fun.fun_Order';
+
+    /**
      * The default string format for model objects of the related table
      */
     const DEFAULT_STRING_FORMAT = 'YAML';
@@ -102,11 +107,11 @@ class DonationFundTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('Id', 'Active', 'Name', 'Description', ),
-        self::TYPE_CAMELNAME     => array('id', 'active', 'name', 'description', ),
-        self::TYPE_COLNAME       => array(DonationFundTableMap::COL_FUN_ID, DonationFundTableMap::COL_FUN_ACTIVE, DonationFundTableMap::COL_FUN_NAME, DonationFundTableMap::COL_FUN_DESCRIPTION, ),
-        self::TYPE_FIELDNAME     => array('fun_ID', 'fun_Active', 'fun_Name', 'fun_Description', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, )
+        self::TYPE_PHPNAME       => array('Id', 'Active', 'Name', 'Description', 'Order', ),
+        self::TYPE_CAMELNAME     => array('id', 'active', 'name', 'description', 'order', ),
+        self::TYPE_COLNAME       => array(DonationFundTableMap::COL_FUN_ID, DonationFundTableMap::COL_FUN_ACTIVE, DonationFundTableMap::COL_FUN_NAME, DonationFundTableMap::COL_FUN_DESCRIPTION, DonationFundTableMap::COL_FUN_ORDER, ),
+        self::TYPE_FIELDNAME     => array('fun_ID', 'fun_Active', 'fun_Name', 'fun_Description', 'fun_Order', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, )
     );
 
     /**
@@ -116,11 +121,11 @@ class DonationFundTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('Id' => 0, 'Active' => 1, 'Name' => 2, 'Description' => 3, ),
-        self::TYPE_CAMELNAME     => array('id' => 0, 'active' => 1, 'name' => 2, 'description' => 3, ),
-        self::TYPE_COLNAME       => array(DonationFundTableMap::COL_FUN_ID => 0, DonationFundTableMap::COL_FUN_ACTIVE => 1, DonationFundTableMap::COL_FUN_NAME => 2, DonationFundTableMap::COL_FUN_DESCRIPTION => 3, ),
-        self::TYPE_FIELDNAME     => array('fun_ID' => 0, 'fun_Active' => 1, 'fun_Name' => 2, 'fun_Description' => 3, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, )
+        self::TYPE_PHPNAME       => array('Id' => 0, 'Active' => 1, 'Name' => 2, 'Description' => 3, 'Order' => 4, ),
+        self::TYPE_CAMELNAME     => array('id' => 0, 'active' => 1, 'name' => 2, 'description' => 3, 'order' => 4, ),
+        self::TYPE_COLNAME       => array(DonationFundTableMap::COL_FUN_ID => 0, DonationFundTableMap::COL_FUN_ACTIVE => 1, DonationFundTableMap::COL_FUN_NAME => 2, DonationFundTableMap::COL_FUN_DESCRIPTION => 3, DonationFundTableMap::COL_FUN_ORDER => 4, ),
+        self::TYPE_FIELDNAME     => array('fun_ID' => 0, 'fun_Active' => 1, 'fun_Name' => 2, 'fun_Description' => 3, 'fun_Order' => 4, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, )
     );
 
     /**
@@ -162,6 +167,14 @@ class DonationFundTableMap extends TableMap
         'COL_FUN_DESCRIPTION' => 'FUN_DESCRIPTION',
         'fun_Description' => 'FUN_DESCRIPTION',
         'donationfund_fun.fun_Description' => 'FUN_DESCRIPTION',
+        'Order' => 'FUN_ORDER',
+        'DonationFund.Order' => 'FUN_ORDER',
+        'order' => 'FUN_ORDER',
+        'donationFund.order' => 'FUN_ORDER',
+        'DonationFundTableMap::COL_FUN_ORDER' => 'FUN_ORDER',
+        'COL_FUN_ORDER' => 'FUN_ORDER',
+        'fun_Order' => 'FUN_ORDER',
+        'donationfund_fun.fun_Order' => 'FUN_ORDER',
     ];
 
     /**
@@ -185,6 +198,7 @@ class DonationFundTableMap extends TableMap
         $this->addColumn('fun_Active', 'Active', 'CHAR', true, null, 'true');
         $this->addColumn('fun_Name', 'Name', 'VARCHAR', false, 30, null);
         $this->addColumn('fun_Description', 'Description', 'VARCHAR', false, 100, null);
+        $this->addColumn('fun_Order', 'Order', 'INTEGER', true, null, 0);
     } // initialize()
 
     /**
@@ -346,11 +360,13 @@ class DonationFundTableMap extends TableMap
             $criteria->addSelectColumn(DonationFundTableMap::COL_FUN_ACTIVE);
             $criteria->addSelectColumn(DonationFundTableMap::COL_FUN_NAME);
             $criteria->addSelectColumn(DonationFundTableMap::COL_FUN_DESCRIPTION);
+            $criteria->addSelectColumn(DonationFundTableMap::COL_FUN_ORDER);
         } else {
             $criteria->addSelectColumn($alias . '.fun_ID');
             $criteria->addSelectColumn($alias . '.fun_Active');
             $criteria->addSelectColumn($alias . '.fun_Name');
             $criteria->addSelectColumn($alias . '.fun_Description');
+            $criteria->addSelectColumn($alias . '.fun_Order');
         }
     }
 
@@ -372,11 +388,13 @@ class DonationFundTableMap extends TableMap
             $criteria->removeSelectColumn(DonationFundTableMap::COL_FUN_ACTIVE);
             $criteria->removeSelectColumn(DonationFundTableMap::COL_FUN_NAME);
             $criteria->removeSelectColumn(DonationFundTableMap::COL_FUN_DESCRIPTION);
+            $criteria->removeSelectColumn(DonationFundTableMap::COL_FUN_ORDER);
         } else {
             $criteria->removeSelectColumn($alias . '.fun_ID');
             $criteria->removeSelectColumn($alias . '.fun_Active');
             $criteria->removeSelectColumn($alias . '.fun_Name');
             $criteria->removeSelectColumn($alias . '.fun_Description');
+            $criteria->removeSelectColumn($alias . '.fun_Order');
         }
     }
 

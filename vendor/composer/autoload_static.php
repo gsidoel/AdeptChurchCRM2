@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitd868f6480acc9d5a83cfb4994e3b2981
+class ComposerStaticInitefb2c344b89bde90ff0ec73728d7589e
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -437,7 +437,6 @@ class ComposerStaticInitd868f6480acc9d5a83cfb4994e3b2981
     );
 
     public static $classMap = array (
-        'ChurchCRM\\ArrayUtils' => __DIR__ . '/../..' . '/ChurchCRM/ArrayUtils.php',
         'ChurchCRM\\Authentication\\AuthenticationManager' => __DIR__ . '/../..' . '/ChurchCRM/Authentication/AuthenticationManager.php',
         'ChurchCRM\\Authentication\\AuthenticationProviders\\APITokenAuthentication' => __DIR__ . '/../..' . '/ChurchCRM/Authentication/AuthenticationProviders/APITokenAuthentication.php',
         'ChurchCRM\\Authentication\\AuthenticationProviders\\IAuthenticationProvider' => __DIR__ . '/../..' . '/ChurchCRM/Authentication/AuthenticationProviders/IAuthenticationProvider.php',
@@ -471,9 +470,6 @@ class ComposerStaticInitd868f6480acc9d5a83cfb4994e3b2981
         'ChurchCRM\\Emails\\users\\UnlockedEmail' => __DIR__ . '/../..' . '/ChurchCRM/Emails/users/UnlockedEmail.php',
         'ChurchCRM\\Emails\\verify\\FamilyVerificationEmail' => __DIR__ . '/../..' . '/ChurchCRM/Emails/verify/FamilyVerificationEmail.php',
         'ChurchCRM\\Exceptions\\NotImplementedException' => __DIR__ . '/../..' . '/ChurchCRM/Exceptions/NotImplementedException.php',
-        'ChurchCRM\\FileSystemUtils' => __DIR__ . '/../..' . '/ChurchCRM/FileSystemUtils.php',
-        'ChurchCRM\\KeyManager' => __DIR__ . '/../..' . '/ChurchCRM/KeyManager.php',
-        'ChurchCRM\\MICRFunctions' => __DIR__ . '/../..' . '/ChurchCRM/MICRFunctions.php',
         'ChurchCRM\\PhotoInterface' => __DIR__ . '/../..' . '/ChurchCRM/PhotoInterface.php',
         'ChurchCRM\\Reports\\ChurchInfoReport' => __DIR__ . '/../..' . '/ChurchCRM/Reports/ChurchInfoReport.php',
         'ChurchCRM\\Reports\\PdfAddressReport' => __DIR__ . '/../..' . '/ChurchCRM/Reports/PdfAddressReport.php',
@@ -484,7 +480,6 @@ class ComposerStaticInitd868f6480acc9d5a83cfb4994e3b2981
         'ChurchCRM\\Reports\\PdfGroupDirectory' => __DIR__ . '/../..' . '/ChurchCRM/Reports/PdfGroupDirectory.php',
         'ChurchCRM\\Reports\\PdfLabel' => __DIR__ . '/../..' . '/ChurchCRM/Reports/PdfLabel.php',
         'ChurchCRM\\Reports\\PdfNewsletterLabels' => __DIR__ . '/../..' . '/ChurchCRM/Reports/PdfNewsletterLabels.php',
-        'ChurchCRM\\SQLUtils' => __DIR__ . '/../..' . '/ChurchCRM/SQLUtils.php',
         'ChurchCRM\\Search\\AddressSearchResultProvider' => __DIR__ . '/../..' . '/ChurchCRM/Search/AddressSearchResultProvider.php',
         'ChurchCRM\\Search\\BaseSearchResultProvider' => __DIR__ . '/../..' . '/ChurchCRM/Search/BaseSearchResultProvider.php',
         'ChurchCRM\\Search\\CalendarEventSearchResultProvider' => __DIR__ . '/../..' . '/ChurchCRM/Search/CalendarEventSearchResultProvider.php',
@@ -501,6 +496,7 @@ class ComposerStaticInitd868f6480acc9d5a83cfb4994e3b2981
         'ChurchCRM\\Service\\DashboardService' => __DIR__ . '/../..' . '/ChurchCRM/Service/DashboardService.php',
         'ChurchCRM\\Service\\DemoDataService' => __DIR__ . '/../..' . '/ChurchCRM/Service/DemoDataService.php',
         'ChurchCRM\\Service\\DepositService' => __DIR__ . '/../..' . '/ChurchCRM/Service/DepositService.php',
+        'ChurchCRM\\Service\\FamilyPledgeSummaryService' => __DIR__ . '/../..' . '/ChurchCRM/Service/FamilyPledgeSummaryService.php',
         'ChurchCRM\\Service\\FamilyService' => __DIR__ . '/../..' . '/ChurchCRM/Service/FamilyService.php',
         'ChurchCRM\\Service\\FinancialService' => __DIR__ . '/../..' . '/ChurchCRM/Service/FinancialService.php',
         'ChurchCRM\\Service\\GroupService' => __DIR__ . '/../..' . '/ChurchCRM/Service/GroupService.php',
@@ -542,19 +538,24 @@ class ComposerStaticInitd868f6480acc9d5a83cfb4994e3b2981
         'ChurchCRM\\SystemCalendars\\SystemCalendar' => __DIR__ . '/../..' . '/ChurchCRM/SystemCalendars/SystemCalendar.php',
         'ChurchCRM\\SystemCalendars\\UnpinnedEvents' => __DIR__ . '/../..' . '/ChurchCRM/SystemCalendars/UnpinnedEvents.php',
         'ChurchCRM\\Twig\\GettextExtension' => __DIR__ . '/../..' . '/ChurchCRM/Twig/GettextExtension.php',
+        'ChurchCRM\\Utils\\ArrayUtils' => __DIR__ . '/../..' . '/ChurchCRM/utils/ArrayUtils.php',
         'ChurchCRM\\Utils\\CSRFUtils' => __DIR__ . '/../..' . '/ChurchCRM/utils/CSRFUtils.php',
         'ChurchCRM\\Utils\\ChurchCRMReleaseManager' => __DIR__ . '/../..' . '/ChurchCRM/dto/ChurchCRMReleaseManager.php',
         'ChurchCRM\\Utils\\CsvExporter' => __DIR__ . '/../..' . '/ChurchCRM/utils/CsvExporter.php',
         'ChurchCRM\\Utils\\ExecutionTime' => __DIR__ . '/../..' . '/ChurchCRM/utils/ExecutionTime.php',
-        'ChurchCRM\\Utils\\Functions' => __DIR__ . '/../..' . '/ChurchCRM/utils/Functions.php',
+        'ChurchCRM\\Utils\\FileSystemUtils' => __DIR__ . '/../..' . '/ChurchCRM/utils/FileSystemUtils.php',
+        'ChurchCRM\\Utils\\FiscalYearUtils' => __DIR__ . '/../..' . '/ChurchCRM/utils/FiscalYearUtils.php',
+        'ChurchCRM\\Utils\\FunctionsUtils' => __DIR__ . '/../..' . '/ChurchCRM/utils/FunctionsUtils.php',
         'ChurchCRM\\Utils\\GeoUtils' => __DIR__ . '/../..' . '/ChurchCRM/utils/GeoUtils.php',
         'ChurchCRM\\Utils\\InputUtils' => __DIR__ . '/../..' . '/ChurchCRM/utils/InputUtils.php',
+        'ChurchCRM\\Utils\\KeyManagerUtils' => __DIR__ . '/../..' . '/ChurchCRM/utils/KeyManagerUtils.php',
         'ChurchCRM\\Utils\\LoggerUtils' => __DIR__ . '/../..' . '/ChurchCRM/utils/LoggerUtils.php',
+        'ChurchCRM\\Utils\\MICRUtils' => __DIR__ . '/../..' . '/ChurchCRM/utils/MICRUtils.php',
         'ChurchCRM\\Utils\\MiscUtils' => __DIR__ . '/../..' . '/ChurchCRM/utils/MiscUtils.php',
         'ChurchCRM\\Utils\\ORMUtils' => __DIR__ . '/../..' . '/ChurchCRM/utils/ORMUtils.php',
         'ChurchCRM\\Utils\\PHPToMomentJSConverter' => __DIR__ . '/../..' . '/ChurchCRM/utils/PHPToMomentJSConverter.php',
-        'ChurchCRM\\Utils\\PhpVersion' => __DIR__ . '/../..' . '/ChurchCRM/utils/PhpVersion.php',
         'ChurchCRM\\Utils\\RedirectUtils' => __DIR__ . '/../..' . '/ChurchCRM/utils/RedirectUtils.php',
+        'ChurchCRM\\Utils\\SQLUtils' => __DIR__ . '/../..' . '/ChurchCRM/utils/SQLUtils.php',
         'ChurchCRM\\Utils\\URLValidator' => __DIR__ . '/../..' . '/ChurchCRM/utils/URLValidator.php',
         'ChurchCRM\\Utils\\VersionUtils' => __DIR__ . '/../..' . '/ChurchCRM/utils/VersionUtils.php',
         'ChurchCRM\\data\\Countries' => __DIR__ . '/../..' . '/ChurchCRM/data/Countries.php',
@@ -592,10 +593,6 @@ class ComposerStaticInitd868f6480acc9d5a83cfb4994e3b2981
         'ChurchCRM\\model\\ChurchCRM\\DonatedItemQuery' => __DIR__ . '/../..' . '/ChurchCRM/model/ChurchCRM/DonatedItemQuery.php',
         'ChurchCRM\\model\\ChurchCRM\\DonationFund' => __DIR__ . '/../..' . '/ChurchCRM/model/ChurchCRM/DonationFund.php',
         'ChurchCRM\\model\\ChurchCRM\\DonationFundQuery' => __DIR__ . '/../..' . '/ChurchCRM/model/ChurchCRM/DonationFundQuery.php',
-        'ChurchCRM\\model\\ChurchCRM\\EmailMessagePending' => __DIR__ . '/../..' . '/ChurchCRM/model/ChurchCRM/EmailMessagePending.php',
-        'ChurchCRM\\model\\ChurchCRM\\EmailMessagePendingQuery' => __DIR__ . '/../..' . '/ChurchCRM/model/ChurchCRM/EmailMessagePendingQuery.php',
-        'ChurchCRM\\model\\ChurchCRM\\EmailRecipientPending' => __DIR__ . '/../..' . '/ChurchCRM/model/ChurchCRM/EmailRecipientPending.php',
-        'ChurchCRM\\model\\ChurchCRM\\EmailRecipientPendingQuery' => __DIR__ . '/../..' . '/ChurchCRM/model/ChurchCRM/EmailRecipientPendingQuery.php',
         'ChurchCRM\\model\\ChurchCRM\\Event' => __DIR__ . '/../..' . '/ChurchCRM/model/ChurchCRM/Event.php',
         'ChurchCRM\\model\\ChurchCRM\\EventAttend' => __DIR__ . '/../..' . '/ChurchCRM/model/ChurchCRM/EventAttend.php',
         'ChurchCRM\\model\\ChurchCRM\\EventAttendQuery' => __DIR__ . '/../..' . '/ChurchCRM/model/ChurchCRM/EventAttendQuery.php',
@@ -679,10 +676,10 @@ class ComposerStaticInitd868f6480acc9d5a83cfb4994e3b2981
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitd868f6480acc9d5a83cfb4994e3b2981::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitd868f6480acc9d5a83cfb4994e3b2981::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitd868f6480acc9d5a83cfb4994e3b2981::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitd868f6480acc9d5a83cfb4994e3b2981::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitefb2c344b89bde90ff0ec73728d7589e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitefb2c344b89bde90ff0ec73728d7589e::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitefb2c344b89bde90ff0ec73728d7589e::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitefb2c344b89bde90ff0ec73728d7589e::$classMap;
 
         }, null, ClassLoader::class);
     }

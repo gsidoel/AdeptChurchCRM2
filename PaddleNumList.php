@@ -37,7 +37,7 @@ require_once __DIR__ . '/Include/Header.php';
 </div>
 <div class="card card-body">
 
-    <table cellpadding="5" cellspacing="5">
+    <table class="table table-striped">
 
         <tr class="TableHeader">
             <td><?= gettext('Select') ?></td>
@@ -54,23 +54,23 @@ require_once __DIR__ . '/Include/Header.php';
             while ($aRow = mysqli_fetch_array($rsPaddleNums)) {
                 extract($aRow);
 
-                $sRowClass = 'RowColorA'; ?>
-                <tr class="<?= $sRowClass ?>">
+                ?>
+                <tr>
                     <td>
-                        <input type="checkbox" name="Chk<?= $pn_ID . '"';
+                        <input type="checkbox" name="Chk<?= (int)$pn_ID . '"';
                         if (isset($_GET['SelectAll'])) {
                             echo ' checked="yes"';
                         } ?>></input>
             </td>
             <td>
-                <?= "<a href=\"PaddleNumEditor.php?PaddleNumID=$pn_ID&linkBack=PaddleNumList.php\"> $pn_Num</a>\n" ?>
+                <?= '<a href="PaddleNumEditor.php?PaddleNumID=' . (int)$pn_ID . '&linkBack=PaddleNumList.php"> ' . (int)$pn_Num . "</a>\n" ?>
             </td>
 
             <td>
-                <?= $buyerFirstName . ' ' . $buyerLastName ?>&nbsp;
+                <?= InputUtils::escapeHTML($buyerFirstName) . ' ' . InputUtils::escapeHTML($buyerLastName) ?>&nbsp;
             </td>
             <td>
-                <a href=" PaddleNumDelete.php?PaddleNumID=<?= $pn_ID . '&linkBack=PaddleNumList.php?FundRaiserID=' . $iFundRaiserID ?>">Delete</a>
+                <a href=" PaddleNumDelete.php?PaddleNumID=<?= (int)$pn_ID . '&linkBack=PaddleNumList.php?FundRaiserID=' . (int)$iFundRaiserID ?>">Delete</a>
                     </td>
                 </tr>
                 <?php

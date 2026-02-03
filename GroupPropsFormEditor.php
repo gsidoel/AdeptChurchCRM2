@@ -7,10 +7,14 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be allowed to edit records to use this page.
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled(), 'ManageGroups');
+
+// Initialize logger for error tracking
+$logger = LoggerUtils::getAppLogger();
 
 // Get the Group from the querystring
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
@@ -233,7 +237,16 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     }
 
                     $sSQL .= ' DEFAULT NULL ;';
-                    RunQuery($sSQL);
+                    $result = RunQuery($sSQL);
+                    
+                    // Check if ALTER TABLE succeeded
+                    if (!$result) {
+                        $logger->warning('Failed to add column to group properties table', [
+                            'column' => 'c' . $newFieldNum,
+                            'group_id' => $iGroupID,
+                        ]);
+                        // Continue anyway to allow user to retry
+                    }
 
                     $bNewNameError = false;
                 }
@@ -392,11 +405,11 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                     while ($aRow = mysqli_fetch_array($rsGroupList)) {
                                         extract($aRow);
 
-                                        echo '<option value="' . htmlspecialchars($grp_ID, ENT_QUOTES, 'UTF-8') . '"';
+                                        echo '<option value="' . InputUtils::escapeAttribute($grp_ID) . '"';
                                         if ($aSpecialFields[$row] == $grp_ID) {
                                             echo ' selected';
                                         }
-                                        echo '>' . htmlspecialchars($grp_Name, ENT_QUOTES, 'UTF-8') . '</option>';
+                                        echo '>' . InputUtils::escapeHTML($grp_Name) . '</option>';
                                     }
 
                                     echo '</select>';
@@ -405,7 +418,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                         echo '<small class="text-danger d-block mt-1">' . gettext('You must select a group.') . '</small>';
                                     }
                                 } elseif ($aTypeFields[$row] == 12) {
-                                    echo '<a href="javascript:void(0)" onclick="window.open(\'OptionManager.php?mode=groupcustom&ListID=' . htmlspecialchars($aSpecialFields[$row], ENT_QUOTES, 'UTF-8') . '\',\'ListOptions\',\'toolbar=no,status=no,width=400,height=500\')">' . gettext('Edit List Options') . '</a>';
+                                    echo '<a href="javascript:void(0)" onclick="window.open(\'OptionManager.php?mode=groupcustom&ListID=' . InputUtils::escapeAttribute($aSpecialFields[$row]) . '\',\'ListOptions\',\'toolbar=no,status=no,width=400,height=500\')">' . gettext('Edit List Options') . '</a>';
                                 } else {
                                     echo '&nbsp;';
                                 } ?>
@@ -427,10 +440,10 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                     </button>
                                     <?php
                                     if ($row != 1) {
-                                        echo '<a href="GroupPropsFormRowOps.php?GroupID=' . $iGroupID . '&PropID=' . $row . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=up" class="btn btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
+                                        echo '<a href="GroupPropsFormRowOps.php?GroupID=' . $iGroupID . '&PropID=' . $row . '&Field=' . InputUtils::escapeAttribute($aFieldFields[$row]) . '&Action=up" class="btn btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
                                     }
                                     if ($row < $numRows) {
-                                        echo '<a href="GroupPropsFormRowOps.php?GroupID=' . $iGroupID . '&PropID=' . $row . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=down" class="btn btn-outline-secondary" title="' . gettext('Move down') . '"><i class="fa-solid fa-arrow-down"></i></a>';
+                                        echo '<a href="GroupPropsFormRowOps.php?GroupID=' . $iGroupID . '&PropID=' . $row . '&Field=' . InputUtils::escapeAttribute($aFieldFields[$row]) . '&Action=down" class="btn btn-outline-secondary" title="' . gettext('Move down') . '"><i class="fa-solid fa-arrow-down"></i></a>';
                                     } ?>
                                 </div>
                             </td>

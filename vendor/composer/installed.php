@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'churchcrm/crm',
-        'pretty_version' => '6.6.1',
-        'version' => '6.6.1.0',
+        'pretty_version' => '6.8.0',
+        'version' => '6.8.0.0',
         'reference' => null,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
@@ -29,8 +29,8 @@
             'dev_requirement' => false,
         ),
         'churchcrm/crm' => array(
-            'pretty_version' => '6.6.1',
-            'version' => '6.6.1.0',
+            'pretty_version' => '6.8.0',
+            'version' => '6.8.0.0',
             'reference' => null,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
