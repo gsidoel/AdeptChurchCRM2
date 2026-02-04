@@ -60,7 +60,6 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
         mysqli \
         pdo \
         pdo_mysql \
-        opcache \
         soap \
         sodium \
         xml \
@@ -129,6 +128,11 @@ RUN echo "memory_limit=512M" > /usr/local/etc/php/conf.d/memory.ini \
 
 RUN echo "upload_tmp_dir=/var/www/html/tmp_attach" \
     > /usr/local/etc/php/conf.d/upload_tmp_dir.ini
+
+RUN echo "opcache.enable=1" > /usr/local/etc/php/conf.d/opcache.ini \
+ && echo "opcache.enable_cli=0" >> /usr/local/etc/php/conf.d/opcache.ini \
+ && echo "opcache.validate_timestamps=1" >> /usr/local/etc/php/conf.d/opcache.ini \
+ && echo "opcache.revalidate_freq=0" >> /usr/local/etc/php/conf.d/opcache.ini
 
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
