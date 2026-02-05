@@ -803,7 +803,7 @@ msgid "Timeline"
 msgstr "Tijdslijn"
 
 msgid "Pledges and Payments"
-msgstr "Bijdrage en Betalingen"
+msgstr "Bijdrage en Ontvangsten"
 
 msgid "No property assignments."
 msgstr "Geen gekoppelde eigenschappen."
@@ -830,7 +830,7 @@ msgid "Show Pledges"
 msgstr "Toon Bijdrage Beloftes"
 
 msgid "Show Payments"
-msgstr "Toon Betalingen"
+msgstr "Toon Ontvangsten"
 
 msgid "Since"
 msgstr "Sinds"
@@ -965,10 +965,10 @@ msgid "Other Settings"
 msgstr "Andere Instellingen"
 
 msgid "Only Payments with Pledges"
-msgstr "Alleen Betalingen met Beloftes"
+msgstr "Alleen Ontvangsen met Toezeggingen"
 
 msgid "All Payments"
-msgstr "Alle Betalingen"
+msgstr "Alle Ontvangsten"
 
 msgid "Only Families with unpaid pledges"
 msgstr "Alleen gezinnen met onbetaalde toezeggingen"
@@ -2842,7 +2842,7 @@ msgid "Verbage for the pledge reminder report - No record of a pledge"
 msgstr "Kopie van het rapport lening aanmaningen - Geen record van een lening"
 
 msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Kopie van het lening herinneringsrapport - Geen betalingsregistratie"
+msgstr "Kopie van het lening herinneringsrapport - Geen ontvangstregistratie"
 
 msgid "Verbage for the database information confirmation and correction report"
 msgstr "Kopie van bevestiging, database-informatie en correctierapport"
@@ -5012,7 +5012,7 @@ msgid "Search Deposits"
 msgstr "Zoek uitbetalingen"
 
 msgid "Search Payments"
-msgstr "Zoek betalingen"
+msgstr "Zoek ontvangsten"
 
 msgid "Quick Search"
 msgstr "Snel zoeken"
@@ -5033,7 +5033,7 @@ msgid "Maximum number of Deposits"
 msgstr "Maximaal aantal stortingen"
 
 msgid "Maximum number of Payments"
-msgstr "Maximaal aantal betalingen"
+msgstr "Maximaal aantal ontvangsten"
 
 msgid "Maximum number of Addresses"
 msgstr "Maximaal aantal adressen"
@@ -6811,7 +6811,7 @@ msgid "Clear Filters"
 msgstr "Filters wissen"
 
 msgid "Click a bar to filter payments"
-msgstr "Klik op een balk om betalingen te filteren"
+msgstr "Klik op een balk om ontvangsten te filteren"
 
 msgid "Delete Selected"
 msgstr "Geselecteerde verwijderen"
@@ -6820,10 +6820,10 @@ msgid "Deposit saved successfully"
 msgstr "Kasstaat succesvol opgeslagen"
 
 msgid "Error deleting payments"
-msgstr "Fout bij het verwijderen van betalingen"
+msgstr "Fout bij het verwijderen van ontvangsten"
 
 msgid "Error loading payments"
-msgstr "Fout bij het laden van betalingen"
+msgstr "Fout bij het laden van ontvangsten"
 
 msgid "Error saving deposit"
 msgstr "Fout bij het opslaan van kasstaat"
@@ -6847,10 +6847,10 @@ msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
 msgstr "Niet-aftrekbaar bedrag overschrijdt de maximaal toegestane waarde (999999.99)."
 
 msgid "Payments"
-msgstr "Betalingen"
+msgstr "Ontvangsten"
 
 msgid "Payments deleted successfully"
-msgstr "Betalingen succesvol verwijderd"
+msgstr "Ontvangsten succesvol verwijderd"
 
 msgid "Please select a date"
 msgstr "Selecteer een datum"
@@ -6871,7 +6871,7 @@ msgid "Total Payments"
 msgstr "Totale aantal ontvangsten"
 
 msgid "payments(s)?"
-msgstr "betaling(en)?"
+msgstr "ontvangst(en)?"
 
 msgid "All system files have passed integrity validation."
 msgstr "Alle systeembestanden hebben integriteitsvalidatie doorstaan."
@@ -6973,7 +6973,7 @@ msgid "Need to remove this data later?"
 msgstr "Moet u deze gegevens later verwijderen?"
 
 msgid "No Payments on this Deposit"
-msgstr "Geen ontvangstem bij deze kasstaat"
+msgstr "Geen ontvangsten bij deze kasstaat"
 
 msgid "No payments on this deposit"
 msgstr "Geen ontvangsten bij deze kasstaat"
@@ -6988,7 +6988,7 @@ msgid "Unknown error"
 msgstr "Onbekende fout"
 
 msgid "deposit(s) with no payments"
-msgstr "Kasstaten zonder betalingen"
+msgstr "Kasstaten zonder ontvangsten"
 
 msgid "%d event in %s"
 msgid_plural "%d events in %s"
@@ -7694,7 +7694,7 @@ msgid "Detailed breakdown of a single deposit slip."
 msgstr "Gedetailleerde uitsplitsing van een enkel Kasstaat bon."
 
 msgid "Detailed breakdown of pledges and payments by family."
-msgstr "Gedetailleerde uitsplitsing van toezeggingen en betalingen per familie."
+msgstr "Gedetailleerde breakdown van toezeggingen en betalingen per familie."
 
 msgid "Documentation"
 msgstr "Documentatie"
