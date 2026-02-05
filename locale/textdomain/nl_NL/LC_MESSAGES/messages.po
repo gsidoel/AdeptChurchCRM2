@@ -3306,12 +3306,12 @@ msgstr "Hiermee worden ook alle betalingen verwijderd die aan deze storting zijn
 
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
-msgstr "Deze actie kan niet ongedaan worden gemaakt, en kunnen juridische implicaties te hebben!\n"
+msgstr "Deze actie kan niet ongedaan worden gemaakt, en kunnen juridische implicaties te hebben!"
 ""
 
 #: 
 msgid "Please ensure this what you want to do."
-msgstr "Zorg ervoor dat dit wat je wilt doen.\n"
+msgstr "Zorg ervoor dat dit wat je wilt doen."
 ""
 
 #: 
@@ -3679,7 +3679,7 @@ msgstr "Lengtecoördinatoren van het kerkgebouw, voor plaatsbepaling in Google m
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
-msgstr "Kies \"aan\" om het invoeren van vrienddatum in persoonseditor uit te schakelen.\n"
+msgstr "Kies \"aan\" om het invoeren van vrienddatum in persoonseditor uit te schakelen."
 "Kies \"uit\" om het invoeren van vrienddatum in persoonseditor in te schakelen."
 
 #: 
@@ -3696,7 +3696,7 @@ msgstr "Zet aan om het invoeren van breedte- en lengtegraad in Family Editor uit
 
 #: 
 msgid "Set true to enable use of donation envelopes"
-msgstr "\"Aan\" instellen om het gebruik van de donatie enveloppen mogelijk te maken\n"
+msgstr "\"Aan\" instellen om het gebruik van de donatie enveloppen mogelijk te maken"
 ""
 
 #: 
@@ -3987,7 +3987,7 @@ msgstr "Aangepast veld"
 #. Context: queryparameters_qrp
 #: 
 msgid "Field value"
-msgstr "Veldwaarde\n"
+msgstr "Veldwaarde"
 ""
 
 #. Context: queryparameters_qrp
@@ -4123,7 +4123,7 @@ msgstr "Verjaardagen"
 #. Context: query_qry
 #: 
 msgid "Membership anniversaries"
-msgstr "Jubilea van leden\n"
+msgstr "Jubilea van leden"
 ""
 
 #. Context: query_qry
@@ -8559,8 +8559,8 @@ msgstr "Rol binnen gezin"
 
 #: 
 msgid "Select date"
-msgstr "\n"
-"Selecteer datum"
+msgstr "Selecteer datum"
+
 
 #: 
 msgid "Street address"
