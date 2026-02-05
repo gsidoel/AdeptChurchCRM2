@@ -5868,8 +5868,8 @@ msgid "payment(s)?"
 msgstr "betalingen(en)?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Zorg ervoor dat dit is wat u wilt doen.</p>"
+msgid "Please ensure this what you want to do."
+msgstr "Zorg ervoor dat dit is wat u wilt doen."
 
 #: 
 msgid "Confirm Deactivation"
