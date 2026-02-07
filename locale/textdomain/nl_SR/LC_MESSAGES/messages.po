@@ -107,13 +107,13 @@ msgid "Depends whether using person or family output method"
 msgstr "Afhankelijk van het gebruik van het persoon of gezin uitvoer methode"
 
 msgid "Custom Field Selection"
-msgstr "Aangepaste Veld Selectie"
+msgstr "Extra Veld Selectie"
 
 msgid "Custom Person Fields"
 msgstr "Aanpasbare Persoons-Veld"
 
 msgid "Custom Family Fields"
-msgstr "Aanpasbare velden gezin"
+msgstr "Extra velden voor gezinnen"
 
 msgid "Filters"
 msgstr "Filters"
@@ -238,7 +238,7 @@ msgstr "Standaard Land if geen land is aangegeven"
 
 #. Context: queryparameters_qrp
 msgid "Classification"
-msgstr "Kenmerken"
+msgstr "Classificatie"
 
 msgid "Perform Import"
 msgstr "Importeer"
@@ -266,7 +266,7 @@ msgid "Your cart is empty!"
 msgstr "Uw werkbestand is leeg."
 
 msgid "No family name entered!"
-msgstr "Geen naam gezin ingevoerd!"
+msgstr "Geen gezinsnaam ingevoerd!"
 
 msgid "Add Cart to Family"
 msgstr "Voeg werkbestand toe aan gezin"
@@ -279,13 +279,13 @@ msgid "Assign Role"
 msgstr "Toewijzen aan Rol"
 
 msgid "Already in a family"
-msgstr "Reeds in een gezin "
+msgstr "Reeds in een gezin"
 
 msgid "Create new family"
 msgstr "Voer nieuw gezin in"
 
 msgid "If adding a new family, enter data below."
-msgstr "Indien nieuw gezin, voeg onderstaande gegevens toe."
+msgstr "Indien nieuw gezin, voeg gegevens hieronder toe."
 
 msgid "Use address/contact data from"
 msgstr "Gebruik adres/contact gegevens van"
@@ -330,7 +330,7 @@ msgid "Empty Cart to Group"
 msgstr "Leeg werkbestand in Groep"
 
 msgid "Empty Cart to Family"
-msgstr "Leeg werkbestand in gezinnen"
+msgstr "Ledig werkbestand naar gezinnen"
 
 msgid "Map Cart"
 msgstr "Landkaart tussenbestand"
@@ -416,13 +416,13 @@ msgid "Convert All"
 msgstr "Convert Alle"
 
 msgid "Deposit Slip Number"
-msgstr "Kasstaat Strookje Nummer"
+msgstr "Stortingsstrookje Nummer"
 
 msgid "Deposit Details"
-msgstr "Kasstaat details"
+msgstr "Stortingsgegevens"
 
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
-msgstr "Belangrijk gegeven: Mislukte transacties zijn permananent verwijderd na het afsluiten van het kasstaat strookje."
+msgstr "Belangrijk gegeven: Mislukte transacties zijn permananent verwijderd na het afsluiten van het stortingsstrookje."
 
 msgid "Add Payment"
 msgstr "Voer Ontvangst in"
@@ -438,7 +438,7 @@ msgid "Directory reports"
 msgstr "Adresboek Rapporten"
 
 msgid "Select classifications to include"
-msgstr "Selecteer de kenmerken om bij te sluiten "
+msgstr "Selecteer classificaties om bij te sluiten"
 
 msgid "Which role is the head of household?"
 msgstr "Welke rol is het hoofd van het gezin"
@@ -462,10 +462,10 @@ msgid "Family Home Phone"
 msgstr "Huis telefoon gezin"
 
 msgid "Family Work Phone"
-msgstr "Werk Tel.No van gezin"
+msgstr "Werk telefoon gezin"
 
 msgid "Family Cell Phone"
-msgstr "Mobiele Tel.No van gezin"
+msgstr "Mobielnummer van gezin"
 
 msgid "Family Email"
 msgstr "Gezins e-mail"
@@ -674,7 +674,7 @@ msgid "Default Option"
 msgstr "Standaard optie"
 
 msgid "No custom Family fields have been added yet"
-msgstr "Aanpasbare persoons-velden zijn nog niet toegevoegd"
+msgstr "Er zijn nog geen extra gezinsvelden toegevoegd"
 
 msgid "Special option"
 msgstr "Speciale Optie"
@@ -698,7 +698,7 @@ msgid "That field name already exists."
 msgstr "De naam van dit veld bestaat al."
 
 msgid "Family Editor"
-msgstr "Overzicht"
+msgstr "Gezinseditor"
 
 msgid "First name must be entered"
 msgstr "Voornaam moet ingetoetst worden"
@@ -713,7 +713,7 @@ msgid "Email is Not Valid"
 msgstr "E-mail is niet geldig"
 
 msgid "Family Info"
-msgstr "Adresgegevens gezin"
+msgstr "Gezinsinformatie"
 
 msgid "Contact Info"
 msgstr "Contact gegevens"
@@ -722,7 +722,7 @@ msgid "Envelope Info"
 msgstr "Envelop info"
 
 msgid "Custom Fields"
-msgstr "Aanpasbare Velden"
+msgstr "Extra Velden"
 
 msgid "Family Members"
 msgstr "Gezinsleden"
@@ -815,7 +815,7 @@ msgid "Edit Value"
 msgstr "Wijzig Waarde"
 
 msgid "Assign a New Property"
-msgstr "Kenmerk toevoegen"
+msgstr "Eigenschap toevoegen"
 
 msgid "Assign"
 msgstr "Koppel"
@@ -903,7 +903,7 @@ msgid "Individual Deposit Report"
 msgstr "Individuele Storting Rapport"
 
 msgid "Advanced Deposit Report"
-msgstr "Geavanceerd Kasstaat Rapport"
+msgstr "Geavanceerd Stortingsrapport"
 
 msgid "Next"
 msgstr "Volgende"
@@ -924,7 +924,7 @@ msgid "Apply Report Dates To"
 msgstr "Voer Rapportage Datums in Tot"
 
 msgid "Deposit Date (Default)"
-msgstr "Kasstaat Datum (Standaard)"
+msgstr "Stortingsdatum (Standaard)"
 
 msgid "Payment Date"
 msgstr "Ontvangst Datum"
@@ -934,7 +934,7 @@ msgid "Filter by Deposit"
 msgstr "Filter op Bijdrage"
 
 msgid "If deposit is selected, date criteria will be ignored."
-msgstr "Als kasstaat is geselecteerd, worden datum criteria genegeerd"
+msgstr "Als storting is geselecteerd, worden datum criteria genegeerd"
 
 msgid "All deposits within date range"
 msgstr "Alle Stortingen tussen datums"
@@ -947,10 +947,10 @@ msgid "All Methods"
 msgstr "Alle Methodes"
 
 msgid "Check"
-msgstr "Controleren"
+msgstr "Cheque"
 
 msgid "Cash"
-msgstr "Geld"
+msgstr "Contant"
 
 msgid "Bank Draft"
 msgstr "Bank Overschrijving"
@@ -995,7 +995,7 @@ msgid "Sort Data by:"
 msgstr "Sorteer Data op:"
 
 msgid "Deposit"
-msgstr "Kasstaat"
+msgstr "Storting"
 
 msgid "All Data"
 msgstr "Alle Data"
@@ -1020,7 +1020,7 @@ msgid "Create Report"
 msgstr "Aanmaken rapportage"
 
 msgid "Deposit Listing"
-msgstr "Kasstaat Lijst"
+msgstr "Lijst van stortingen"
 
 #, fuzzy
 msgid "Deposits"
@@ -1195,7 +1195,7 @@ msgid "Group Listing"
 msgstr "Groepen"
 
 msgid "Group Member Properties Editor"
-msgstr "Groepsleden beheer"
+msgstr "Groepsleden eigenshacppen beheer"
 
 msgid "This group currently has no properties!  You can add them in the Group Editor."
 msgstr "Deze groep heeft momenteel geen eigenschappen! U kunt ze in de Groep Editor toevoegen."
@@ -1209,12 +1209,11 @@ msgstr "Bewerking"
 msgid "data for member"
 msgstr "Data for een Lid"
 
-#, fuzzy
 msgid "Group-Specific Properties Form Editor"
-msgstr "Formulier - bewerk groepsspecifieke kenmerken"
+msgstr "Formulier - bewerk groepsspecifieke eigenschappen"
 
 msgid "No properties have been added yet"
-msgstr "Er zijn nog geen kenmerken toegevoegd"
+msgstr "Er zijn nog geen eigenschappen toegevoegd"
 
 msgid "Show in"
 msgstr "Weergegeven in: "
@@ -1257,7 +1256,7 @@ msgid "GroupRole"
 msgstr "GroepRol"
 
 msgid "Group-Specific Property Fields"
-msgstr "Velden voor de groepsspecifieke kenmerken"
+msgstr "Velden voor de groepsspecifieke eigenshcappen"
 
 msgid "Undefined"
 msgstr "Ongedefineerd"
@@ -1281,7 +1280,7 @@ msgid "This will also delete all Roles and Group-Specific Property data associat
 msgstr "Deze keuze zal ook alle Rol en Groep-Specifieke Eigenschappen data verwijderen geassocieerd met dit Groep record."
 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
-msgstr "Het groepslidmaatschap en de kenmerken worden verwijderd. De groepsleden zelf zullen niet worden gewijzigd."
+msgstr "Het groepslidmaatschap en de eigenschappen worden verwijderd. De groepsleden zelf zullen niet worden gewijzigd."
 
 msgid "Please select target group for members"
 msgstr "Selecteer de doelgroep voor de leden"
@@ -1302,13 +1301,13 @@ msgid "Default Role"
 msgstr "Standaard Rol"
 
 msgid "Group-Specific Properties"
-msgstr "Groepsspecifieke kenmerken"
+msgstr "Groepsspecifieke Eigenschappen"
 
 msgid "Disabled for this group."
 msgstr "Uitgezet voor deze groep."
 
 msgid "Assigned Properties"
-msgstr "Toegevoegde kenmerken"
+msgstr "Toegevoegde Eigenschappen"
 
 #, fuzzy
 msgid "Group Members"
@@ -1415,7 +1414,7 @@ msgid "Family Geographic"
 msgstr "Overzicht per gezin"
 
 msgid "Update All Family Coordinates"
-msgstr "Alles bijwerken Family Coördinaten"
+msgstr "Alle gezinscoördinaten bijwerken"
 
 msgid "Volunteer Opportunities"
 msgstr "Vrijwilligers mogelijkheden"
@@ -1424,7 +1423,7 @@ msgid "Families"
 msgstr "Gezinnen"
 
 msgid "See all Families"
-msgstr "Lijst"
+msgstr "Bekijk alle gezinnen"
 
 msgid "People"
 msgstr "Personen"
@@ -1454,7 +1453,7 @@ msgid "Count"
 msgstr "Tellen"
 
 msgid "People Classification"
-msgstr "Kenmerken per persoon"
+msgstr "Classificatie per persoon"
 
 msgid "Gender Demographics"
 msgstr "Overzicht per geslacht"
@@ -1553,7 +1552,7 @@ msgid "Select"
 msgstr "Selecteer "
 
 msgid "Custom Person Fields Editor"
-msgstr "Aanpasbare persoonsvelden"
+msgstr "Custom persoonsvelden"
 
 msgid "No custom person fields have been added yet"
 msgstr "Aanpasbare persoons-velden zijn nog niet toegevoegd"
@@ -1583,7 +1582,7 @@ msgid "Hide Age"
 msgstr "Verberg Leeftijd"
 
 msgid "Create a new family (using last name)"
-msgstr " Gezin toevoegen (familienaam)"
+msgstr "Gezin toevoegen (op basis van achternaam)"
 
 msgid "Friend Date"
 msgstr "Betrokkenheid is gewijzigd sinds"
@@ -1619,7 +1618,7 @@ msgid "Change Role"
 msgstr "Verander de rol"
 
 msgid "Update Properties"
-msgstr "Wijzig de kenmerken"
+msgstr "Wijzig de eigenschappen"
 
 msgid "Assign New Group"
 msgstr "Koppel een nieuwe groep"
@@ -1649,10 +1648,10 @@ msgid " more entries will fit."
 msgstr " extra boekingen mogelijk"
 
 msgid "Deposit closed"
-msgstr "Kasstaat gesloten"
+msgstr "Storting gesloten"
 
 msgid "Find family->"
-msgstr "Vind familie->"
+msgstr "Vind gezin->"
 
 msgid "Payment Schedule"
 msgstr "Betalingsschema"
@@ -1676,16 +1675,16 @@ msgid "Other"
 msgstr "Andere"
 
 msgid "Payment by"
-msgstr "Ontvangen van"
+msgstr "Ontvangstmethode"
 
 msgid "Scan check"
 msgstr "Controleer scan"
 
 msgid "find family from check account #"
-msgstr "Zoek familie via cheque account #"
+msgstr "Zoek gezin via cheque account #"
 
 msgid "Set default check account number for family"
-msgstr "Stel cheque account voor familie in"
+msgstr "Stel cheque account voor gezin in"
 
 msgid "Fund Name"
 msgstr "Fonds Naam"
@@ -1713,7 +1712,7 @@ msgid "by"
 msgstr "door"
 
 msgid "Property successfully assigned."
-msgstr "Succesvolle toegewezen eigenschap."
+msgstr "Eigenschaop Succesvol Toegewezen."
 
 msgid " Property Assignment"
 msgstr " Eigenschap Koppeling"
@@ -1722,19 +1721,19 @@ msgid "Assigning"
 msgstr "Toewijzing"
 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
-msgstr "Het verwijderen van deze eigenschap zal ook alle koppelingen van deze eigenschap verwijderen van alle personen, Familie, of Groepen."
+msgstr "Het verwijderen van deze eigenschap zal ook alle koppelingen van deze eigenschap verwijderen van alle Personen, Gezinnen, of Groepen."
 
 msgid "No, cancel this deletion"
 msgstr "Nee, annuleer deze verwijdering"
 
 msgid "Property Editor"
-msgstr "Beheer kenmerken"
+msgstr "Beheer Eigenschappen"
 
 msgid "You must select a type"
 msgstr "U moet een soort selecteren"
 
 msgid "Select Property Type"
-msgstr "Kenmerk per soort"
+msgstr "Selecteer Eigenschapstype"
 
 msgid "A"
 msgstr "Een"
@@ -1743,7 +1742,7 @@ msgid "Entering a Prompt value will allow the association of a free-form value."
 msgstr "Invoeren van een gevraagde waarde zal de koppeling van een vrij-vormwaarde toestaan."
 
 msgid "Property List"
-msgstr "Eigenschappen"
+msgstr "Lijst van Eigenschappen"
 
 #. Context: queryparameters_qrp
 msgid "Property"
@@ -1756,38 +1755,38 @@ msgid "Warning"
 msgstr "Waarschuwing"
 
 msgid "This property type is still being used by at least one property."
-msgstr "Dit soort kenmerk wordt nog gebruikt door minstens één Eigenschap."
+msgstr "Dit eigenschapstype wordt nog gebruikt door minstens één eigenschap."
 
 msgid "If you delete this type, you will also remove all properties using"
-msgstr "Als u dit soort verwijderd, zullen ook de gebruikte kenmerken worden verwijderd"
+msgstr "Als u dit type verwijderd, zullen ook de alle eigenschappen worden verwijderd met"
 
 msgid "it and lose any corresponding property assignments."
 msgstr "het en verlies elke coresponderende Eigenschap toepassing"
 
 msgid "Please confirm deletion of this Property Type"
-msgstr "Bevestig aub de verwijdering van dit soort kenmerk"
+msgstr "Bevestig aub de verwijdering van dit eigenschapstype"
 
 msgid "Property Type List"
-msgstr "Eigenschap Type Lijst"
+msgstr "Lijst van Eigenschapstype"
 
 #. Context: queryparameters_qrp
 msgid "Class"
 msgstr "Catechisatiegroep "
 
 msgid "Properties"
-msgstr "Kenmerken"
+msgstr "Eigenschappen"
 
 msgid " Property Unassignment"
 msgstr "Eigenschap Ontkoppeling"
 
 msgid "Please confirm removal of this property from this"
-msgstr "Bevestig aub verwijdering van de eigenschap van deze"
+msgstr "Bevestig aub verwijdering van deze eigenschap van gekozen"
 
 msgid "Unassigning"
 msgstr "Ontkoppelen"
 
 msgid "Yes, unassign this Property"
-msgstr "Ja, ontkoppel deze Eigenschap"
+msgstr "Ja, ontkoppel deze eigenschap"
 
 msgid "No, retain this assignment"
 msgstr "Nee, Behoud deze koppeling"
@@ -1857,40 +1856,40 @@ msgid "Restore Database"
 msgstr "Herstel de database"
 
 msgid "All donations from this family have been moved to another family."
-msgstr "Alle donaties van deze familie zijn verplaatst naar een andere familie."
+msgstr "Alle donaties van dit gezin zijn verplaatst naar een andere gezin."
 
 msgid "Please confirm deletion of"
 msgstr "Bevestig verwijderen"
 
 msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "Er zijn donaties gekoppeld aan deze familie. De Familie mag dus niet worden verwijderd"
+msgstr "Er zijn donaties gekoppeld aan dit gezin. Het gezin mag dus niet verwijderd worden."
 
 msgid "Return to Family View"
-msgstr "Ga Terug naar Familie Overzicht"
+msgstr "Ga Terug naar Gezinsoverzicht"
 
 msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "WAARSCHUWING: Deze familie heeft gekoppelde donaties, en mag niet worden verwijderd totdat deze gekoppeld zijn aan een andere familie."
+msgstr "WAARSCHUWING: Dit gezin heeft gekoppelde donaties, en mag niet worden verwijderd totdat deze gekoppeld zijn aan een andere gezin."
 
 msgid "Please select another family with whom to associate these donations:"
-msgstr "Selecteer aub een andere familie aan wie deze donaties worden gekoppeld:"
+msgstr "Selecteer aub een ander gezin aan wie deze donaties worden gekoppeld:"
 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "Waarschuwing: Deze actie kan niet ongedaan worden gemaakt, en zou legale consequenties kunnen hebben!"
 
 msgid "CURRENT FAMILY WITH DONATIONS"
-msgstr "HUIDIGE FAMILIE MET DONATIES"
+msgstr "HUIDIGE GEZIN MET DONATIES"
 
 msgid "Please confirm deletion of this family record:"
-msgstr "Bevestig aub verwijdering van deze familie:"
+msgstr "Bevestig aub verwijdering van dit gezin:"
 
 msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "Dit zal ook alle notities gekoppeld aan deze familie verwijderen."
+msgstr "Dit zal ook alle notities gekoppeld aan dit gezin verwijderen."
 
 msgid "Delete Family Record ONLY"
-msgstr "Verwijder ALLEEN Familie"
+msgstr "Verwijder ALLEEN Gezin"
 
 msgid "Delete Family Record AND Family Members"
-msgstr "Verwijdeer Familie EN Familie Leden"
+msgstr "Verwijdeer Gezin EN Gezinsleden"
 
 msgid "Listing"
 msgstr "Weergave"
@@ -1959,7 +1958,7 @@ msgid "Delete Records"
 msgstr "Verwijder Records"
 
 msgid "Manage Properties and Classifications"
-msgstr "Beheer kenmerken"
+msgstr "Beheer Eigenschappen en Classificaties"
 
 msgid "Manage Groups and Roles"
 msgstr "Beheer groepen en rollen"
@@ -1974,7 +1973,7 @@ msgid "Edit Self"
 msgstr "Bewerk Eigen Gegevens"
 
 msgid "(Edit own family only.)"
-msgstr "(Bewerk alleen uw eigen gezin)"
+msgstr "(Bewerk alleen eigen gezin)"
 
 msgid "Admin"
 msgstr "Instellingen"
@@ -2094,10 +2093,10 @@ msgid "Thank you for registering your ChurchCRM installation."
 msgstr "Bedankt voor het registreren van uw installatie"
 
 msgid "PDF successfully emailed to family members."
-msgstr "PDF succesvol verstuurd naar familieleden."
+msgstr "PDF succesvol verstuurd naar gezinsleden."
 
 msgid "Failed to email PDF to family members."
-msgstr "Niet gelukt om PDF naar familieleden te versturen."
+msgstr "Niet gelukt om PDF naar gezinsleden te versturen."
 
 msgid "Group successfully added to the Cart."
 msgstr "Groep met success aan werkbestand toegevoegd."
@@ -2491,7 +2490,7 @@ msgid "Deposit(s)"
 msgstr "Kasstaten"
 
 msgid "This will also delete all payments associated with this deposit"
-msgstr "Hiermee worden ook alle ontvangsten verwijderd die aan deze kasstaat zijn gekoppeld"
+msgstr "Hiermee worden ook alle ontvangsten verwijderd die aan deze storting zijn gekoppeld"
 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Deze actie kan niet ongedaan worden gemaakt, en kunnen juridische implicaties te hebben!"
@@ -2503,10 +2502,10 @@ msgid "Deposit Type"
 msgstr "Bijdrage Type"
 
 msgid "Deposit Date"
-msgstr "Kasstaat datum"
+msgstr "Stortingsdatum"
 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
-msgstr "Dit zal de familie envelop nummers overschrijven in de database met die gekozen op deze pagina. Doorgaan met?"
+msgstr "Dit zal de gezinsenvelop nummers overschrijven in de database met die gekozen op deze pagina.  Doorgaan?"
 
 msgid "Family Select"
 msgstr "Selecteer gezin"
@@ -2620,7 +2619,7 @@ msgid "Clear All Funds"
 msgstr "Alle fondsen wissen"
 
 msgid "Deposit Comment"
-msgstr "Opmerking bij kasstaat "
+msgstr "Opmerking bij storting "
 
 msgid "Your previous session timed out.  Please login again."
 msgstr "Uw vorige sessie is verlopen. Log alsjeblieft nogmaals in."
@@ -2645,7 +2644,7 @@ msgid "Buyer # "
 msgstr "Inkoper"
 
 msgid "Family Members:"
-msgstr "Gezinsleden"
+msgstr "Gezinsleden:"
 
 msgid "Anniversary"
 msgstr "Verjaardag"
@@ -2660,7 +2659,7 @@ msgid "File Name:"
 msgstr "Bestandsnaam:"
 
 msgid "family"
-msgstr "Gezin"
+msgstr "gezin"
 
 #, fuzzy
 msgid "Date Entered"
@@ -2688,13 +2687,13 @@ msgid "Estimated value"
 msgstr "Geschatte waarde"
 
 msgid "Disable Group Specific Properties"
-msgstr "Uitschakelen van de groep specifieke eigenschappen"
+msgstr "Uitschakelen van de groepsspecifieke eigenschappen"
 
 msgid "Text Group"
 msgstr "Tekst groep"
 
 msgid "Group Properties"
-msgstr "Groepsgegevens"
+msgstr "Groepseigenschappen"
 
 msgid "There was a problem retrieving the requested object"
 msgstr "Er is een probleem met het ophalen van de gevraagde object"
@@ -2711,9 +2710,8 @@ msgstr "Groepen"
 msgid "Total $"
 msgstr "Totaal"
 
-#, fuzzy
 msgid "with this property..."
-msgstr "Met dit kenmerk...."
+msgstr "met deze eigenschap...."
 
 msgid "Church Email"
 msgstr "Email adres van de kerk"
@@ -2722,13 +2720,13 @@ msgid "Include only these classifications in the directory, comma separated"
 msgstr "Neem alleen deze classificaties in de directory, gescheiden door een komma"
 
 msgid "These are the family role numbers designated as head of house"
-msgstr "Dit zijn de familie rol nummers aangewezen als hoofd van het huis"
+msgstr "Dit zijn de gezinsrolnummers aangewezen als hoofd van het huis"
 
 msgid "These are the family role numbers designated as spouse"
-msgstr "Dit zijn de familie rol nummers aangewezen als partner"
+msgstr "Dit zijn de gezinsrolnummers aangewezen als echtgenoot"
 
 msgid "These are the family role numbers designated as child"
-msgstr "Dit zijn de familie rol nummers aangewezen als kind"
+msgstr "Dit zijn de gezinsrolnummers aangewezen als kind"
 
 msgid "Should only administrators have access to the CSV export system and directory report?"
 msgstr "Moeten alleen beheerders toegang hebben tot het CSV-exportsysteem en directoryrapport?"
@@ -2776,19 +2774,19 @@ msgid "Set true to disable entering Friend Date in Person Editor.  Set false to 
 msgstr "Kies \"aan\" om het invoeren van vrienddatum in persoonseditor uit te schakelen.Kies \"uit\" om het invoeren van vrienddatum in persoonseditor in te schakelen."
 
 msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr "Zet aan om het beheer van nieuwsbriefabonnementen in de Family Editor uit te schakelen."
+msgstr "Zet aan om het beheer van nieuwsbriefabonnementen in de Gezinseditor uit te schakelen."
 
 msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
-msgstr "Zet aan om het invoeren van de huwelijksdatum in de Family Editor uit te schakelen. zet uit om het invoeren van de huwelijksdatum in de Family Editor mogelijk te maken."
+msgstr "Zet aan om het invoeren van de huwelijksdatum in de Gezinseditor uit te schakelen. zet uit om het invoeren van de huwelijksdatum in de Gezinseditor mogelijk te maken."
 
 msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "Zet aan om het invoeren van breedte- en lengtegraad in Family Editor uit te schakelen. Zet uit om het invoeren van breedte- en lengtegraad in Family Editor mogelijk te maken. Er worden nog steeds zoekopdrachten uitgevoerd, alleen niet weergegeven."
+msgstr "Zet aan om het invoeren van breedte- en lengtegraad in Gezinseditor uit te schakelen. Zet uit om het invoeren van breedte- en lengtegraad in Gezinseditor mogelijk te maken. Er worden nog steeds zoekopdrachten uitgevoerd, alleen niet weergegeven."
 
 msgid "Set true to enable use of donation envelopes"
 msgstr "\"Aan\" instellen om het gebruik van de donatie enveloppen mogelijk te maken"
 
 msgid "Number of checks for Deposit Slip Report"
-msgstr "Aantal cheques voor kasstaat rapport"
+msgstr "Aantal cheques voor stortingsstrookjes rapport"
 
 msgid "Set true to enable use of scanned checks"
 msgstr "Als geldig te maken van gescande controle toe te"
@@ -2902,10 +2900,10 @@ msgid "View All Deposits"
 msgstr "Bekijk alle stortingen"
 
 msgid "Deposit Reports"
-msgstr "Kasstaat rapporten"
+msgstr "Stortingsrapporten"
 
 msgid "Edit Deposit Slip"
-msgstr "Kasstaat bewerken"
+msgstr "Stortingsstrookje bewerken"
 
 msgid "View All Fundraisers"
 msgstr "Overzicht fondsenwervers"
@@ -2935,7 +2933,7 @@ msgid "Family Properties"
 msgstr "Gezinseigenschappen"
 
 msgid "Property Types"
-msgstr "Soorten eigenschappen"
+msgstr "Eigenschapstypes"
 
 #. Context: queryparameteroptions_qpo
 msgid "Zip Code"
@@ -3003,7 +3001,7 @@ msgstr "Tweede boekjaar"
 
 #. Context: queryparameters_qrp
 msgid "Custom field"
-msgstr "Aangepast veld"
+msgstr "Extra veld"
 
 #. Context: queryparameters_qrp
 msgid "Field value"
@@ -3103,7 +3101,7 @@ msgstr "Kies klant persoon veld"
 
 #. Context: queryparameters_qrp
 msgid "Match custom field to this value"
-msgstr "Pas aangepast veld aan deze waarde aan"
+msgstr "Pas extra veld aan deze waarde aan"
 
 #. Context: query_qry
 msgid "Person by Property"
@@ -3171,7 +3169,7 @@ msgstr "Vind vrijwilligers die overeenkomen met twee specifieke kanscodes"
 
 #. Context: query_qry
 msgid "Find people with a custom field value"
-msgstr "Zoek mensen met een aangepaste veldwaarde"
+msgstr "Zoek mensen met een extra veldwaarde"
 
 msgid "Last Edited"
 msgstr "De laatste bewerkt"
@@ -3212,13 +3210,13 @@ msgid "Family Roles Editor"
 msgstr "Gezinsrollen"
 
 msgid "Person Classification"
-msgstr "Kenmerk per persoon"
+msgstr "Lidmaatschapsstatus"
 
 msgid "Person Classifications"
-msgstr "Kenmerken van persoon"
+msgstr "Persoonscalssificaties"
 
 msgid "Person Classifications Editor"
-msgstr "Registratie kenmerk"
+msgstr "Lidmaatschapsstatus"
 
 msgid "Group Type"
 msgstr "Soort groep"
@@ -3263,13 +3261,13 @@ msgid "Custom List Options Editor"
 msgstr "Opties voor de aanpasbare lijsten"
 
 msgid "Family Custom List Option"
-msgstr "Optie voor aangepaste gezinslijst"
+msgstr "Optie voor extra gezinslijst"
 
 msgid "Family Custom List Options"
-msgstr "Opties voor aangepaste gezinslijst"
+msgstr "Opties voor extra gezinslijst"
 
 msgid "Family Custom List Options Editor"
-msgstr "Editor voor aangepaste lijstopties voor gezinnen"
+msgstr "Editor voor extra lijstopties voor gezinnen"
 
 msgid "are not allowed."
 msgstr "zijn niet toegestaan"
@@ -3281,10 +3279,10 @@ msgid "Imported"
 msgstr "Geimporteerd"
 
 msgid "Created via Family"
-msgstr "Gemaakt via Familie"
+msgstr "Gemaakt via Gezin"
 
 msgid "Updated via Family"
-msgstr "Gewijzigd via gezin"
+msgstr "Gewijzigd via Gezin"
 
 msgid "Family Data Verified"
 msgstr "Gezinsgegevens gecontroleerd"
@@ -4343,7 +4341,7 @@ msgid "Family Registration"
 msgstr "Registratie gezinnen"
 
 msgid "Please enter the following to start your family's verification"
-msgstr "Voer het volgende in om de verificatie van uw gezin te starten:"
+msgstr "Voer het volgende in om de verificatie van uw gezin te starten"
 
 msgid "Family Verification"
 msgstr "Controleer het gezin"
@@ -4471,12 +4469,11 @@ msgstr "Kerk rekeningnummer controleren"
 msgid "Marked the Family as Inactive"
 msgstr "Gezin gedeactiveerd"
 
-#, fuzzy
 msgid "Marked the Family as Active"
-msgstr "De familie geactiveerd"
+msgstr "Gezin geactiveerd"
 
 msgid "families"
-msgstr "Gezinnen"
+msgstr "gezinnen"
 
 msgid "Deposit ticket type.  QBDT - Quickbooks"
 msgstr "Type stortingsticket. QBDT - Quickbooks"
@@ -4503,7 +4500,7 @@ msgid "Confirm Activation"
 msgstr "Activering bevestigen"
 
 msgid "Please confirm deactivation of family"
-msgstr "Bevestig deactivering van familie"
+msgstr "Bevestig deactivering van gezin"
 
 msgid "Please confirm activation of family"
 msgstr "Bevestig de activering van het gezin"
@@ -4513,7 +4510,7 @@ msgid "Show neighbors with these classifications"
 msgstr "Buren met dezelfde kenmerken"
 
 msgid "Please select a Family."
-msgstr "Selecteer een gezin"
+msgstr "Selecteer een gezin."
 
 #, fuzzy
 msgid "Coordinate database file name"
@@ -4565,7 +4562,7 @@ msgid "Text before name in emails/reports"
 msgstr "Tekst voor naam in e-mails/rapporten"
 
 msgid "Display bill counts on deposit slip"
-msgstr "Toon biljetlijst op kasstaat"
+msgstr "Toon biljetlijst op stortingsstrook"
 
 msgid "Your Account was Deleted"
 msgstr "Uw account is verwijderd"
@@ -4634,7 +4631,7 @@ msgid "SMTP Server timeout in sec"
 msgstr "Time-out SMTP-server in sec"
 
 msgid "Exclude Inactive Families"
-msgstr "Exclusief niet actieve gezinnen"
+msgstr "Niet actieve gezinnen uistluiten"
 
 msgid "The role is already assigned."
 msgstr "De rol is al toegewezen."
@@ -4688,7 +4685,7 @@ msgid "system user login reset"
 msgstr "Systeemgebruiker login reset"
 
 msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Gezin ontbreekt? Beheer dan de landkaart coördinatoren. "
+msgstr "Gezin ontbreekt? Beheer dan de landkaart coördinatoren."
 
 msgid "Families without Geo Info"
 msgstr "Gezinnen zonder kaart"
@@ -4900,7 +4897,7 @@ msgid "Self Register"
 msgstr "Zelf registratie"
 
 msgid "List families that were created via self registration."
-msgstr "Lijst families die zijn gemaakt via zelfregistratie."
+msgstr "Lijst van gezinnen die zijn gemaakt via zelfregistratie."
 
 msgid "Pending Self Verify"
 msgstr "In afwachting van zelfverificatie"
@@ -5024,7 +5021,7 @@ msgid "Maximum number of Families"
 msgstr "Het maximum aantal gezinnen"
 
 msgid "Maximum number of Family H.O.H Names"
-msgstr "Maximaal aantal H.O.H-familienamen"
+msgstr "Maximaal aantal gezin H.O.H namen"
 
 msgid "Maximum number of Groups"
 msgstr "Het maximum aantal groepen"
@@ -5132,7 +5129,7 @@ msgid "GroupID for Cart must be numeric"
 msgstr "Groeps-ID voor werkbestand moet numeriek zijn"
 
 msgid "FamilyID for Cart must be numeric"
-msgstr "FamilyID voor werkbestand moet numeriek zijn"
+msgstr "GezinsID voor werkbestand moet numeriek zijn"
 
 msgid "Search People"
 msgstr "Zoek personen"
@@ -5168,7 +5165,7 @@ msgid "People Directory"
 msgstr "Persoonsmap"
 
 msgid "Printable directory of all people, grouped by family where assigned"
-msgstr "Afdrukbare directory van alle mensen, gegroepeerd op familie waar toegewezen"
+msgstr "Afdrukbare directory van alle mensen, gegroepeerd op gezin waar toegewezen"
 
 msgid "of People"
 msgstr "van personen"
@@ -5195,7 +5192,7 @@ msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 secon
 msgstr "Dashboard Service dynamisch asynchrone vernieuwingsinterval, standaard 60 seconden"
 
 msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Kasstaat rapport genereren voor geselecteerde rijen (PDF)"
+msgstr "Stortingsstrook genereren voor geselecteerde rijen (PDF)"
 
 msgid "Add All to Cart"
 msgstr "Alles in het werkbestand zetten"
@@ -5371,10 +5368,10 @@ msgid "Debug"
 msgstr "Specificaties"
 
 msgid "Family Custom Fields"
-msgstr "Aangepaste velden: gezin"
+msgstr "Extra Velden voor gezinnen"
 
 msgid "Person Custom Fields"
-msgstr "Gepersonalizeerd veld voor persoon"
+msgstr "Extra velden voor personen"
 
 msgid "Donation Funds"
 msgstr "Fondsen"
@@ -5499,14 +5496,14 @@ msgid "Include contact and demographic data in new member email notification bod
 msgstr "Contactgegevens en demografische gegevens in de nieuwe lid e-mailbericht lichaam."
 
 msgid "Include family custom properties in global search."
-msgstr "Inclusief familie aangepaste eigenschappen in wereldwijd zoeken."
+msgstr "Extra eigenschappen voor gezinnen meenemen in globaal zoeken."
 
 #. Context: countries
 msgid "Latvia (Latvija)"
 msgstr "Letland"
 
 msgid "You are about to add a new deposit without a comment"
-msgstr "Je staat op het punt een nieuwe kasstaat toe te voegen zonder commentaar"
+msgstr "Je staat op het punt een nieuwe storting toe te voegen zonder commentaar"
 
 msgid "Families Without Emails"
 msgstr "Gezinnen zonder e-mail adres"
@@ -5608,10 +5605,10 @@ msgid "People Verify Dashboard"
 msgstr "Dashboard leden verificatie"
 
 msgid "Download family letters"
-msgstr "Familiebrieven downloaden"
+msgstr "Gezinsbrieven downloaden"
 
 msgid "Send family email"
-msgstr "Stuur familie e-mail"
+msgstr "Stuur gezin e-mail"
 
 msgid "Verification recorded"
 msgstr "Verificatie geregistreerd"
@@ -5846,7 +5843,7 @@ msgid "Failed generate a new API Key"
 msgstr "Kan geen nieuwe API-sleutel genereren"
 
 msgid "Pledge Summary By Family"
-msgstr "Toezegginsoverzich per gezin"
+msgstr "Toezegginsoverzicht per gezin"
 
 msgid "Pledge"
 msgstr "Toezegging"
@@ -5949,7 +5946,7 @@ msgid "Loading"
 msgstr "Bezig met laden"
 
 msgid "Family Property Unassignment"
-msgstr "Gezinseigendom intrekken"
+msgstr "Gezinseigenschap intrekken"
 
 msgid "Do you want to remove"
 msgstr "Wil je het verwijderen?"
@@ -5967,7 +5964,7 @@ msgid "Regen API Key"
 msgstr "Genereer API Key opnieuw"
 
 msgid "View Family Page"
-msgstr "Familiepagina bekijken"
+msgstr "Gezinspagina bekijken"
 
 msgid "View Person Page"
 msgstr "Persoonspagina bekijken"
@@ -5976,7 +5973,7 @@ msgid "Verify"
 msgstr "Verifiëren"
 
 msgid "Family has no emails to use"
-msgstr "Familie heeft geen e-mails om te gebruiken"
+msgstr "Gezin heeft geen e-mails om te gebruiken"
 
 msgid "Boxed Layout"
 msgstr "Layout blokken"
@@ -6060,10 +6057,10 @@ msgid "Delete this person?"
 msgstr "Deze persoon verwijderen?"
 
 msgid "Deposit ID"
-msgstr "Kasstaat ID"
+msgstr "Storting ID"
 
 msgid "Deposit Total"
-msgstr "Kasstaat totaal"
+msgstr "Storting totaal"
 
 msgid "Group Cart Status"
 msgstr "Winkelwagen status"
@@ -6313,7 +6310,7 @@ msgid "Person already in cart"
 msgstr "Persoon reeds in verzamelmap"
 
 msgid "Remove this family from cart?"
-msgstr "Deze familie uit het winkelwagen verwijderen?"
+msgstr "Dit gezin uit het verzamelmap verwijderen?"
 
 msgid "Remove this group from cart?"
 msgstr "Deze groep uit het winkelwagen verwijderen?"
@@ -6496,7 +6493,7 @@ msgid "Phone number"
 msgstr "Telefoonnummer"
 
 msgid "Please add at least one family member."
-msgstr "Voeg minimaal één gezinslid toe"
+msgstr "Voeg minimaal één gezinslid toe."
 
 msgid "Please correct the validation errors before continuing."
 msgstr "Verbeter de fouten voordat je verder gaat."
@@ -6799,7 +6796,7 @@ msgid "Unable to contact integrity endpoint. Check web server error logs."
 msgstr "Kan integriteitsendpunt niet bereiken. Controleer webserver-foutlogboeken."
 
 msgid "Add any additional notes about this deposit"
-msgstr "Voeg aanvullende opmerkingen over deze kasstaat toe"
+msgstr "Voeg aanvullende opmerkingen over deze storting toe"
 
 msgid "Amount exceeds maximum allowed value (999999.99)."
 msgstr "Bedrag overschrijdt de maximaal toegestane waarde (999999.99)."
@@ -6817,7 +6814,7 @@ msgid "Delete Selected"
 msgstr "Geselecteerde verwijderen"
 
 msgid "Deposit saved successfully"
-msgstr "Kasstaat succesvol opgeslagen"
+msgstr "Storting succesvol opgeslagen"
 
 msgid "Error deleting payments"
 msgstr "Fout bij het verwijderen van ontvangsten"
@@ -6826,7 +6823,7 @@ msgid "Error loading payments"
 msgstr "Fout bij het laden van ontvangsten"
 
 msgid "Error saving deposit"
-msgstr "Fout bij het opslaan van kasstaat"
+msgstr "Fout bij het opslaan van de storting"
 
 msgid "Funds"
 msgstr "Fondsen"
@@ -6865,7 +6862,7 @@ msgid "This action cannot be undone."
 msgstr "Deze actie kan niet ongedaan worden gemaakt."
 
 msgid "Total Deposit"
-msgstr "Totale kasstaat"
+msgstr "Totale Storting"
 
 msgid "Total Payments"
 msgstr "Totale aantal ontvangsten"
@@ -6973,10 +6970,10 @@ msgid "Need to remove this data later?"
 msgstr "Moet u deze gegevens later verwijderen?"
 
 msgid "No Payments on this Deposit"
-msgstr "Geen ontvangsten bij deze kasstaat"
+msgstr "Geen ontvangsten bij deze storting"
 
 msgid "No payments on this deposit"
-msgstr "Geen ontvangsten bij deze kasstaat"
+msgstr "Geen ontvangsten bij deze storting"
 
 msgid "Optional Data to Include"
 msgstr "Optionele gegevens om op te nemen"
@@ -7541,7 +7538,7 @@ msgid "seconds..."
 msgstr "seconden..."
 
 msgid " Deposit #"
-msgstr " Kasstaat #"
+msgstr " Storting #"
 
 msgid "%d missing classification"
 msgstr "%d ontbrekende classificatie"
@@ -7553,13 +7550,13 @@ msgid "%d missing role"
 msgstr "%d ontbrekende rol"
 
 msgid "A payment is an actual donation received. It will be added to the current deposit."
-msgstr "Een ontvangst is een daadwerkelijke donatie. Het wordt toegevoegd aan de huidge kasstaat."
+msgstr "Een ontvangst is een daadwerkelijke donatie. Het wordt toegevoegd aan de huidge storting."
 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
-msgstr "Een toezegging is een belofte. Het is niet gekoppeld aan een Kasstaat."
+msgstr "Een toezegging is een belofte. Het is niet gekoppeld aan een storting."
 
 msgid "Add Another Family Member"
-msgstr "Voeg nog een familieledemid toe"
+msgstr "Voeg nog een gezinslid toe"
 
 msgid "Add Pledge"
 msgstr "Toezegging Toevoegen"
@@ -7586,7 +7583,7 @@ msgid "Back to Deposits"
 msgstr "Terug naar Stortingen"
 
 msgid "Back to Families"
-msgstr "Terug naar Families"
+msgstr "Terug naar Gezinnen"
 
 msgid "Birth & Family"
 msgstr "Geboorte en Familie"
@@ -7646,25 +7643,25 @@ msgid "Contact Information"
 msgstr "Contactgegevens"
 
 msgid "Create Deposit"
-msgstr "Kasstaat Maken"
+msgstr "Storting Maken"
 
 msgid "Create First Deposit"
-msgstr "Eerste Kasstaat Maken"
+msgstr "Eerste Storting Maken"
 
 msgid "Create or open a deposit first"
-msgstr "Maak of open eerst een kasstaat "
+msgstr "Maak of open eerst een storting "
 
 msgid "Create or select a deposit to get started."
-msgstr "Maak of selecteer een kasstaat om te beginnen."
+msgstr "Maak of selecteer een storting om te beginnen."
 
 msgid "Current Deposit"
-msgstr "Huidge Kasstaat"
+msgstr "Huidge Storting"
 
 msgid "Current fiscal year"
 msgstr "Huidig fiscaal jaar"
 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Aanpasbaar rapport met filteren op datum, fonds, familie en betalingsmethode."
+msgstr "Aanpasbaar rapport met filteren op datum, fonds, gezin en betalingsmethode."
 
 msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
 msgstr "Pas de tekst aan die op belastingafschriften verschijnt (sTaxReport1, sTaxReport2, enz.)."
@@ -7688,25 +7685,25 @@ msgid "Deposit Navigation"
 msgstr "Stortingsnavigatie"
 
 msgid "Deposit Statistics"
-msgstr "Kasstaat statistieken"
+msgstr "Stortingsstatistieken"
 
 msgid "Detailed breakdown of a single deposit slip."
-msgstr "Gedetailleerde uitsplitsing van een enkel Kasstaat bon."
+msgstr "Gedetailleerde uitsplitsing van een enkel stortingsstrook."
 
 msgid "Detailed breakdown of pledges and payments by family."
-msgstr "Gedetailleerde breakdown van toezeggingen en betalingen per familie."
+msgstr "Gedetailleerde breakdown van toezeggingen en betalingen per gezin."
 
 msgid "Documentation"
 msgstr "Documentatie"
 
 msgid "Donor Families"
-msgstr "Donateur-families"
+msgstr "Donateur-gezinnen"
 
 msgid "Edit Deposit"
-msgstr "Kasstaat Bewerken"
+msgstr "Storting Bewerken"
 
 msgid "Edit Family"
-msgstr "Familie Bewerken"
+msgstr "Gezin Bewerken"
 
 msgid "Edit Payment"
 msgstr "Ontvangst Bewerken"
@@ -7727,7 +7724,7 @@ msgid "Failed to save settings"
 msgstr "Instellingen opslaan mislukt"
 
 msgid "Family Navigation"
-msgstr "Familienavigatie"
+msgstr "Gezinsnavigatie"
 
 msgid "Feb"
 msgstr "Feb"
@@ -7772,7 +7769,7 @@ msgid "Generate detailed reports for individual deposits or date ranges."
 msgstr "Genereer gedetailleerde rapporten voor individuele stortingen of datumbereiken."
 
 msgid "Generate reminder letters for families with outstanding pledges."
-msgstr "Genereer herinnerbrieven voor families met openstaande toezeggingen."
+msgstr "Genereer herinnerbrieven voor gezinnen met openstaande toezeggingen."
 
 msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
 msgstr "Genereer rapporten voor belastingafschriften, toezeggingsvolgesporing en financiële analyse."
@@ -7796,7 +7793,7 @@ msgid "Import from CSV files"
 msgstr "Importeren uit CSV-bestanden"
 
 msgid "Import sample families, people, and groups to explore ChurchCRM with realistic data."
-msgstr "Importeer voorbeeldfamilies, mensen en groepen om ChurchCRM met realistische gegevens te verkennen."
+msgstr "Importeer voorbeeldgezinnen, mensen en groepen om ChurchCRM met realistische gegevens te verkennen."
 
 msgid "Install TLS/SSL certificate for better security"
 msgstr "Installeer TLS/SSL-certificaat voor betere beveiliging"
@@ -7853,7 +7850,7 @@ msgid "Name & Identity"
 msgstr "Naam en Identiteit"
 
 msgid "New Deposit Will Be Created"
-msgstr "Nieuwe Kasstaat wordt gemaakt"
+msgstr "Er zal een nieuwe storting worden aangemaakt"
 
 msgid "New Payment"
 msgstr "Nieuwe Ontvangst"
@@ -7865,7 +7862,7 @@ msgid "Next 7 days and past 7 days"
 msgstr "Volgende 7 dagen en afgelopen 7 dagen"
 
 msgid "No Active Deposit"
-msgstr "Geen Actieve Kasstaat "
+msgstr "Geen Actieve Storting "
 
 msgid "No active funds configured."
 msgstr "Geen actieve fondsen geconfigureerd."
@@ -7946,7 +7943,7 @@ msgid "SMTP server settings are not configured"
 msgstr "SMTP-serverinstellingen zijn niet geconfigureerd"
 
 msgid "Save and Add New Family"
-msgstr "Opslaan en Nieuwe Familie Toevoegen"
+msgstr "Opslaan en Nieuw Gezin Toevoegen"
 
 msgid "Secret keys missing from Config.php"
 msgstr "Geheime sleutels ontbreken in Config.php"
@@ -8030,7 +8027,7 @@ msgid "Upgrade"
 msgstr "Upgrade"
 
 msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "Gebruik classificatie- en familiefilters om rapporten voor specifieke groepen donateurs te genereren."
+msgstr "Gebruik classificatie- en gezinsfilters om rapporten voor specifieke groepen donateurs te genereren."
 
 msgid "User accounts and roles"
 msgstr "Gebruikersaccounts en rollen"
@@ -8057,7 +8054,7 @@ msgid "YTD Pledges"
 msgstr "JTD-toezeggingen"
 
 msgid "You may create family members now or add them later. All entries will become new person records."
-msgstr "U kunt familieleden nu toevoegen of later toevoegen. Alle vermeldingen worden nieuwe persoonrecords."
+msgstr "U kunt gezinsleden nu of later toevoegen. Alle vermeldingen worden nieuwe persoonsrecords."
 
 msgid "Your fiscal year starts in month"
 msgstr "Uw fiscale jaar begint in maand"
@@ -8183,7 +8180,7 @@ msgid "Save the file and refresh this page"
 msgstr "Sla het bestand op en vernieuw deze pagina"
 
 msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Stel in op true om het invoeren van persoonlijke adressen voor niet-gelieerde personen in Persooneditor uit te schakelen. Stel in op false om het invoeren van adressen voor personen zonder familietoewijzing in te schakelen."
+msgstr "Stel in op true om het invoeren van persoonlijke adressen voor niet-gelieerde personen in Persooneditor uit te schakelen. Stel in op false om het invoeren van adressen voor personen zonder gezinstoewijzing in te schakelen."
 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Begint met <strong>http://</strong> of <strong>https://</strong>"
@@ -8261,10 +8258,10 @@ msgid "Choose opportunities..."
 msgstr "Kies mogelijkheden..."
 
 msgid "Confirm Family Information"
-msgstr "Bevestig Familiegegevens"
+msgstr "Bevestig Gezinssgegevens"
 
 msgid "Confirm family information"
-msgstr "Bevestig familiegegevens"
+msgstr "Bevestig gezinsgegevens"
 
 msgid "Contact & Personal Info"
 msgstr "Contact en Persoonlijke Gegevens"
@@ -8291,7 +8288,7 @@ msgid "Newsletter"
 msgstr "Nieuwsbrief"
 
 msgid "No assigned family"
-msgstr "Geen toegewezen familie"
+msgstr "Geen toegewezen gezin"
 
 msgid "Open in New Tab"
 msgstr "Open in Nieuw Tabblad"
@@ -8300,7 +8297,7 @@ msgid "Personal"
 msgstr "Persoonlijk"
 
 msgid "Please confirm your family information:"
-msgstr "Bevestig alstublieft uw familiegegevens:"
+msgstr "Bevestig alstublieft uw gezinsgegevens:"
 
 msgid "Please update our records with corrections"
 msgstr "Werk alstublieft onze records bij met correcties"
@@ -8318,7 +8315,7 @@ msgid "Select Property"
 msgstr "Selecteer Eigenschap"
 
 msgid "Share this URL with family members to verify their information"
-msgstr "Deel deze URL met familieleden om hun informatie te verifiëren"
+msgstr "Deel deze URL met gezinsleden om hun informatie te verifiëren"
 
 msgid "Submit Verification"
 msgstr "Verificatie Verzenden"
@@ -8378,7 +8375,7 @@ msgid "Failed to refresh upgrade information"
 msgstr "Upgrade-informatie vernieuwen mislukt"
 
 msgid "Failed to upload family photo"
-msgstr "Familie foto uploaden mislukt"
+msgstr "Gezinsfoto uploaden mislukt"
 
 msgid "Failed to upload person photo"
 msgstr "Persoon foto uploaden mislukt"
@@ -8414,7 +8411,7 @@ msgid "Exporting..."
 msgstr "Aan het exporteren..."
 
 msgid "Family Listing"
-msgstr "Familielijst"
+msgstr "Lijst van Gezinnen"
 
 msgid "Invalid request data"
 msgstr "Ongeldige aanvraaggegevens"
@@ -8495,8 +8492,8 @@ msgstr[1] "%d personen aan winkelwagen toegevoegd."
 
 msgid "%d Person successfully added to selected Family."
 msgid_plural "%d People successfully added to selected Family."
-msgstr[0] "%d persoon succesvol toegevoegd aan geselecteerde familie."
-msgstr[1] "%d personen succesvol toegevoegd aan geselecteerde familie."
+msgstr[0] "%d persoon succesvol toegevoegd aan geselecteerde gezin."
+msgstr[1] "%d personen succesvol toegevoegd aan geselecteerde gezin."
 
 msgid "%d Person successfully added to selected Group."
 msgid_plural "%d People successfully added to selected Group."
@@ -8516,7 +8513,7 @@ msgid "Arrow and delete buttons take effect immediately. Field name changes will
 msgstr "Pijl- en verwijderknoppen hebben onmiddellijk effect. Veldnaamwijzigingen gaan verloren als u niet op 'Wijzigingen Opslaan' klikt voordat u een omhoog, omlaag, verwijder of 'nieuw toevoegen'-knop gebruikt!"
 
 msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
-msgstr "Door dit veld te verwijderen, verliest u voor altijd alle familiegegevens die voor dit veld zijn toegewezen!"
+msgstr "Door dit veld te verwijderen, verliest u voor altijd alle gezinsgegevens die voor dit veld zijn toegewezen!"
 
 msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
 msgstr "Door dit veld te verwijderen, verliest u voor altijd alle persoongegevens die voor dit veld zijn toegewezen!"
@@ -8537,10 +8534,10 @@ msgid "Existing"
 msgstr "Bestaande"
 
 msgid "Existing Custom Family Fields"
-msgstr "Bestaande Aangepaste Familievelden"
+msgstr "Bestaande Extra Gezinsvelden"
 
 msgid "Existing Custom Person Fields"
-msgstr "Bestaande Aangepaste Persoonsvelden"
+msgstr "Bestaande Custom Persoonsvelden"
 
 msgid "Existing Volunteer Opportunities"
 msgstr "Bestaande Vrijwilligersmogelijkheden"
@@ -8570,7 +8567,7 @@ msgid "Order"
 msgstr "Volgorde"
 
 msgid "PDFs successfully emailed to %s families."
-msgstr "PDF's succesvol per e-mail verzonden naar %s families."
+msgstr "PDF's succesvol per e-mail verzonden naar %s gezinnen."
 
 msgid "Percentage"
 msgstr "Percentage"
@@ -8579,7 +8576,7 @@ msgid "Person Properties"
 msgstr "Persoonseigenschappen"
 
 msgid "Property Type"
-msgstr "Eigendomstype"
+msgstr "Eigenscahpstype"
 
 msgid "Property to Delete"
 msgstr "Eigenschap te Verwijderen"
@@ -8673,7 +8670,7 @@ msgid "Failed to update role. Please try again."
 msgstr "Rol bijwerken mislukt. Probeer het opnieuw."
 
 msgid "Family Pledges"
-msgstr "Familietoezeggingen"
+msgstr "Gezinstoezeggingen"
 
 msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
 msgstr "Veldwijzigingen gaan verloren als u niet op 'Wijzigingen Opslaan' klikt voordat u een verwijder- of 'Nieuw Toevoegen'-knop gebruikt!"
@@ -8727,7 +8724,7 @@ msgid "Total Pledges"
 msgstr "Totale Toezeggingen"
 
 msgid "Track and manage pledge commitments by family and fund"
-msgstr "Volg en beheer toezeggingen per familie en fonds"
+msgstr "Volg en beheer toezeggingen per gezin en fonds"
 
 msgid "View Properties"
 msgstr "Eigenschappen Bekijken"
